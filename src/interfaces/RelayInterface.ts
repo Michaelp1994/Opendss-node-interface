@@ -1,13 +1,14 @@
 import {
   BooleanEnum,
-  DOC_P1BlockingEnum,
   DebugTraceEnum,
   DistReverseEnum,
+  DOC_P1BlockingEnum,
   EventLogEnum,
   NormalEnum,
   StateEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface RelayInterface extends BaseInterface {
   /** Name of the component */

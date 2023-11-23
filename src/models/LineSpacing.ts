@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { UnitsEnum } from "../enums/enums";
 import { LineSpacingInterface } from "../interfaces/LineSpacingInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class LineSpacing extends BaseComponent {
   _type = "LineSpacing";
@@ -13,8 +15,7 @@ export class LineSpacing extends BaseComponent {
   /** Array of wire Heights.*/
   h?: number[];
   /** Units for x and h: {mi|kft|km|m|Ft|in|cm } Initial default is "ft", but defaults to last unit defined*/
-  units?: string;
-
+  units?: UnitsEnum;
   constructor(
     nameOrOptions: string | LineSpacingInterface,
     options?: Omit<LineSpacingInterface, "name">

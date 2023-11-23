@@ -1,5 +1,6 @@
-import BaseComponent from "./BaseComponent";
 import { TCC_CurveInterface } from "../interfaces/TCC_CurveInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class TCC_Curve extends BaseComponent {
   _type = "TCC_Curve";
@@ -18,7 +19,6 @@ export class TCC_Curve extends BaseComponent {
    *
    * The specified file has one value per line.*/
   T_array?: number[];
-
   constructor(
     nameOrOptions: string | TCC_CurveInterface,
     options?: Omit<TCC_CurveInterface, "name">

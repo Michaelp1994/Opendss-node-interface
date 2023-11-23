@@ -6,6 +6,7 @@ import {
   MonPhaseEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface StorageControllerInterface extends BaseInterface {
   /** Name of the component */

@@ -8,6 +8,7 @@ import {
   WattPriorityEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PC Element  */
 export interface PVSystemInterface extends BaseInterface {
   /** Name of the component */

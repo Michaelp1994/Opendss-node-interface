@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { GenDispatcherInterface } from "../interfaces/GenDispatcherInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class GenDispatcher extends BaseComponent {
   _type = "GenDispatcher";
@@ -32,11 +34,10 @@ export class GenDispatcher extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | GenDispatcherInterface,
-    options?: Omit<GenDispatcherInterface, "name">,
+    options?: Omit<GenDispatcherInterface, "name">
   ) {
     super();
     if (typeof nameOrOptions === "string") {

@@ -1,5 +1,12 @@
-import BaseComponent from "./BaseComponent";
+import {
+  BooleanEnum,
+  ClearEnum,
+  ConnEnum,
+  DeltaDirectionEnum,
+} from "../enums/enums";
 import { SensorInterface } from "../interfaces/SensorInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Meter Element  */
 export class Sensor extends BaseComponent {
   _type = "Sensor";
@@ -29,7 +36,7 @@ export class Sensor extends BaseComponent {
    * specify L-L voltage. For 1-phase devices specify L-N or actual 1-phase voltage. Like many other DSS devices, default is 12.47kV.*/
   kvbase?: number;
   /** { Yes | No }. Clear=Yes clears sensor values. Should be issued before putting in a new set of measurements.*/
-  clear?: boolean;
+  clear?: ClearEnum;
   /** Array of Voltages (kV) measured by the voltage sensor. For Delta-connected sensors, Line-Line voltages are expected. For Wye, Line-Neutral are expected.*/
   kVs?: number[];
   /** Array of Currents (amps) measured by the current sensor. Specify this or power quantities; not both.*/
@@ -47,7 +54,7 @@ export class Sensor extends BaseComponent {
    * If wye or LN, voltage is assumed measured line-neutral; otherwise, line-line.*/
   conn?: ConnEnum;
   /** {1 or -1}  Default is 1:  1-2, 2-3, 3-1.  For reverse rotation, enter -1. Any positive or negative entry will suffice.*/
-  Deltadirection?: number;
+  Deltadirection?: DeltaDirectionEnum;
   /** Assumed percent error in the measurement. Default is 1.*/
   "%Error"?: number;
   /** Weighting factor: Default is 1.*/
@@ -55,8 +62,7 @@ export class Sensor extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | SensorInterface,
     options?: Omit<SensorInterface, "name">

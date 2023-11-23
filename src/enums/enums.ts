@@ -140,7 +140,18 @@ export type UnitsWithMilliMeterEnum =
   | "in"
   | "cm"
   | "mm";
-
+export type LineTypeEnum =
+  | "OH"
+  | "UG"
+  | "UG_TS"
+  | "UG_CN"
+  | "SWT_LDBRK"
+  | "SWT_FUSE"
+  | "SWT_SECT"
+  | "SWT_REC"
+  | "SWT_DISC"
+  | "SWT_BRK"
+  | "SWT_ELBOW";
 export type UseActualEnum = "Yes" | "No" | "True" | "False";
 export type UseFuelEnum = "Yes" | "No";
 export type VbaseLossesEnum = "Yes" | "No";

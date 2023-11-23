@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { UnitsEnum } from "../enums/enums";
 import { LineCodeInterface } from "../interfaces/LineCodeInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class LineCode extends BaseComponent {
   _type = "LineCode";
@@ -48,7 +50,7 @@ export class LineCode extends BaseComponent {
   /** Zero-sequence capacitance, nf per unit length. Setting any of R1, R0, X1, X0, C1, C0 forces the program to use the symmetrical component line definition. See also B0.*/
   C0?: number;
   /** One of (ohms per ...) {none|mi|km|kft|m|me|ft|in|cm}.  Default is none; assumes units agree with length unitsgiven in Line object*/
-  units?: string;
+  units?: UnitsEnum;
   /** Resistance matrix, lower triangle, ohms per unit length. Order of the matrix is the number of phases. May be used to specify the impedance of any line configuration.  For balanced line models, you may use the standard symmetrical component data definition instead.*/
   rmatrix?: number[];
   /** Reactance matrix, lower triangle, ohms per unit length. Order of the matrix is the number of phases. May be used to specify the impedance of any line configuration.  For balanced line models, you may use the standard symmetrical component data definition instead.*/
@@ -97,7 +99,6 @@ export class LineCode extends BaseComponent {
    *
    * OpenDSS currently does not use this internally. For whatever purpose the user defines. Default is OH.*/
   LineType?: string;
-
   constructor(
     nameOrOptions: string | LineCodeInterface,
     options?: Omit<LineCodeInterface, "name">

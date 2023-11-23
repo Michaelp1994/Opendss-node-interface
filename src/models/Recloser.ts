@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { NormalEnum, StateEnum, BooleanEnum } from "../enums/enums";
 import { RecloserInterface } from "../interfaces/RecloserInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class Recloser extends BaseComponent {
   _type = "Recloser";
@@ -79,14 +81,13 @@ export class Recloser extends BaseComponent {
   /** Time dial for Ground Delayed trip curve. Multiplier on time axis of specified curve. Default=1.0.*/
   TDGrDelayed?: number;
   /** {Open | Closed} Normal state of the recloser. The recloser reverts to this state for reset, change of mode, etc. Defaults to "State" if not specificallt declared.*/
-  Normal?: string;
+  Normal?: NormalEnum;
   /** {Open | Closed} Actual state of the recloser. Upon setting, immediately forces state of the recloser, overriding the Recloser control. Simulates manual control on recloser. Defaults to Closed. "Open" causes the controlled element to open and lock out. "Closed" causes the controlled element to close and the recloser to reset to its first operation.*/
-  State?: string;
+  State?: StateEnum;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | RecloserInterface,
     options?: Omit<RecloserInterface, "name">

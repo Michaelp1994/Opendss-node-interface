@@ -1,5 +1,6 @@
-import BaseComponent from "./BaseComponent";
 import { XfmrCodeInterface } from "../interfaces/XfmrCodeInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class XfmrCode extends BaseComponent {
   _type = "XfmrCode";
@@ -52,7 +53,7 @@ export class XfmrCode extends BaseComponent {
   /** Set this = to the number of the winding you wish to define.  Then set the values for this winding.  Repeat for each winding.  Alternatively, use the array collections (buses, kvas, etc.) to define the windings.  Note: reactances are BETWEEN pairs of windings; they are not the property of a single winding.*/
   wdg?: number;
   /** Connection of this winding. Default is "wye" with the neutral solidly grounded.*/
-  conn?: ConnEnum;
+  conn?: string;
   /** For 2-or 3-phase, enter phase-phase kV rating.  Otherwise, kV rating of the actual winding*/
   kV?: number;
   /** Base kVA rating of the winding. Side effect: forces change of max normal and emerg kva ratings.If 2-winding transformer, forces other winding to same value. When winding 1 is defined, all other windings are defaulted to the same rating and the first two winding resistances are defaulted to the %loadloss value.*/
@@ -167,7 +168,6 @@ export class XfmrCode extends BaseComponent {
    *
    * multiple ratings to change during a QSTS simulation to evaluate different ratings in transformers.*/
   Ratings?: number[];
-
   constructor(
     nameOrOptions: string | XfmrCodeInterface,
     options?: Omit<XfmrCodeInterface, "name">

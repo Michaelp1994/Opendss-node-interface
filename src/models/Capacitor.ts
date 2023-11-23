@@ -1,6 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum, ConnEnum, StatesEnum } from "../enums/enums";
 import { CapacitorInterface } from "../interfaces/CapacitorInterface";
-import { ConnEnum, BooleanEnum } from "../enums/enums";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PD Element  */
 export class Capacitor extends BaseComponent {
   _type = "Capacitor";
@@ -66,7 +67,7 @@ export class Capacitor extends BaseComponent {
   /** Number of steps in this capacitor bank. Default = 1. Forces reallocation of the capacitance, reactor, and states array.  Rules: If this property was previously =1, the value in the kvar property is divided equally among the steps. The kvar property does not need to be reset if that is accurate.  If the Cuf or Cmatrix property was used previously, all steps are set to the value of the first step. The states property is set to all steps on. All filter steps are set to the same harmonic. If this property was previously >1, the arrays are reallocated, but no values are altered. You must SUBSEQUENTLY assign all array properties.*/
   Numsteps?: number;
   /** ARRAY of integers {1|0} states representing the state of each step (on|off). Defaults to 1 when reallocated (on). Capcontrol will modify this array as it turns steps on or off.*/
-  states?: number[];
+  states?: StatesEnum;
   /** Normal rated current.*/
   normamps?: number;
   /** Maximum or emerg current.*/

@@ -1,6 +1,14 @@
-import BaseComponent from "./BaseComponent";
+import {
+  BooleanEnum,
+  CTPhaseEnum,
+  EventLogEnum,
+  PTPhaseEnum,
+  TypeEnum,
+  YesNoEnum,
+} from "../enums/enums";
 import { CapControlInterface } from "../interfaces/CapControlInterface";
-import { BooleanEnum, YesNoEnum } from "../enums/enums";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class CapControl extends BaseComponent {
   _type = "CapControl";
@@ -40,7 +48,7 @@ export class CapControl extends BaseComponent {
    * Capacitor=cap1*/
   capacitor?: string;
   /** {Current | voltage | kvar | PF | time } Control type.  Specify the ONsetting and OFFsetting appropriately with the type of control. (See help for ONsetting)*/
-  type?: string;
+  type?: TypeEnum;
   /** Ratio of the PT that converts the monitored voltage to the control voltage. Default is 60.  If the capacitor is Wye, the 1st phase line-to-neutral voltage is monitored.  Else, the line-to-line voltage (1st - 2nd phase) is monitored.*/
   PTratio?: number;
   /** Ratio of the CT from line amps to control ampere setting for current and kvar control types.*/
@@ -64,7 +72,7 @@ export class CapControl extends BaseComponent {
   /** Time delay, in seconds, from when the control is armed before it sends out the switching command to turn ON.  The control may reset before the action actually occurs. This is used to determine which capacity control will act first. Default is 15.  You may specify any floating point number to achieve a model of whatever condition is necessary.*/
   Delay?: number;
   /** {Yes | No}  Default is No.  Switch to indicate whether VOLTAGE OVERRIDE is to be considered. Vmax and Vmin must be set to reasonable values if this property is Yes.*/
-  VoltOverride?: boolean;
+  VoltOverride?: YesNoEnum;
   /** Maximum voltage, in volts.  If the voltage across the capacitor divided by the PTRATIO is greater than this voltage, the capacitor will switch OFF regardless of other control settings. Default is 126 (goes with a PT ratio of 60 for 12.47 kV system).*/
   Vmax?: number;
   /** Minimum voltage, in volts.  If the voltage across the capacitor divided by the PTRATIO is less than this voltage, the capacitor will switch ON regardless of other control settings. Default is 115 (goes with a PT ratio of 60 for 12.47 kV system).*/
@@ -74,13 +82,13 @@ export class CapControl extends BaseComponent {
   /** Dead time after capacitor is turned OFF before it can be turned back ON. Default is 300 sec.*/
   DeadTime?: number;
   /** Number of the phase being monitored for CURRENT control or one of {AVG | MAX | MIN} for all phases. Default=1. If delta or L-L connection, enter the first or the two phases being monitored [1-2, 2-3, 3-1]. Must be less than the number of phases. Does not apply to kvar control which uses all phases by default.*/
-  CTPhase?: string;
+  CTPhase?: CTPhaseEnum;
   /** Number of the phase being monitored for VOLTAGE control or one of {AVG | MAX | MIN} for all phases. Default=1. If delta or L-L connection, enter the first or the two phases being monitored [1-2, 2-3, 3-1]. Must be less than the number of phases. Does not apply to kvar control which uses all phases by default.*/
-  PTPhase?: string;
+  PTPhase?: PTPhaseEnum;
   /** Name of bus to use for voltage override function. Default is bus at monitored terminal. Sometimes it is useful to monitor a bus in another location to emulate various DMS control algorithms.*/
   VBus?: string;
   /** {Yes/True* | No/False} Default is YES for CapControl. Log control actions to Eventlog.*/
-  EventLog?: BooleanEnum;
+  EventLog?: EventLogEnum;
   /** Name of DLL containing user-written CapControl model, overriding the default model.  Set to "none" to negate previous setting.*/
   UserModel?: string;
   /** String (in quotes or parentheses if necessary) that gets passed to the user-written CapControl model Edit function for defining the data required for that model.*/

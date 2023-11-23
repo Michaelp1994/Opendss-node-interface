@@ -1,5 +1,6 @@
-import BaseComponent from "./BaseComponent";
 import { SpectrumInterface } from "../interfaces/SpectrumInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class Spectrum extends BaseComponent {
   _type = "Spectrum";
@@ -32,7 +33,6 @@ export class Spectrum extends BaseComponent {
   angle?: number[];
   /** File of spectrum points with (harmonic, magnitude-percent, angle-degrees) values, one set of 3 per line, in CSV format. If fewer than NUMHARM frequencies found in the file, NUMHARM is set to the smaller value.*/
   CSVFile?: string;
-
   constructor(
     nameOrOptions: string | SpectrumInterface,
     options?: Omit<SpectrumInterface, "name">

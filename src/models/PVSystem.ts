@@ -1,5 +1,14 @@
-import BaseComponent from "./BaseComponent";
+import {
+  ConnEnum,
+  YesNoEnum,
+  WattPriorityEnum,
+  PFPriorityEnum,
+  ControlModeEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { PVSystemInterface } from "../interfaces/PVSystemInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class PVSystem extends BaseComponent {
   _type = "PVSystem";
@@ -108,7 +117,7 @@ export class PVSystem extends BaseComponent {
   /** Default = 1.10.  Maximum per unit voltage for which the Model is assumed to apply. Above this value, the load model reverts to a constant impedance model.*/
   Vmaxpu?: number;
   /** {Yes | No*} Default is No.  Force balanced current only for 3-phase PVSystems. Forces zero- and negative-sequence to zero.*/
-  Balanced?: boolean;
+  Balanced?: YesNoEnum;
   /** Limits current magnitude to Vminpu value for both 1-phase and 3-phase PVSystems similar to Generator Model 7. For 3-phase, limits the positive-sequence current but not the negative-sequence.*/
   LimitCurrent?: boolean;
   /** Dispatch shape to use for yearly simulations.  Must be previously defined as a Loadshape object. If this is not specified, the Daily dispatch shape, if any, is repeated during Yearly solution modes. In the default dispatch mode, the PVSystem element uses this loadshape to trigger State changes.*/
@@ -130,15 +139,15 @@ export class PVSystem extends BaseComponent {
   /** String (in quotes or parentheses) that gets passed to user-written model for defining the data required for that model.*/
   UserData?: string;
   /** {Yes | No }  Default is no.  Turn this on to capture the progress of the PVSystem model for each iteration.  Creates a separate file for each PVSystem element named "PVSystem_name.CSV".*/
-  debugtrace?: boolean;
+  debugtrace?: YesNoEnum;
   /** Boolean variable (Yes|No) or (True|False). Defaults to False which indicates that the reactive power generation/absorption does not respect the inverter status.When set to True, the PVSystem reactive power generation/absorption will cease when the inverter status is off, due to panel kW dropping below %Cutout.  The reactive power generation/absorption will begin again when the panel kW is above %Cutin.  When set to False, the PVSystem will generate/absorb reactive power regardless of the status of the inverter.*/
   VarFollowInverter?: boolean;
   /** Starting time offset [hours] into the duty cycle shape for this PVSystem, defaults to 0*/
   DutyStart?: number;
   /** {Yes/No/True/False} Set inverter to watt priority instead of the default var priority*/
-  WattPriority?: boolean;
+  WattPriority?: WattPriorityEnum;
   /** {Yes/No/True/False} Set inverter to operate with PF priority when in constant PF mode. If "Yes", value assigned to "WattPriority" is neglected. If controlled by an InvControl with either Volt-Var or DRC or both functions activated, PF priority is neglected and "WattPriority" is considered. Default = No.*/
-  PFPriority?: boolean;
+  PFPriority?: PFPriorityEnum;
   /** Minimum active power as percentage of Pmpp under which there is no vars production/absorption.*/
   "%PminNoVars"?: number;
   /** Minimum active power as percentage of Pmpp that allows the inverter to produce/absorb reactive power up to its kvarMax or kvarMaxAbs.*/
@@ -170,14 +179,13 @@ export class PVSystem extends BaseComponent {
   /** Defines the control mode for the inverter. It can be one of {GFM | GFL*}. By default it is GFL (Grid Following Inverter). Use GFM (Grid Forming Inverter) for energizing islanded microgrids, but, if the device is conencted to the grid, it is highly recommended to use GFL.
    *
    * GFM control mode disables any control action set by the InvControl device.*/
-  ControlMode?: string;
+  ControlMode?: ControlModeEnum;
   /** Name of harmonic voltage or current spectrum for this PVSystem element. A harmonic voltage source is assumed for the inverter. Default value is "default", which is defined when the DSS starts.*/
   spectrum?: string;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | PVSystemInterface,
     options?: Omit<PVSystemInterface, "name">

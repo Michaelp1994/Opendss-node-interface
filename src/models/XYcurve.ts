@@ -1,5 +1,6 @@
-import BaseComponent from "./BaseComponent";
 import { XYcurveInterface } from "../interfaces/XYcurveInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class XYcurve extends BaseComponent {
   _type = "XYcurve";
@@ -67,7 +68,6 @@ export class XYcurve extends BaseComponent {
   Xscale?: number;
   /** Scale Y property values (in/out) by this factor. Default = 1.0. Does not change original definition of arrays.*/
   Yscale?: number;
-
   constructor(
     nameOrOptions: string | XYcurveInterface,
     options?: Omit<XYcurveInterface, "name">

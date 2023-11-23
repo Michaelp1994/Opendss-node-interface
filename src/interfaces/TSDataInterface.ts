@@ -1,5 +1,6 @@
 import { UnitsEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Conductor Data, Cable Data  */
 export interface TSDataInterface extends BaseInterface {
   /** Name of the component */

@@ -1,5 +1,6 @@
-import BaseComponent from "./BaseComponent";
 import { DynamicExpInterface } from "../interfaces/DynamicExpInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class DynamicExp extends BaseComponent {
   _type = "DynamicExp";

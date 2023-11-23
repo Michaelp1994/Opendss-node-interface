@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ActionEnum } from "../enums/enums";
 import { PriceShapeInterface } from "../interfaces/PriceShapeInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class PriceShape extends BaseComponent {
   _type = "PriceShape";
@@ -63,8 +65,7 @@ export class PriceShape extends BaseComponent {
    * Redundant with interval*/
   minterval?: number;
   /** {DblSave | SngSave} After defining Price curve data... Setting action=DblSave or SngSave will cause the present "Price" values to be written to either a packed file of double or single. The filename is the PriceShape name.*/
-  action?: string;
-
+  action?: ActionEnum;
   constructor(
     nameOrOptions: string | PriceShapeInterface,
     options?: Omit<PriceShapeInterface, "name">

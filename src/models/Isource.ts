@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ScantypeEnum, SequenceEnum, BooleanEnum } from "../enums/enums";
 import { IsourceInterface } from "../interfaces/IsourceInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class Isource extends BaseComponent {
   _type = "Isource";
@@ -37,9 +39,9 @@ export class Isource extends BaseComponent {
   /** Number of phases.  Defaults to 3. For 3 or less, phase shift is 120 degrees.*/
   phases?: number;
   /** {pos*| zero | none} Maintain specified sequence for harmonic solution. Default is positive sequence. Otherwise, angle between phases rotates with harmonic.*/
-  scantype?: string;
+  scantype?: ScantypeEnum;
   /** {pos*| neg | zero} Set the phase angles for the specified symmetrical component sequence for non-harmonic solution modes. Default is positive sequence.*/
-  sequence?: string;
+  sequence?: SequenceEnum;
   /** LOADSHAPE object to use for the per-unit current for YEARLY-mode simulations. Set the Mult property of the LOADSHAPE to the pu curve. Qmult is not used. If UseActual=Yes then the Mult curve should be actual Amp.
    *
    * Must be previously defined as a LOADSHAPE object.
@@ -71,8 +73,7 @@ export class Isource extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | IsourceInterface,
     options?: Omit<IsourceInterface, "name">

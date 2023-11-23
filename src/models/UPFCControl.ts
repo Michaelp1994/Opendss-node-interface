@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { UPFCControlInterface } from "../interfaces/UPFCControlInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class UPFCControl extends BaseComponent {
   _type = "UPFCControl";
@@ -9,8 +11,7 @@ export class UPFCControl extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | UPFCControlInterface,
     options?: Omit<UPFCControlInterface, "name">

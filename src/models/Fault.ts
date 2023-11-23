@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum, YesNoEnum } from "../enums/enums";
 import { FaultInterface } from "../interfaces/FaultInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PD Element  */
 export class Fault extends BaseComponent {
   _type = "Fault";
@@ -45,7 +47,7 @@ export class Fault extends BaseComponent {
   /** Time (sec) at which the fault is established for time varying simulations. Default is 0.0 (on at the beginning of the simulation)*/
   ONtime?: number;
   /** {Yes | No} Default is No.  Designate whether the fault is temporary.  For Time-varying simulations, the fault will be removed if the current through the fault drops below the MINAMPS criteria.*/
-  temporary?: boolean;
+  temporary?: YesNoEnum;
   /** Minimum amps that can sustain a temporary fault. Default is 5.*/
   MinAmps?: number;
   /** Normal rated current.*/
@@ -61,8 +63,7 @@ export class Fault extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | FaultInterface,
     options?: Omit<FaultInterface, "name">

@@ -1,5 +1,14 @@
-import BaseComponent from "./BaseComponent";
+import {
+  ConnEnum,
+  SubEnum,
+  XRConstEnum,
+  LeadLagEnum,
+  CoreEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { TransformerInterface } from "../interfaces/TransformerInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PD Element  */
 export class Transformer extends BaseComponent {
   _type = "Transformer";
@@ -157,7 +166,7 @@ export class Transformer extends BaseComponent {
   /** Emergency (contingency)  kVA rating of H winding (winding 1).  Usually 140% - 150% ofmaximum nameplate rating, depending on load shape. Defaults to 150% of kVA rating of Winding 1.*/
   emerghkVA?: number;
   /** ={Yes|No}  Designates whether this transformer is to be considered a substation.Default is No.*/
-  sub?: boolean;
+  sub?: SubEnum;
   /** Max per unit tap for the active winding.  Default is 1.10*/
   MaxTap?: number;
   /** Min per unit tap for the active winding.  Default is 0.90*/
@@ -181,7 +190,7 @@ export class Transformer extends BaseComponent {
   /** Name of a library entry for transformer properties. The named XfmrCode must already be defined.*/
   XfmrCode?: string;
   /** ={Yes|No} Default is NO. Signifies whether or not the X/R is assumed contant for harmonic studies.*/
-  XRConst?: boolean;
+  XRConst?: XRConstEnum;
   /** Alternative to XHL for specifying the percent reactance from winding 1 to winding 2.  Use for 2- or 3-winding transformers. Percent on the kVA base of winding 1.
    *
    * Redundant with XHL*/
@@ -195,11 +204,11 @@ export class Transformer extends BaseComponent {
    * Redundant with XLT*/
   X23?: number;
   /** {Lead | Lag (default) | ANSI (default) | Euro } Designation in mixed Delta-wye connections the relationship between HV to LV winding. Default is ANSI 30 deg lag, e.g., Dy1 of Yd1 vector group. To get typical European Dy11 connection, specify either "lead" or "Euro"*/
-  LeadLag?: string;
+  LeadLag?: LeadLagEnum;
   /** (Read only) Makes winding currents available via return on query (? Transformer.TX.WdgCurrents). Order: Phase 1, Wdg 1, Wdg 2, ..., Phase 2 ...*/
   WdgCurrents?: string;
   /** {Shell*|5-leg|3-Leg|1-phase|core-1-phase|4-leg} Core Type. Used for GIC analysis*/
-  Core?: string;
+  Core?: CoreEnum;
   /** Winding dc resistance in OHMS. Useful for GIC analysis. From transformer test report. Defaults to 85% of %R property*/
   RdcOhms?: number;
   /** Defines the number of ratings to be defined for the transfomer, to be used only when defining seasonal ratings using the "Ratings" property.*/
@@ -221,8 +230,7 @@ export class Transformer extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | TransformerInterface,
     options?: Omit<TransformerInterface, "name">

@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum, TypeEnum } from "../enums/enums";
 import { GICTransformerInterface } from "../interfaces/GICTransformerInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PD Element  */
 export class GICTransformer extends BaseComponent {
   _type = "GICTransformer";
@@ -43,7 +45,7 @@ export class GICTransformer extends BaseComponent {
   /** Number of Phases. Default is 3.*/
   phases?: number;
   /** Type of transformer: {GSU* | Auto | YY}. Default is GSU.*/
-  Type?: string;
+  Type?: TypeEnum;
   /** Resistance, each phase, ohms for H winding, (Series winding, if Auto). Default is 0.0001. If*/
   R1?: number;
   /** Resistance, each phase, ohms for X winding, (Common winding, if Auto). Default is 0.0001.*/
@@ -83,8 +85,7 @@ export class GICTransformer extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | GICTransformerInterface,
     options?: Omit<GICTransformerInterface, "name">

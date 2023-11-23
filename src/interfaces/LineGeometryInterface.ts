@@ -1,5 +1,6 @@
 import { ReduceEnum, UnitsEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   General  */
 export interface LineGeometryInterface extends BaseInterface {
   /** Name of the component */

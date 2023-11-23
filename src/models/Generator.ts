@@ -1,6 +1,14 @@
-import BaseComponent from "./BaseComponent";
+import {
+  BooleanEnum,
+  ConnEnum,
+  DispmodeEnum,
+  FuelkWhEnum,
+  StatusEnum,
+  YesNoEnum,
+} from "../enums/enums";
 import { GeneratorInterface } from "../interfaces/GeneratorInterface";
-import { ConnEnum } from "../enums/enums";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class Generator extends BaseComponent {
   _type = "Generator";
@@ -101,7 +109,7 @@ export class Generator extends BaseComponent {
   /** Load shape to use for duty cycle dispatch simulations such as for wind generation. Must be previously defined as a Loadshape object. Typically would have time intervals less than 1 hr -- perhaps, in seconds. Set Status=Fixed to ignore Loadshape designation. Set to NONE to reset to no loadahape. Designate the number of points to solve using the Set Number=xxxx command. If there are fewer points in the actual shape, the shape is assumed to repeat.*/
   duty?: string;
   /** {Default* | Loadlevel | Price } Default = Default. Dispatch mode. In default mode, gen is either always on or follows dispatch curve as specified. Otherwise, the gen comes on when either the global default load level (Loadshape "default") or the price level exceeds the dispatch value.*/
-  dispmode?: string;
+  dispmode?: DispmodeEnum;
   /** Dispatch value.
    *
    * If = 0.0 (default) then Generator follow dispatch curves, if any.
@@ -111,7 +119,7 @@ export class Generator extends BaseComponent {
   /** ={wye|LN|delta|LL}.  Default is wye.*/
   conn?: ConnEnum;
   /** ={Fixed | Variable*}.  If Fixed, then dispatch multipliers do not apply. The generator is alway at full power when it is ON.  Default is Variable  (follows curves).*/
-  status?: string;
+  status?: StatusEnum;
   /** An arbitrary integer number representing the class of Generator so that Generator values may be segregated by class.*/
   class?: number;
   /** Per Unit voltage set point for Model = 3  (typical power flow model).  Default is 1.0.*/
@@ -123,7 +131,7 @@ export class Generator extends BaseComponent {
   /** Deceleration factor for P-V generator model (Model=3).  Default is 0.1. If the circuit converges easily, you may want to use a higher number such as 1.0. Use a lower number if solution diverges. Use Debugtrace=yes to create a file that will trace the convergence of a generator model.*/
   pvfactor?: number;
   /** {Yes | No}  Forces generator ON despite requirements of other dispatch modes. Stays ON until this property is set to NO, or an internal algorithm cancels the forced ON state.*/
-  forceon?: boolean;
+  forceon?: YesNoEnum;
   /** kVA rating of electrical machine. Defaults to 1.2* kW if not specified. Applied to machine or inverter definition for Dynamics mode solutions.*/
   kVA?: number;
   /** MVA rating of electrical machine.  Alternative to using kVA=.
@@ -151,15 +159,15 @@ export class Generator extends BaseComponent {
   /** Starting time offset [hours] into the duty cycle shape for this generator, defaults to 0*/
   DutyStart?: number;
   /** {Yes | No }  Default is no.  Turn this on to capture the progress of the generator model for each iteration.  Creates a separate file for each generator named "GEN_name.CSV".*/
-  debugtrace?: boolean;
+  debugtrace?: YesNoEnum;
   /** {Yes | No*} Default is No.  For Model=7, force balanced current only for 3-phase generators. Force zero- and negative-sequence to zero.*/
-  Balanced?: boolean;
+  Balanced?: YesNoEnum;
   /** Default is 20. X/R ratio for Xdp property for FaultStudy and Dynamic modes.*/
   XRdp?: number;
   /** {Yes | *No}. Activates the use of fuel for the operation of the generator. When the fuel level reaches the reserve level, the generator stops until it gets refueled. By default, the generator is connected to a continuous fuel supply, Use this mode to mimic dependency on fuel level for different generation technologies.*/
-  UseFuel?: boolean;
+  UseFuel?: YesNoEnum;
   /** {*0}Is the nominal level of fuel for the generator (kWh). It only applies if UseFuel = Yes/True*/
-  FuelkWh?: number;
+  FuelkWh?: FuelkWhEnum;
   /** It is a number between 0 and 100 representing the current amount of fuel avaiable in percentage of FuelkWh. It only applies if UseFuel = Yes/True*/
   "%Fuel"?: number;
   /** It is a number between 0 and 100 representing the reserve level in percentage of FuelkWh. It only applies if UseFuel = Yes/True*/
@@ -193,8 +201,7 @@ export class Generator extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | GeneratorInterface,
     options?: Omit<GeneratorInterface, "name">

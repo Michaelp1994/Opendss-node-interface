@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ConnEnum, YesNoEnum, BooleanEnum } from "../enums/enums";
 import { ReactorInterface } from "../interfaces/ReactorInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PD Element  */
 export class Reactor extends BaseComponent {
   _type = "Reactor";
@@ -57,7 +59,7 @@ export class Reactor extends BaseComponent {
   /** Reactance matrix, lower triangle, ohms at base frequency. Order of the matrix is the number of phases. Mutually exclusive to specifying parameters by kvar or X.*/
   Xmatrix?: number[];
   /** {Yes | No}  Default=No. Indicates whether Rmatrix and Xmatrix are to be considered in parallel. Default is series. For other models, specify R and Rp.*/
-  Parallel?: boolean;
+  Parallel?: YesNoEnum;
   /** Resistance (in series with reactance), each phase, ohms. This property applies to REACTOR specified by either kvar or X. See also help on Z.
    *
    * Redundant with Z*/
@@ -117,8 +119,7 @@ export class Reactor extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | ReactorInterface,
     options?: Omit<ReactorInterface, "name">

@@ -1,15 +1,13 @@
-import BaseComponent from "./BaseComponent";
-import { LineInterface } from "../interfaces/LineInterface";
 import {
   BooleanEnum,
   EarthModelEnum,
-  LineTypeEnum,
+  SwitchEnum,
   UnitsEnum,
 } from "../enums/enums";
+import { LineInterface } from "../interfaces/LineInterface";
+import BaseComponent from "./BaseComponent";
 
-/**   Circuit Element, PD Element
- *
- */
+/**   Circuit Element, PD Element  */
 export class Line extends BaseComponent {
   _type = "Line";
   _parameters = [
@@ -60,7 +58,7 @@ export class Line extends BaseComponent {
    *
    * bus1=busname.3.1.2.0 (specify terminal to node connections explicitly)*/
   bus1?: string;
-  /** Name of bus to which 2nd terminal is connected. */
+  /** Name of bus to which 2nd terminal is connected.*/
   bus2?: string;
   /** Name of linecode object describing line impedances.
    *
@@ -91,7 +89,7 @@ export class Line extends BaseComponent {
   /** {y/n | T/F}  Default= no/false.  Designates this line as a switch for graphics and algorithmic purposes.
    *
    * SIDE EFFECT: Sets r1 = 1.0; x1 = 1.0; r0 = 1.0; x0 = 1.0; c1 = 1.1 ; c0 = 1.0;  length = 0.001; You must reset if you want something different.*/
-  Switch?: BooleanEnum;
+  Switch?: SwitchEnum;
   /** Carson earth return resistance per unit length used to compute impedance values at base frequency. Default is 0.01805 = 60 Hz value in ohms per kft (matches default line impedances). This value is required for harmonic solutions if you wish to adjust the earth return impedances for frequency. If not, set both Rg and Xg = 0.*/
   Rg?: number;
   /** Carson earth return reactance per unit length used to compute impedance values at base frequency.  For making better frequency adjustments. Default is 0.155081 = 60 Hz value in ohms per kft (matches default line impedances). This value is required for harmonic solutions if you wish to adjust the earth return impedances for frequency. If not, set both Rg and Xg = 0.*/
@@ -157,7 +155,7 @@ export class Line extends BaseComponent {
    * One of: OH, UG, UG_TS, UG_CN, SWT_LDBRK, SWT_FUSE, SWT_SECT, SWT_REC, SWT_DISC, SWT_BRK, SWT_ELBOW
    *
    * OpenDSS currently does not use this internally. For whatever purpose the user defines. Default is OH.*/
-  LineType?: LineTypeEnum;
+  LineType?: string;
   /** Normal rated current.*/
   normamps?: number;
   /** Maximum or emerg current.*/
@@ -172,14 +170,7 @@ export class Line extends BaseComponent {
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
   enabled?: BooleanEnum;
-
-  /**
-   *
-   * @param nameOrOptions
-   * @param options
-   */
   constructor(
-    /** Name of the Line or object containing parameters */
     nameOrOptions: string | LineInterface,
     options?: Omit<LineInterface, "name">
   ) {

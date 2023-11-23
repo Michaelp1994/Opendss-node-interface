@@ -1,5 +1,6 @@
 import { BooleanEnum, ConnEnum, SlipOptionEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PC Element  */
 export interface IndMach012Interface extends BaseInterface {
   /** Name of the component */

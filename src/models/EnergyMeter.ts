@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ActionEnum, BooleanEnum, YesNoEnum } from "../enums/enums";
 import { EnergyMeterInterface } from "../interfaces/EnergyMeterInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Meter Element  */
 export class EnergyMeter extends BaseComponent {
   _type = "EnergyMeter";
@@ -53,7 +55,7 @@ export class EnergyMeter extends BaseComponent {
    * (Z)onedump = Dump names of elements in meter zone to a file
    *
    * File name is "Zone_metername.CSV".*/
-  action?: string;
+  action?: ActionEnum;
   /** Enter a string ARRAY of any combination of the following. Options processed left-to-right:
    *
    * (E)xcess : (default) UE/EEN is estimate of energy over capacity
@@ -83,23 +85,23 @@ export class EnergyMeter extends BaseComponent {
    * zonelist=(file=branchlist.txt)*/
   Zonelist?: string[];
   /** {Yes | No}  Default is NO.  If Yes, meter considers only the monitored element for EEN and UE calcs.  Uses whole zone for losses.*/
-  LocalOnly?: boolean;
+  LocalOnly?: YesNoEnum;
   /** Mask for adding registers whenever all meters are totalized.  Array of floating point numbers representing the multiplier to be used for summing each register from this meter. Default = (1, 1, 1, 1, ... ).  You only have to enter as many as are changed (positional). Useful when two meters monitor same energy, etc.*/
   Mask?: number[];
   /** {Yes | No}  Default is YES. Compute Zone losses. If NO, then no losses at all are computed.*/
-  Losses?: boolean;
+  Losses?: YesNoEnum;
   /** {Yes | No}  Default is YES. Compute Line losses. If NO, then none of the losses are computed.*/
-  LineLosses?: boolean;
+  LineLosses?: YesNoEnum;
   /** {Yes | No}  Default is YES. Compute Transformer losses. If NO, transformers are ignored in loss calculations.*/
-  XfmrLosses?: boolean;
+  XfmrLosses?: YesNoEnum;
   /** {Yes | No}  Default is YES. Compute Sequence losses in lines and segregate by line mode losses and zero mode losses.*/
-  SeqLosses?: boolean;
+  SeqLosses?: YesNoEnum;
   /** {Yes | No}  Default is YES. Compute Line losses and segregate by 3-phase and other (1- and 2-phase) line losses.*/
-  "3phaseLosses"?: boolean;
+  "3phaseLosses"?: YesNoEnum;
   /** {Yes | No}  Default is YES. Compute losses and segregate by voltage base. If NO, then voltage-based tabulation is not reported.*/
-  VbaseLosses?: boolean;
+  VbaseLosses?: YesNoEnum;
   /** {Yes | No}  Default is NO.  Report min, max, and average phase voltages for the zone and tabulate by voltage base. Demand Intervals must be turned on (Set Demand=true) and voltage bases must be defined for this property to take effect. Result is in a separate report file.*/
-  PhaseVoltageReport?: boolean;
+  PhaseVoltageReport?: YesNoEnum;
   /** Average number of annual interruptions for head of the meter zone (source side of zone or feeder).*/
   Int_Rate?: number;
   /** Average annual duration, in hr, of interruptions for head of the meter zone (source side of zone or feeder).*/
@@ -117,7 +119,7 @@ export class EnergyMeter extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | EnergyMeterInterface,
     options?: Omit<EnergyMeterInterface, "name">

@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { GICsourceInterface } from "../interfaces/GICsourceInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class GICsource extends BaseComponent {
   _type = "GICsource";
@@ -52,8 +54,7 @@ export class GICsource extends BaseComponent {
   /** Not used.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | GICsourceInterface,
     options?: Omit<GICsourceInterface, "name">

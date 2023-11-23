@@ -4,6 +4,7 @@ import {
   UseActualEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   General  */
 export interface LoadShapeInterface extends BaseInterface {
   /** Name of the component */

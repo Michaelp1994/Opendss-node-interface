@@ -1,7 +1,8 @@
+import winax from "winax";
+
 import { VsourceInterface } from "../interfaces/VsourceInterface";
 import BaseComponent from "./BaseComponent";
 import { Vsource } from "./Vsource";
-import winax from "winax";
 
 /**   Circuit Element, PC Element  */
 export class Circuit extends Vsource {

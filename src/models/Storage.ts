@@ -1,5 +1,15 @@
-import BaseComponent from "./BaseComponent";
+import {
+  ConnEnum,
+  WattPriorityEnum,
+  StateEnum,
+  YesNoEnum,
+  DispModeEnum,
+  ControlModeEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { StorageInterface } from "../interfaces/StorageInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class Storage extends BaseComponent {
   _type = "Storage";
@@ -105,7 +115,7 @@ export class Storage extends BaseComponent {
   /** Indicates the maximum reactive power ABSORPTION (un-signed numerical variable in kvar) for the inverter. Defaults to kvarMax.*/
   kvarMaxAbs?: number;
   /** {Yes/No/True/False} Set inverter to watt priority instead of the default var priority.*/
-  WattPriority?: boolean;
+  WattPriority?: WattPriorityEnum;
   /** If set to true, priority is given to power factor and WattPriority is neglected. It works only if operating in either constant PF or constant kvar modes. Defaults to False.*/
   PFPriority?: boolean;
   /** Minimum active power as percentage of kWrated under which there is no vars production/absorption. Defaults to 0 (disabled).*/
@@ -127,7 +137,7 @@ export class Storage extends BaseComponent {
    * This is treated as the minimum energy discharge level unless there is an emergency. For emergency operation set this property lower. Cannot be less than zero.*/
   "%reserve"?: number;
   /** {IDLING | CHARGING | DISCHARGING}  Get/Set present operational state. In DISCHARGING mode, the Storage element acts as a generator and the kW property is positive. The element continues discharging at the scheduled output power level until the Storage reaches the reserve value. Then the state reverts to IDLING. In the CHARGING state, the Storage element behaves like a Load and the kW property is negative. The element continues to charge until the max Storage kWh is reached and then switches to IDLING state. In IDLING state, the element draws the idling losses plus the associated inverter losses.*/
-  State?: string;
+  State?: StateEnum;
   /** Discharge rate (output power) in percentage of rated kW. Default = 100.*/
   "%Discharge"?: number;
   /** Charging rate (input power) in percentage of rated kW. Default = 100.*/
@@ -157,7 +167,7 @@ export class Storage extends BaseComponent {
   /** Default = 1.10.  Maximum per unit voltage for which the Model is assumed to apply. Above this value, the load model reverts to a constant impedance model.*/
   Vmaxpu?: number;
   /** {Yes | No*} Default is No. Force balanced current only for 3-phase Storage. Forces zero- and negative-sequence to zero.*/
-  Balanced?: boolean;
+  Balanced?: YesNoEnum;
   /** Limits current magnitude to Vminpu value for both 1-phase and 3-phase Storage similar to Generator Model 7. For 3-phase, limits the positive-sequence current but not the negative-sequence.*/
   LimitCurrent?: boolean;
   /** Dispatch shape to use for yearly simulations.  Must be previously defined as a Loadshape object. If this is not specified, the Daily dispatch shape, if any, is repeated during Yearly solution modes. In the default dispatch mode, the Storage element uses this loadshape to trigger State changes.*/
@@ -179,7 +189,7 @@ export class Storage extends BaseComponent {
    * In EXTERNAL mode, Storage element state is controlled by an external Storagecontroller. This mode is automatically set if this Storage element is included in the element list of a StorageController element.
    *
    * For the other two dispatch modes, the Storage element state is controlled by either the global default Loadlevel value or the price level.*/
-  DispMode?: string;
+  DispMode?: DispModeEnum;
   /** Dispatch trigger value for discharging the Storage.
    *
    * If = 0.0 the Storage element state is changed by the State command or by a StorageController object.
@@ -205,7 +215,7 @@ export class Storage extends BaseComponent {
   /** String (in quotes or parentheses) that gets passed to user-written model for defining the data required for that model.*/
   UserData?: string;
   /** {Yes | No }  Default is no.  Turn this on to capture the progress of the Storage model for each iteration.  Creates a separate file for each Storage element named "Storage_name.CSV".*/
-  debugtrace?: boolean;
+  debugtrace?: YesNoEnum;
   /** Indicates the rated voltage (kV) at the input of the inverter while the storage is discharging. The value is normally greater or equal to the kV base of the Storage device. It is used for dynamics simulation ONLY.*/
   kVDC?: number;
   /** It is the proportional gain for the PI controller within the inverter. Use it to modify the controller response in dynamics simulation mode.*/
@@ -229,14 +239,13 @@ export class Storage extends BaseComponent {
   /** Defines the control mode for the inverter. It can be one of {GFM | GFL*}. By default it is GFL (Grid Following Inverter). Use GFM (Grid Forming Inverter) for energizing islanded microgrids, but, if the device is conencted to the grid, it is highly recommended to use GFL.
    *
    * GFM control mode disables any control action set by the InvControl device.*/
-  ControlMode?: string;
+  ControlMode?: ControlModeEnum;
   /** Name of harmonic voltage or current spectrum for this Storage element. Current injection is assumed for inverter. Default value is "default", which is defined when the DSS starts.*/
   spectrum?: string;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | StorageInterface,
     options?: Omit<StorageInterface, "name">

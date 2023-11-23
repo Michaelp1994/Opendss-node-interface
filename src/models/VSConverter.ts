@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { VSConverterInterface } from "../interfaces/VSConverterInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class VSConverter extends BaseComponent {
   _type = "VSConverter";
@@ -83,8 +85,7 @@ export class VSConverter extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | VSConverterInterface,
     options?: Omit<VSConverterInterface, "name">

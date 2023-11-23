@@ -1,5 +1,6 @@
 import { BooleanEnum, TemporaryEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PD Element  */
 export interface FaultInterface extends BaseInterface {
   /** Name of the component */

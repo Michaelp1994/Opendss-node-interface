@@ -1,5 +1,6 @@
 import { BooleanEnum, NormalEnum, StateEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface RecloserInterface extends BaseInterface {
   /** Name of the component */

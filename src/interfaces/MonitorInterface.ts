@@ -6,6 +6,7 @@ import {
   VIPolarEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Meter Element  */
 export interface MonitorInterface extends BaseInterface {
   /** Name of the component */

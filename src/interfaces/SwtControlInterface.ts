@@ -5,6 +5,7 @@ import {
   SwtControlActionEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface SwtControlInterface extends BaseInterface {
   /** Name of the component */

@@ -1,4 +1,5 @@
 import BaseInterface from "./BaseInterface";
+
 /**   General  */
 export interface GrowthShapeInterface extends BaseInterface {
   /** Name of the component */

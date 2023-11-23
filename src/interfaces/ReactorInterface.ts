@@ -1,5 +1,6 @@
 import { BooleanEnum, ConnEnum, ParallelEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PD Element  */
 export interface ReactorInterface extends BaseInterface {
   /** Name of the component */

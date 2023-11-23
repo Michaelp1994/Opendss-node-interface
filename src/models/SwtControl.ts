@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ActionEnum, YesNoEnum, BooleanEnum } from "../enums/enums";
 import { SwtControlInterface } from "../interfaces/SwtControlInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class SwtControl extends BaseComponent {
   _type = "SwtControl";
@@ -23,9 +25,9 @@ export class SwtControl extends BaseComponent {
   /** {Open | Close}  After specified delay time, and if not locked, causes the controlled switch to open or close.
    *
    * Redundant with State*/
-  Action?: string;
+  Action?: ActionEnum;
   /** {Yes | No} Delayed action. Sends CTRL_LOCK or CTRL_UNLOCK message to control queue. After delay time, controlled switch is locked in its present open / close state or unlocked. Switch will not respond to either manual (Action) or automatic (COM interface) control or internal OpenDSS Reset when locked.*/
-  Lock?: boolean;
+  Lock?: YesNoEnum;
   /** Operating time delay (sec) of the switch. Defaults to 120.*/
   Delay?: number;
   /** {Open | Closed] Normal state of the switch. If not Locked, the switch reverts to this state for reset, change of mode, etc. Defaults to first Action or State specified if not specifically declared.*/
@@ -33,12 +35,11 @@ export class SwtControl extends BaseComponent {
   /** {Open | Closed] Present state of the switch. Upon setting, immediately forces state of switch.*/
   State?: string;
   /** {Yes | No} If Yes, forces Reset of switch to Normal state and removes Lock independently of any internal reset command for mode change, etc.*/
-  Reset?: boolean;
+  Reset?: YesNoEnum;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | SwtControlInterface,
     options?: Omit<SwtControlInterface, "name">

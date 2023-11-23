@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ConnEnum, StatusEnum, BooleanEnum } from "../enums/enums";
 import { LoadInterface } from "../interfaces/LoadInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class Load extends BaseComponent {
   _type = "Load";
@@ -106,7 +108,7 @@ export class Load extends BaseComponent {
   /** Neutral reactance of wye(star)-connected load in actual ohms.  May be + or -.*/
   Xneut?: number;
   /** ={Variable | Fixed | Exempt}.  Default is variable. If Fixed, no load multipliers apply;  however, growth multipliers do apply.  All multipliers apply to Variable loads.  Exempt loads are not modified by the global load multiplier, such as in load duration curves, etc.  Daily multipliers do apply, so setting this property to Exempt is a good way to represent industrial load that stays the same day-after-day for the period study.*/
-  status?: string;
+  status?: StatusEnum;
   /** An arbitrary integer number representing the class of load so that load values may be segregated by load value. Default is 1; not used internally.*/
   class?: number;
   /** Default = 0.95.  Minimum per unit voltage for which the MODEL is assumed to apply. Lower end of normal voltage range.Below this value, the load model reverts to a constant impedance model that matches the model at the transition voltage. See also "Vlowpu" which causes the model to match Model=2 below the transition voltage.*/
@@ -192,8 +194,7 @@ export class Load extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | LoadInterface,
     options?: Omit<LoadInterface, "name">

@@ -6,6 +6,7 @@ import {
   YesNoEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PD Element  */
 export interface AutoTransInterface extends BaseInterface {
   /** Name of the component */

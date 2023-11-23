@@ -1,13 +1,14 @@
 import {
   BooleanEnum,
-  CTPhaseEnum,
   CapControlTypeEnum,
+  CTPhaseEnum,
   EventLogEnum,
   PTPhaseEnum,
   ResetEnum,
   VoltOverrideEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface CapControlInterface extends BaseInterface {
   /** Name of the component */

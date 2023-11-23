@@ -1,5 +1,6 @@
 import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PC Element  */
 export interface GICLineInterface extends BaseInterface {
   /** Name of the component */

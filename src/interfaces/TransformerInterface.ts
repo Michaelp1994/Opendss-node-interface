@@ -7,6 +7,7 @@ import {
   XRConstEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PD Element  */
 export interface TransformerInterface extends BaseInterface {
   /** Name of the component */

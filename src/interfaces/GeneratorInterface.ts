@@ -10,6 +10,7 @@ import {
   UseFuelEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PC Element  */
 export interface GeneratorInterface extends BaseInterface {
   /** Name of the component */

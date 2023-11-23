@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum, NormalEnum, StateEnum } from "../enums/enums";
 import { FuseInterface } from "../interfaces/FuseInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class Fuse extends BaseComponent {
   _type = "Fuse";
@@ -35,14 +37,13 @@ export class Fuse extends BaseComponent {
   /** DEPRECATED. See "State" property.*/
   Action?: string;
   /** ARRAY of strings {Open | Closed} representing the Normal state of the fuse in each phase of the controlled element. The fuse reverts to this state for reset, change of mode, etc. Defaults to "State" if not specifically declared.*/
-  Normal?: string[];
+  Normal?: NormalEnum;
   /** ARRAY of strings {Open | Closed} representing the Actual state of the fuse in each phase of the controlled element. Upon setting, immediately forces state of fuse(s). Simulates manual control on Fuse. Defaults to Closed for all phases.*/
-  State?: string[];
+  State?: StateEnum;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | FuseInterface,
     options?: Omit<FuseInterface, "name">

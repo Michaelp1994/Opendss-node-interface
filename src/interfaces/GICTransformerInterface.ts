@@ -1,5 +1,6 @@
 import { BooleanEnum, TypeEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PD Element  */
 export interface GICTransformerInterface extends BaseInterface {
   /** Name of the component */

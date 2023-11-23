@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { UnitsEnum, YesNoEnum } from "../enums/enums";
 import { LineGeometryInterface } from "../interfaces/LineGeometryInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class LineGeometry extends BaseComponent {
   _type = "LineGeometry";
@@ -42,13 +44,13 @@ export class LineGeometry extends BaseComponent {
   /** Height of conductor.*/
   h?: number;
   /** Units for x and h: {mi|kft|km|m|Ft|in|cm } Initial default is "ft", but defaults to last unit defined*/
-  units?: string;
+  units?: UnitsEnum;
   /** Normal ampacity, amperes for the line. Defaults to first conductor if not specified.*/
   normamps?: number;
   /** Emergency ampacity, amperes. Defaults to first conductor if not specified.*/
   emergamps?: number;
   /** {Yes | No} Default = no. Reduce to Nphases (Kron Reduction). Reduce out neutrals.*/
-  reduce?: boolean;
+  reduce?: YesNoEnum;
   /** Reference to a LineSpacing for use in a line constants calculation.
    *
    * Alternative to x, h, and units. MUST BE PREVIOUSLY DEFINED.
@@ -109,7 +111,6 @@ export class LineGeometry extends BaseComponent {
    *
    * OpenDSS currently does not use this internally. For whatever purpose the user defines. Default is OH.*/
   LineType?: string;
-
   constructor(
     nameOrOptions: string | LineGeometryInterface,
     options?: Omit<LineGeometryInterface, "name">

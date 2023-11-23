@@ -1,4 +1,5 @@
 import BaseInterface from "./BaseInterface";
+
 /**   General  */
 export interface DynamicExpInterface extends BaseInterface {
   /** Name of the component */

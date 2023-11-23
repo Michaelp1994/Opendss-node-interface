@@ -9,6 +9,7 @@ import {
   VoltwattYAxisEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface InvControlInterface extends BaseInterface {
   /** Name of the component */

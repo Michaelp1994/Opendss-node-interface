@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { ESPVLControlInterface } from "../interfaces/ESPVLControlInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class ESPVLControl extends BaseComponent {
   _type = "ESPVLControl";
@@ -44,7 +46,7 @@ export class ESPVLControl extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | ESPVLControlInterface,
     options?: Omit<ESPVLControlInterface, "name">

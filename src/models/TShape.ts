@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ActionEnum } from "../enums/enums";
 import { TShapeInterface } from "../interfaces/TShapeInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class TShape extends BaseComponent {
   _type = "TShape";
@@ -63,8 +65,7 @@ export class TShape extends BaseComponent {
    * Redundant with interval*/
   minterval?: number;
   /** {DblSave | SngSave} After defining temperature curve data... Setting action=DblSave or SngSave will cause the present "Temp" values to be written to either a packed file of double or single. The filename is the Tshape name.*/
-  action?: string;
-
+  action?: ActionEnum;
   constructor(
     nameOrOptions: string | TShapeInterface,
     options?: Omit<TShapeInterface, "name">

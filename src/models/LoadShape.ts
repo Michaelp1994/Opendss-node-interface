@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { ActionEnum, YesNoEnum } from "../enums/enums";
 import { LoadShapeInterface } from "../interfaces/LoadShapeInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class LoadShape extends BaseComponent {
   _type = "LoadShape";
@@ -74,7 +76,7 @@ export class LoadShape extends BaseComponent {
   /** {NORMALIZE | DblSave | SngSave} After defining load curve data, setting action=normalize will modify the multipliers so that the peak is 1.0. The mean and std deviation are recomputed.
    *
    * Setting action=DblSave or SngSave will cause the present mult and qmult values to be written to either a packed file of double or single. The filename is the loadshape name. The mult array will have a "_P" appended on the file name and the qmult array, if it exists, will have "_Q" appended.*/
-  action?: string;
+  action?: ActionEnum;
   /** Array of multiplier values for reactive power (Q).  You can also use the syntax:
    *
    * qmult = (file=filename)     !for text file one value per line
@@ -86,7 +88,7 @@ export class LoadShape extends BaseComponent {
    * qmult = (file=MyCSVFile.CSV, col=4, header=yes)  !for multicolumn CSV files*/
   qmult?: number[];
   /** {Yes | No | True | False} If true, signifies to Load, Generator, Vsource, or other objects to use the return value as the actual kW, kvar, kV, or other value rather than a multiplier. Nominally for AMI Load data but may be used for other functions.*/
-  UseActual?: boolean;
+  UseActual?: YesNoEnum;
   /** kW value at the time of max power. Is automatically set upon reading in a loadshape. Use this property to override the value automatically computed or to retrieve the value computed.*/
   Pmax?: number;
   /** kvar value at the time of max kW power. Is automatically set upon reading in a loadshape. Use this property to override the value automatically computed or to retrieve the value computed.*/
@@ -112,8 +114,7 @@ export class LoadShape extends BaseComponent {
   /** {Yes | No | True | False} Enables the memory mapping functionality for dealing with large amounts of load shapes.
    *
    * By defaul is False. Use it to accelerate the model loading when the containing a large number of load shapes.*/
-  MemoryMapping?: boolean;
-
+  MemoryMapping?: YesNoEnum;
   constructor(
     nameOrOptions: string | LoadShapeInterface,
     options?: Omit<LoadShapeInterface, "name">

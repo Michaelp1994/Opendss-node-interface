@@ -1,5 +1,6 @@
 import { GMRunitsEnum, UnitsEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Conductor Data  */
 export interface WireDataInterface extends BaseInterface {
   /** Name of the component */

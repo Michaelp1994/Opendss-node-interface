@@ -1,6 +1,6 @@
-import { Line } from "../models/Line";
-import { Circuit } from "../models/Circuit";
 import { splitStringsIntoRows } from "../helpers/splitArray";
+import { Circuit } from "../models/Circuit";
+import { Line } from "../models/Line";
 
 test("should split an array of strings into rows with a maximum length of 150 characters", () => {
   // Example usage:
@@ -70,7 +70,7 @@ test("should build a basic circuit", () => {
     bus1: "b_toyota",
     bus2: "b_esoura",
     length: 1000,
-    units: "kml",
+    units: "km",
     phases: 3,
     Xg: 0,
     Rg: 0,

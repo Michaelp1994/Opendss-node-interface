@@ -1,5 +1,13 @@
-import BaseComponent from "./BaseComponent";
+import {
+  YesNoEnum,
+  PTphaseEnum,
+  EventLogEnum,
+  CogenEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { RegControlInterface } from "../interfaces/RegControlInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class RegControl extends BaseComponent {
   _type = "RegControl";
@@ -63,7 +71,7 @@ export class RegControl extends BaseComponent {
   /** Time delay, in seconds, from when the voltage goes out of band to when the tap changing begins. This is used to determine which regulator control will act first. Default is 15.  You may specify any floating point number to achieve a model of whatever condition is necessary.*/
   delay?: number;
   /** {Yes |No*} Indicates whether or not the regulator can be switched to regulate in the reverse direction. Default is No.Typically applies only to line regulators and not to LTC on a substation transformer.*/
-  reversible?: boolean;
+  reversible?: YesNoEnum;
   /** Voltage setting in volts for operation in the reverse direction.*/
   revvreg?: number;
   /** Bandwidth for operating in the reverse direction.*/
@@ -75,7 +83,7 @@ export class RegControl extends BaseComponent {
   /** Delay in sec between tap changes. Default is 2. This is how long it takes between changes after the first change.*/
   tapdelay?: number;
   /** {Yes | No* }  Default is no.  Turn this on to capture the progress of the regulator model for each control iteration.  Creates a separate file for each RegControl named "REG_name.CSV".*/
-  debugtrace?: boolean;
+  debugtrace?: YesNoEnum;
   /** Maximum allowable tap change per control iteration in STATIC control mode.  Default is 16.
    *
    * Set this to 1 to better approximate actual control action.
@@ -83,38 +91,37 @@ export class RegControl extends BaseComponent {
    * Set this to 0 to fix the tap in the current position.*/
   maxtapchange?: number;
   /** {Yes | No* } Default is no.  The time delay is adjusted inversely proportional to the amount the voltage is outside the band down to 10%.*/
-  inversetime?: boolean;
+  inversetime?: YesNoEnum;
   /** Winding containing the actual taps, if different than the WINDING property. Defaults to the same winding as specified by the WINDING property.*/
   tapwinding?: number;
   /** Voltage Limit for bus to which regulated winding is connected (e.g. first customer). Default is 0.0. Set to a value greater then zero to activate this function.*/
   vlimit?: number;
   /** For multi-phase transformers, the number of the phase being monitored or one of { MAX | MIN} for all phases. Default=1. Must be less than or equal to the number of phases. Ignored for regulated bus.*/
-  PTphase?: string;
+  PTphase?: PTphaseEnum;
   /** kW reverse power threshold for reversing the direction of the regulator. Default is 100.0 kw.*/
   revThreshold?: number;
   /** Time Delay in seconds (s) for executing the reversing action once the threshold for reversing has been exceeded. Default is 60 s.*/
   revDelay?: number;
   /** {Yes | No*} Default is no. Set this to Yes if you want the regulator to go to neutral in the reverse direction or in cogen operation.*/
-  revNeutral?: boolean;
+  revNeutral?: YesNoEnum;
   /** {Yes/True* | No/False} Default is YES for regulator control. Log control actions to Eventlog.*/
-  EventLog?: boolean;
+  EventLog?: EventLogEnum;
   /** When regulating a bus (the Bus= property is set), the PT ratio required to convert actual voltage at the remote bus to control voltage. Is initialized to PTratio property. Set this property after setting PTratio.*/
   RemotePTRatio?: number;
   /** An integer number indicating the tap position that the controlled transformer winding tap position is currently at, or is being set to.  If being set, and the value is outside the range of the transformer min or max tap, then set to the min or max tap position as appropriate. Default is 0*/
   TapNum?: number;
   /** {Yes | No} If Yes, forces Reset of this RegControl.*/
-  Reset?: boolean;
+  Reset?: YesNoEnum;
   /** Z value for Beckwith LDC_Z control option. Volts adjustment at rated control current.*/
   LDC_Z?: number;
   /** Reverse Z value for Beckwith LDC_Z control option.*/
   rev_Z?: number;
   /** {Yes|No*} Default is No. The Cogen feature is activated. Continues looking forward if power reverses, but switches to reverse-mode LDC, vreg and band values.*/
-  Cogen?: boolean;
+  Cogen?: CogenEnum;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | RegControlInterface,
     options?: Omit<RegControlInterface, "name">

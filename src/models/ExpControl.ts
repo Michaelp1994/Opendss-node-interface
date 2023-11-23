@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum, EventLogEnum, PreferQEnum } from "../enums/enums";
 import { ExpControlInterface } from "../interfaces/ExpControlInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class ExpControl extends BaseComponent {
   _type = "ExpControl";
@@ -55,7 +57,7 @@ export class ExpControl extends BaseComponent {
    * For Category A inverters per P1547/D7, set this value to 0.25.Regardless of QmaxLag, the reactive power injection is still limited by dynamic headroom when actual real power output exceeds 0%*/
   QmaxLag?: number;
   /** {Yes/True* | No/False} Default is No for ExpControl. Log control actions to Eventlog.*/
-  EventLog?: boolean;
+  EventLog?: EventLogEnum;
   /** Convergence parameter; Defaults to 0.7.
    *
    * Sets the maximum change (in per unit) from the prior var output level to the desired var output level during each control iteration. If numerical instability is noticed in solutions such as var sign changing from one control iteration to the next and voltages oscillating between two values with some separation, this is an indication of numerical instability (use the EventLog to diagnose). If the maximum control iterations are exceeded, and no numerical instability is seen in the EventLog of via monitors, then try increasing the value of this parameter to reduce the number of control iterations needed to achieve the control criteria, and move to the power flow solution.*/
@@ -63,7 +65,7 @@ export class ExpControl extends BaseComponent {
   /** {Yes/True* | No/False} Default is No for ExpControl.
    *
    * Curtails real power output as needed to meet the reactive power requirement. IEEE1547-2018 requires Yes, but the default is No for backward compatibility of OpenDSS models.*/
-  PreferQ?: boolean;
+  PreferQ?: PreferQEnum;
   /** Open-loop response time for changes in Q.
    *
    * The value of Q reaches 90% of the target change within Tresponse, which corresponds to a low-pass filter having tau = Tresponse / 2.3026. The behavior is similar to LPFTAU in InvControl, but here the response time is input instead of the time constant. IEEE1547-2018 default is 10s for Catagory A and 5s for Category B, adjustable from 1s to 90s for both categories. However, the default is 0 for backward compatibility of OpenDSS models.*/
@@ -75,8 +77,7 @@ export class ExpControl extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | ExpControlInterface,
     options?: Omit<ExpControlInterface, "name">

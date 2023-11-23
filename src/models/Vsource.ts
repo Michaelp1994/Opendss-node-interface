@@ -1,11 +1,12 @@
-import BaseComponent from "./BaseComponent";
-import { VsourceInterface } from "../interfaces/VsourceInterface";
 import {
   BooleanEnum,
   ModelEnum,
   ScanTypeEnum,
   SequenceEnum,
 } from "../enums/enums";
+import { VsourceInterface } from "../interfaces/VsourceInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class Vsource extends BaseComponent {
   _type = "Vsource";
@@ -178,7 +179,6 @@ export class Vsource extends BaseComponent {
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
   enabled?: BooleanEnum;
-
   constructor(
     nameOrOptions: string | VsourceInterface,
     options?: Omit<VsourceInterface, "name">

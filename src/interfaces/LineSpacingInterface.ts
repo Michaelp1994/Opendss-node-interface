@@ -1,5 +1,6 @@
 import { UnitsEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   General  */
 export interface LineSpacingInterface extends BaseInterface {
   /** Name of the component */

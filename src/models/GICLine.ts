@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { GICLineInterface } from "../interfaces/GICLineInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class GICLine extends BaseComponent {
   _type = "GICLine";
@@ -77,8 +79,7 @@ export class GICLine extends BaseComponent {
   /** Inherited Property for all PCElements. Base frequency for specification of reactance value.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | GICLineInterface,
     options?: Omit<GICLineInterface, "name">

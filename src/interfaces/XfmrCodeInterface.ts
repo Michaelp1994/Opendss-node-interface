@@ -1,5 +1,6 @@
 import { ConnEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   General  */
 export interface XfmrCodeInterface extends BaseInterface {
   /** Name of the component */

@@ -1,5 +1,15 @@
-import BaseComponent from "./BaseComponent";
+import {
+  EventLogEnum,
+  DebugTraceEnum,
+  DistReverseEnum,
+  NormalEnum,
+  StateEnum,
+  DOC_P1BlockingEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { RelayInterface } from "../interfaces/RelayInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class Relay extends BaseComponent {
   _type = "Relay";
@@ -151,15 +161,15 @@ export class Relay extends BaseComponent {
   /** Ground reach multiplier in per-unit for Distance and TD21 functions. Default=0.7*/
   Mground?: number;
   /** {Yes/True* | No/False} Default is Yes for Relay. Write trips, reclose and reset events to EventLog.*/
-  EventLog?: boolean;
+  EventLog?: EventLogEnum;
   /** {Yes/True* | No/False} Default is No for Relay. Write extra details to Eventlog.*/
-  DebugTrace?: boolean;
+  DebugTrace?: DebugTraceEnum;
   /** {Yes/True* | No/False} Default is No; reverse direction for distance and td21 types.*/
-  DistReverse?: boolean;
+  DistReverse?: DistReverseEnum;
   /** {Open | Closed} Normal state of the relay. The relay reverts to this state for reset, change of mode, etc. Defaults to "State" if not specifically declared.*/
-  Normal?: string;
+  Normal?: NormalEnum;
   /** {Open | Closed} Actual state of the relay. Upon setting, immediately forces state of the relay, overriding the Relay control. Simulates manual control on relay. Defaults to Closed. "Open" causes the controlled element to open and lock out. "Closed" causes the controlled element to close and the relay to reset to its first operation.*/
-  State?: string;
+  State?: StateEnum;
   /** Tilt angle for low-current trip line. Default is 90.*/
   DOC_TiltAngleLow?: number;
   /** Tilt angle for high-current trip line. Default is 90.*/
@@ -179,12 +189,11 @@ export class Relay extends BaseComponent {
   /** Time dial for "DOC_PhaseCurveInner" TCC curve. Multiplier on time axis of specified curve. Default=1.0.*/
   DOC_TDPhaseInner?: string;
   /** {Yes/True* | No/False} Blocking element that impedes relay from tripping if balanced net three-phase active power is in the forward direction (i.e., flowing into the monitored terminal). For a delayed trip, if at any given time the reverse power flow condition stops, the tripping is reset. Default=True.*/
-  DOC_P1Blocking?: boolean;
+  DOC_P1Blocking?: DOC_P1BlockingEnum;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | RelayInterface,
     options?: Omit<RelayInterface, "name">

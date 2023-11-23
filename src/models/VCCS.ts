@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { BooleanEnum } from "../enums/enums";
 import { VCCSInterface } from "../interfaces/VCCSInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class VCCS extends BaseComponent {
   _type = "VCCS";
@@ -57,8 +59,7 @@ export class VCCS extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | VCCSInterface,
     options?: Omit<VCCSInterface, "name">

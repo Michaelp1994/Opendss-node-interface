@@ -1,5 +1,16 @@
-import BaseComponent from "./BaseComponent";
+import {
+  BooleanEnum,
+  CombiModeEnum,
+  EventLogEnum,
+  ModeEnum,
+  MonVoltageCalcEnum,
+  RateofChangeModeEnum,
+  VoltageCurvexRefEnum,
+  VoltwattYAxisEnum,
+} from "../enums/enums";
 import { InvControlInterface } from "../interfaces/InvControlInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class InvControl extends BaseComponent {
   _type = "InvControl";
@@ -63,7 +74,7 @@ export class InvControl extends BaseComponent {
    * In watt-var mode. This mode attempts to CONTROL the vars, according to a watt-var curve, depending on the present active power output, and the capabilities of the PVSystem/Storage.
    *
    * In GFM mode this control will trigger the GFM control routine for the DERs within the DERList. The GFM actiosn will only take place if the pointed DERs are in GFM mode. The controller parameters are locally setup at the DER.*/
-  Mode?: string;
+  Mode?: ModeEnum;
   /** Combination of smart inverter functions in which the InvControl will control the PC elements in DERList, according to the options below:
    *
    * Must be a combination of the following: {VV_VW | VV_DRC}. Default is to not set this property, in which case the single control mode in Mode is active.
@@ -73,7 +84,7 @@ export class InvControl extends BaseComponent {
    * Note that the PVSystem/Storage will attempt to achieve both the volt-watt and volt-var set-points based on the capabilities of the inverter in the PVSystem/Storage (kVA rating, etc), any limits set on maximum active power,
    *
    * In combined VV_DRC, both the volt-var and the dynamic reactive current modes are simultaneously active.*/
-  CombiMode?: string;
+  CombiMode?: CombiModeEnum;
   /** Required for VOLTVAR mode.
    *
    * Name of the XYCurve object containing the volt-var curve. The positive values of the y-axis of the volt-var curve represent values in pu of the provided base reactive power. The negative values of the y-axis are values in pu of the absorbed base reactive power.
@@ -107,7 +118,7 @@ export class InvControl extends BaseComponent {
    * from a certain number of prior intervals.  See avgwindowlen parameter.
    *
    * ravg. Same as avg, with the exception that the avgerage terminal voltage is divided by the rated voltage.*/
-  voltage_curvex_ref?: string;
+  voltage_curvex_ref?: VoltageCurvexRefEnum;
   /** Required for VOLTVAR mode and VOLTWATT mode, and defaults to 0 seconds (0s).
    *
    * Sets the length of the averaging window over which the average PVSystem/Storage terminal voltage is calculated.
@@ -199,7 +210,7 @@ export class InvControl extends BaseComponent {
    * When set to PCTPMPPPU. The y-axis corresponds to the value in pu of the power Pmpp multiplied by 1/100 of the %Pmpp property of the PVSystem.
    *
    * When set to KVARATINGPU. The y-axis corresponds to the value in pu of the kVA property of the PVSystem.*/
-  VoltwattYAxis?: string;
+  VoltwattYAxis?: VoltwattYAxisEnum;
   /** Required for VOLTWATT and VOLTVAR mode.  Must be one of: {INACTIVE* | LPF | RISEFALL }.  The default is INACTIVE.
    *
    * Auxiliary option that aims to limit the changes of the desired reactive power and the active power limit between time steps, the alternatives are listed below:
@@ -209,7 +220,7 @@ export class InvControl extends BaseComponent {
    * LPF. A low-pass RC filter is applied to the desired reactive power and/or the active power limit to determine the output power as a function of a time constant defined in the LPFTau property.
    *
    * RISEFALL. A rise and fall limit in the change of active and/or reactive power expressed in terms of pu power per second, defined in the RiseFallLimit, is applied to the desired reactive power and/or the active power limit.*/
-  RateofChangeMode?: string;
+  RateofChangeMode?: RateofChangeModeEnum;
   /** Not required. Defaults to 0 seconds.
    *
    * Filter time constant of the LPF option of the RateofChangeMode property. The time constant will cause the low-pass filter to achieve 95% of the target value in 3 time constants.*/
@@ -229,7 +240,7 @@ export class InvControl extends BaseComponent {
    * If the maximum control iterations are exceeded, and no numerical instability is seen in the EventLog of via monitors, then try increasing the value of this parameter to reduce the number of control iterations needed to achieve the control criteria, and move to the power flow solution.*/
   deltaP_Factor?: number;
   /** {Yes/True | No/False*} Default is NO for InvControl. Log control actions to Eventlog.*/
-  EventLog?: boolean;
+  EventLog?: EventLogEnum;
   /** Required for any mode that has VOLTVAR, DYNAMICREACCURR and WATTVAR. Defaults to VARAVAL.
    *
    * Defines the base reactive power for both the provided and absorbed reactive power, according to one of the following options:
@@ -247,7 +258,7 @@ export class InvControl extends BaseComponent {
    * If an InvControl is controlling more than one PVSystem/Storage, each PVSystem/Storage has this quantity calculated independently, and so an individual PVSystem/Storage may reach the tolerance within different numbers of control iterations.*/
   ActivePChangeTolerance?: number;
   /** Number of the phase being monitored or one of {AVG | MAX | MIN} for all phases. Default=AVG.*/
-  monVoltageCalc?: string;
+  monVoltageCalc?: MonVoltageCalcEnum;
   /** Name of monitored bus used by the voltage-dependente control modes. Default is bus of the controlled PVSystem/Storage or Storage.*/
   monBus?: string[];
   /** Array list of rated voltages of the buses and their nodes presented in the monBus property. This list may have different line-to-line and/or line-to-ground voltages.*/
@@ -311,8 +322,7 @@ export class InvControl extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | InvControlInterface,
     options?: Omit<InvControlInterface, "name">

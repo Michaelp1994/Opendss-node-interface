@@ -1,5 +1,6 @@
 import { BooleanEnum, ScanTypeEnum, SequenceEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, PC Element  */
 export interface IsourceInterface extends BaseInterface {
   /** Name of the component */

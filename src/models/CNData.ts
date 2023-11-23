@@ -1,6 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "../enums/enums";
 import { CNDataInterface } from "../interfaces/CNDataInterface";
-import { UnitsEnum } from "../enums/enums";
+import BaseComponent from "./BaseComponent";
+
 /**   Conductor Data, Cable Data  */
 export class CNData extends BaseComponent {
   _type = "CNData";
@@ -53,11 +54,11 @@ export class CNData extends BaseComponent {
   /** GMR at 60 Hz. Defaults to .7788*radius if not specified.*/
   GMRac?: number;
   /** Units for GMR: {mi|kft|km|m|Ft|in|cm|mm} Default=none.*/
-  GMRunits?: UnitsEnum;
+  GMRunits?: GMRunitsEnum;
   /** Outside radius of conductor. Defaults to GMR/0.7788 if not specified.*/
   radius?: number;
-  /** Units for outside radius: Default=none.*/
-  radunits?: UnitsEnum;
+  /** Units for outside radius: {mi|kft|km|m|Ft|in|cm|mm} Default=none.*/
+  radunits?: RadunitsEnum;
   /** Normal ampacity, amperes. Defaults to Emergency amps/1.5 if not specified.*/
   normamps?: number;
   /** Emergency ampacity, amperes. Defaults to 1.5 * Normal Amps if not specified.*/

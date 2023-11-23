@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "../enums/enums";
 import { TSDataInterface } from "../interfaces/TSDataInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Conductor Data, Cable Data  */
 export class TSData extends BaseComponent {
   _type = "TSData";
@@ -45,15 +47,15 @@ export class TSData extends BaseComponent {
   /** Resistance at 60 Hz per unit length. Defaults to 1.02*Rdc if not specified.*/
   Rac?: number;
   /** Length units for resistance: ohms per {mi|kft|km|m|Ft|in|cm|mm} Default=none.*/
-  Runits?: string;
+  Runits?: UnitsEnum;
   /** GMR at 60 Hz. Defaults to .7788*radius if not specified.*/
   GMRac?: number;
   /** Units for GMR: {mi|kft|km|m|Ft|in|cm|mm} Default=none.*/
-  GMRunits?: string;
+  GMRunits?: GMRunitsEnum;
   /** Outside radius of conductor. Defaults to GMR/0.7788 if not specified.*/
   radius?: number;
   /** Units for outside radius: {mi|kft|km|m|Ft|in|cm|mm} Default=none.*/
-  radunits?: string;
+  radunits?: RadunitsEnum;
   /** Normal ampacity, amperes. Defaults to Emergency amps/1.5 if not specified.*/
   normamps?: number;
   /** Emergency ampacity, amperes. Defaults to 1.5 * Normal Amps if not specified.*/
@@ -70,7 +72,6 @@ export class TSData extends BaseComponent {
   Ratings?: number[];
   /** Equivalent conductor radius for capacitance calcs. Specify this for bundled conductors. Defaults to same value as radius. Define Diam or Radius property first.*/
   Capradius?: number;
-
   constructor(
     nameOrOptions: string | TSDataInterface,
     options?: Omit<TSDataInterface, "name">

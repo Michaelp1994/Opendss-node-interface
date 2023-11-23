@@ -1,5 +1,6 @@
-import BaseComponent from "./BaseComponent";
 import { GrowthShapeInterface } from "../interfaces/GrowthShapeInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   General  */
 export class GrowthShape extends BaseComponent {
   _type = "GrowthShape";
@@ -32,7 +33,6 @@ export class GrowthShape extends BaseComponent {
   sngfile?: string;
   /** Switch input of growth curve data to a binary file of doubles containing (year, mult) points, packed one after another.*/
   dblfile?: string;
-
   constructor(
     nameOrOptions: string | GrowthShapeInterface,
     options?: Omit<GrowthShapeInterface, "name">

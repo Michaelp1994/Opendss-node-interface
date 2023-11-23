@@ -1,5 +1,13 @@
-import BaseComponent from "./BaseComponent";
+import {
+  ActionEnum,
+  ResidualEnum,
+  VIPolarEnum,
+  PPolarEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { MonitorInterface } from "../interfaces/MonitorInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Meter Element  */
 export class Monitor extends BaseComponent {
   _type = "Monitor";
@@ -78,18 +86,17 @@ export class Monitor extends BaseComponent {
    * (P)rocesses the data taken so far (e.g. Pst for mode 4).
    *
    * Note that monitors are automatically reset (cleared) when the Set Mode= command is issued. Otherwise, the user must explicitly reset all monitors (reset monitors command) or individual monitors with the Clear action.*/
-  action?: string;
+  action?: ActionEnum;
   /** {Yes/True | No/False} Default = No.  Include Residual cbannel (sum of all phases) for voltage and current. Does not apply to sequence quantity modes or power modes.*/
-  residual?: boolean;
+  residual?: ResidualEnum;
   /** {Yes/True | No/False} Default = YES. Report voltage and current in polar form (Mag/Angle). (default)  Otherwise, it will be real and imaginary.*/
-  VIPolar?: boolean;
+  VIPolar?: VIPolarEnum;
   /** {Yes/True | No/False} Default = YES. Report power in Apparent power, S, in polar form (Mag/Angle).(default)  Otherwise, is P and Q*/
-  PPolar?: boolean;
+  PPolar?: PPolarEnum;
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | MonitorInterface,
     options?: Omit<MonitorInterface, "name">

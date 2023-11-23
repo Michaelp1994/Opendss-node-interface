@@ -1,5 +1,6 @@
 import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface ESPVLControlInterface extends BaseInterface {
   /** Name of the component */

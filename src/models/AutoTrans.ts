@@ -1,17 +1,17 @@
-import BaseComponent from "./BaseComponent";
-import { AutoTransInterface } from "../interfaces/AutoTransInterface";
 import {
-  AutoTransConnEnum,
   BooleanEnum,
+  ConnEnum,
   CoreEnum,
   LeadLagEnum,
-  YesNoEnum,
+  SubEnum,
+  XRConstEnum,
 } from "../enums/enums";
+import { AutoTransInterface } from "../interfaces/AutoTransInterface";
+import BaseComponent from "./BaseComponent";
 
 /**   Circuit Element, PD Element  */
 export class AutoTrans extends BaseComponent {
   _type = "AutoTrans";
-
   _parameters = [
     "phases",
     "windings",
@@ -62,10 +62,9 @@ export class AutoTrans extends BaseComponent {
     "enabled",
     "like",
   ];
-  /** Number of phases this AutoTrans.
-   * @default  3*/
+  /** Number of phases this AutoTrans. Default is 3.*/
   phases?: number;
-  /** Number of windings, this AutoTrans. (Also is the number of terminals) Default is 2. This property triggers memory allocation for the AutoTrans and will cause other properties to revert to default values.*/
+  /** Number of windings, this AutoTranss. (Also is the number of terminals) Default is 2. This property triggers memory allocation for the AutoTrans and will cause other properties to revert to default values.*/
   windings?: number;
   /** Set this = to the number of the winding you wish to define.  Then set the values for this winding.  Winding 1 is always the Series winding. Winding 2 is always Common winding (wye connected). Repeat for each winding.  Alternatively, use the array collections (buses, kVAs, etc.) to define the windings.  Note: reactances are BETWEEN pairs of windings; they are not the property of a single winding.*/
   wdg?: number;
@@ -76,7 +75,7 @@ export class AutoTrans extends BaseComponent {
    * For AutoTrans, Winding 1 is always Series and Winding 2 (the Common winding) is always Wye.
    *
    * If only 2 windings, no need to specify connections.*/
-  conn?: AutoTransConnEnum;
+  conn?: ConnEnum;
   /** For 2-or 3-phase, enter phase-phase kV rating.  Otherwise, kV rating of the actual winding. Specify H terminal kV rating for Series winding.*/
   kV?: number;
   /** Base kVA rating of the winding. Side effect: forces change of max normal and emerg kVA ratings.If 2-winding AutoTrans, forces other winding to same value. When winding 1 is defined, all other windings are defaulted to the same rating and the first two winding resistances are defaulted to the %loadloss value.*/
@@ -145,15 +144,11 @@ export class AutoTrans extends BaseComponent {
    *
    * Not used*/
   m?: number;
-  /** Temperature rise, deg C, for full load.
-   *
-   * default is 65
+  /** Temperature rise, deg C, for full load.  Default is 65.
    *
    * Not used*/
   flrise?: number;
-  /** Hot spot temperature rise, deg C.
-   *
-   * default is 15.
+  /** Hot spot temperature rise, deg C.  Default is 15.
    *
    * Not used*/
   hsrise?: number;
@@ -166,7 +161,7 @@ export class AutoTrans extends BaseComponent {
   /** Emergency (contingency)  kVA rating of H winding (winding 1+2).  Usually 140% - 150% ofmaximum nameplate rating, depending on load shape. Defaults to 150% of kVA rating of Winding 1.*/
   emerghkVA?: number;
   /** ={Yes|No}  Designates whether this AutoTrans is to be considered a substation.Default is No.*/
-  sub?: YesNoEnum;
+  sub?: SubEnum;
   /** Max per unit tap for the active winding.  Default is 1.10*/
   MaxTap?: number;
   /** Min per unit tap for the active winding.  Default is 0.90*/
@@ -186,7 +181,7 @@ export class AutoTrans extends BaseComponent {
    * Redundant with %R*/
   "%Rs"?: number[];
   /** ={Yes|No} Default is NO. Signifies whether or not the X/R is assumed contant for harmonic studies.*/
-  XRConst?: YesNoEnum;
+  XRConst?: XRConstEnum;
   /** {Lead | Lag (default) | ANSI (default) | Euro } Designation in mixed Delta-wye connections the relationship between HV to LV winding. Default is ANSI 30 deg lag, e.g., Dy1 of Yd1 vector group. To get typical European Dy11 connection, specify either "lead" or "Euro"*/
   LeadLag?: LeadLagEnum;
   /** (Read only) Makes winding currents available via return on query (? AutoTrans.TX.WdgCurrents). Order: Phase 1, Wdg 1, Wdg 2, ..., Phase 2 ...*/
@@ -205,7 +200,6 @@ export class AutoTrans extends BaseComponent {
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
   enabled?: BooleanEnum;
-
   constructor(
     nameOrOptions: string | AutoTransInterface,
     options?: Omit<AutoTransInterface, "name">

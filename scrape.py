@@ -91,9 +91,17 @@ for element in elements:
         elements = option.findAll("td")
         index = elements[0].text
         name = elements[1].text
+        if name == "like":
+            continue
         type = elements[2].text
         description = elements[3].text
         jsType = getType(type)
+        if re.search(r"\{(.*)\}", description):
+            jsType = "{0}Enum".format(name[0].upper() + name[1:])
+            if parseName(name) == "enabled":
+                jsType = "BooleanEnum"
+            if re.search(r"\{Yes | No\}", description):
+                jsType = "YesNoEnum"
         file += parseDescription(description)
         file += "\t{0}?: {1};\n".format(parseName(name), jsType)
     file += "  constructor(\n"

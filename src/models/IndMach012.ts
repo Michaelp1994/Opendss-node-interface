@@ -1,5 +1,7 @@
-import BaseComponent from "./BaseComponent";
+import { SlipOptionEnum, BooleanEnum } from "../enums/enums";
 import { IndMach012Interface } from "../interfaces/IndMach012Interface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, PC Element  */
 export class IndMach012 extends BaseComponent {
   _type = "IndMach012";
@@ -43,7 +45,7 @@ export class IndMach012 extends BaseComponent {
   /** [Read Only] Present power factor for the machine.*/
   pf?: number;
   /** Connection of stator: Delta or Wye. Default is Delta.*/
-  conn?: ConnEnum;
+  conn?: string;
   /** Rated kVA for the machine.*/
   kVA?: number;
   /** Per unit mass constant of the machine.  MW-sec/MVA.  Default is 1.0.*/
@@ -65,7 +67,7 @@ export class IndMach012 extends BaseComponent {
   /** Max slip value to allow. Default is 0.1. Set this before setting slip.*/
   MaxSlip?: number;
   /** Option for slip model. One of {fixedslip | variableslip*  }*/
-  SlipOption?: string;
+  SlipOption?: SlipOptionEnum;
   /** LOADSHAPE object to use for yearly simulations.  Must be previously defined as a Loadshape object. Is set to the Daily load shape  when Daily is defined.  The daily load shape is repeated in this case. Set Status=Fixed to ignore Loadshape designation. Set to NONE to reset to no loadahape. The default is no variation.*/
   Yearly?: string;
   /** LOADSHAPE object to use for daily simulations.  Must be previously defined as a Loadshape object of 24 hrs, typically. Set Status=Fixed to ignore Loadshape designation. Set to NONE to reset to no loadahape. Default is no variation (constant) if not defined. Side effect: Sets Yearly load shape if not already defined.*/
@@ -79,8 +81,7 @@ export class IndMach012 extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | IndMach012Interface,
     options?: Omit<IndMach012Interface, "name">

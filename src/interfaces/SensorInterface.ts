@@ -5,6 +5,7 @@ import {
   DeltaDirectionEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Meter Element  */
 export interface SensorInterface extends BaseInterface {
   /** Name of the component */

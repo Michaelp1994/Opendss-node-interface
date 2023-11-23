@@ -1,5 +1,13 @@
-import BaseComponent from "./BaseComponent";
+import {
+  MonPhaseEnum,
+  ModeDischargeEnum,
+  ModeChargeEnum,
+  EventLogEnum,
+  BooleanEnum,
+} from "../enums/enums";
 import { StorageControllerInterface } from "../interfaces/StorageControllerInterface";
+import BaseComponent from "./BaseComponent";
+
 /**   Circuit Element, Control Element  */
 export class StorageController extends BaseComponent {
   _type = "StorageController";
@@ -50,7 +58,7 @@ export class StorageController extends BaseComponent {
   /** Number of the terminal of the circuit element to which the StorageController control is connected. 1 or 2, typically.  Default is 1. Make sure to select the proper direction on the power for the respective dispatch mode.*/
   Terminal?: number;
   /** Number of the phase being monitored or one of {AVG | MAX | MIN} for all phases. Default=MAX. Must be less than the number of phases. Used in PeakShave, Follow, Support and I-PeakShave discharging modes and in PeakShaveLow, I-PeakShaveLow charging modes. For modes based on active power measurements, the value used by the control is the monitored one multiplied by the number of phases of the monitored element.*/
-  MonPhase?: string;
+  MonPhase?: MonPhaseEnum;
   /** kW/kamps target for Discharging. The Storage element fleet is dispatched to try to hold the power/current in band at least until the Storage is depleted. The selection of power or current depends on the Discharge mode (PeakShave->kW, I-PeakShave->kamps).*/
   kWTarget?: number;
   /** kW/kamps target for Charging. The Storage element fleet is dispatched to try to hold the power/current in band at least until the Storage is fully charged. The selection of power or current depends on the charge mode (PeakShavelow->kW, I-PeakShavelow->kamps).*/
@@ -82,7 +90,7 @@ export class StorageController extends BaseComponent {
    * In Schedule mode, the Tup, TFlat, and Tdn properties specify the up ramp duration, flat duration, and down ramp duration for the schedule. The schedule start time is set by TimeDischargeTrigger and the rate of discharge for the flat part is determined by %RatekW.
    *
    * In I-PeakShave mode, the control attempts to discharge Storage to keep current in the monitored element below the target given in k-amps (thousands of amps), when this control mode is active, the property kWTarget will be expressed in k-amps.*/
-  ModeDischarge?: string;
+  ModeDischarge?: ModeDischargeEnum;
   /** {Loadshape | Time* | PeakShaveLow | I-PeakShaveLow} Mode of operation for the CHARGE FUNCTION of this controller.
    *
    * In Loadshape mode, both charging and discharging precisely follows the per unit loadshape. Storage is charged when the loadshape value is negative.
@@ -92,7 +100,7 @@ export class StorageController extends BaseComponent {
    * In PeakShaveLow mode, the charging operation will charge the Storage fleet when the power at amonitored element is below a specified KW target (kWTarget_low). The Storage will charge as much power as necessary to keep the power within the deadband around kWTarget_low.
    *
    * In I-PeakShaveLow mode, the charging operation will charge the Storage fleet when the current (Amps) at amonitored element is below a specified amps target (kWTarget_low). The Storage will charge as much power as necessary to keep the amps within the deadband around kWTarget_low. When this control mode is active, the property kWTarget_low will be expressed in k-amps and all the other parameters will be adjusted to match the amps (current) control criteria.*/
-  ModeCharge?: string;
+  ModeCharge?: ModeChargeEnum;
   /** Default time of day (hr) for initiating Discharging of the fleet. During Follow or Time mode discharging is triggered at a fixed time each day at this hour. If Follow mode, Storage will be discharged to attempt to hold the load at or below the power level at the time of triggering. In Time mode, the discharge is based on the %RatekW property value. Set this to a negative value to ignore. Default is 12.0 for Follow mode; otherwise it is -1 (ignored).*/
   TimeDischargeTrigger?: number;
   /** Default time of day (hr) for initiating charging in Time control mode. Set this to a negative value to ignore. Default is 2.0.  (0200).When this value is >0 the Storage fleet is set to charging at this time regardless of other control criteria to make sure Storage is topped off for the next discharge cycle.*/
@@ -120,7 +128,7 @@ export class StorageController extends BaseComponent {
   /** Dispatch loadshape object, If any, for Dutycycle solution mode.*/
   Duty?: string;
   /** {Yes/True | No/False} Default is No. Log control actions to Eventlog.*/
-  EventLog?: boolean;
+  EventLog?: EventLogEnum;
   /** Hours (integer) to inhibit Discharging after going into Charge mode. Default is 5.*/
   InhibitTime?: number;
   /** Duration, hrs, of upramp part for SCHEDULE mode. Default is 0.25.*/
@@ -146,8 +154,7 @@ export class StorageController extends BaseComponent {
   /** Base Frequency for ratings.*/
   basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled?: boolean;
-
+  enabled?: BooleanEnum;
   constructor(
     nameOrOptions: string | StorageControllerInterface,
     options?: Omit<StorageControllerInterface, "name">

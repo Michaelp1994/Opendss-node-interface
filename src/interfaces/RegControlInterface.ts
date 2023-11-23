@@ -6,10 +6,11 @@ import {
   InverseTimeEnum,
   PTphaseEnum,
   ResetEnum,
-  RevNeutralEnum,
   ReversibleEnum,
+  RevNeutralEnum,
 } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
+
 /**   Circuit Element, Control Element  */
 export interface RegControlInterface extends BaseInterface {
   /** Name of the component */
