@@ -51,7 +51,7 @@ export class Reactor extends BaseComponent {
   /** For 2, 3-phase, kV phase-phase. Otherwise specify actual coil rating.*/
   kv?: number;
   /** ={wye | delta |LN |LL}  Default is wye, which is equivalent to LN. If Delta, then only one terminal.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** Resistance matrix, lower triangle, ohms at base frequency. Order of the matrix is the number of phases. Mutually exclusive to specifying parameters by kvar or X.*/
   Rmatrix?: number[];
   /** Reactance matrix, lower triangle, ohms at base frequency. Order of the matrix is the number of phases. Mutually exclusive to specifying parameters by kvar or X.*/

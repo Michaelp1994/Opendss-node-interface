@@ -70,7 +70,7 @@ test("should build a basic circuit", () => {
     bus1: "b_toyota",
     bus2: "b_esoura",
     length: 1000,
-    units: "km",
+    units: "kml",
     phases: 3,
     Xg: 0,
     Rg: 0,

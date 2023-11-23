@@ -1,5 +1,6 @@
 import BaseComponent from "./BaseComponent";
 import { GeneratorInterface } from "../interfaces/GeneratorInterface";
+import { ConnEnum } from "../enums/enums";
 /**   Circuit Element, PC Element  */
 export class Generator extends BaseComponent {
   _type = "Generator";
@@ -108,7 +109,7 @@ export class Generator extends BaseComponent {
    * If > 0  then Generator is ON only when either the price signal (in Price dispatch mode) exceeds this value or the active circuit load multiplier * "default" loadshape value * the default yearly growth factor exceeds this value.  Then the generator follows dispatch curves (duty, daily, or yearly), if any (see also Status).*/
   dispvalue?: number;
   /** ={wye|LN|delta|LL}.  Default is wye.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** ={Fixed | Variable*}.  If Fixed, then dispatch multipliers do not apply. The generator is alway at full power when it is ON.  Default is Variable  (follows curves).*/
   status?: string;
   /** An arbitrary integer number representing the class of Generator so that Generator values may be segregated by class.*/

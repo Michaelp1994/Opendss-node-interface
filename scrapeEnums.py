@@ -72,7 +72,7 @@ soup = BeautifulSoup(page.content, "html.parser")
 elementSection = soup.find(id="elements")
 elementTable = elementSection.find("table")
 elements = elementTable.findAll("thead")
-f = open("src/enums/enums.ts", "w")
+f = open("src/enums/enums3.ts", "w")
 file = ""
 for element in elements:
     title = element.find("th", scope="rowgroup")
@@ -99,7 +99,7 @@ for element in elements:
         jsType = getType(type)
         enums = getEnums(parseDescription(description))
         if enums:
-            file += "export type {0} = ".format(name)
+            file += "export type {0}Enum = ".format(name)
             # file += enums.join("|")
             for enum in enums:
                 formatted = enum.replace("*", "")

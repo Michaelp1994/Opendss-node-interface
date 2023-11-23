@@ -1,10 +1,10 @@
 import BaseComponent from "./BaseComponent";
 import { AutoTransInterface } from "../interfaces/AutoTransInterface";
 import {
-  AutoTransConn,
+  AutoTransConnEnum,
   BooleanEnum,
-  Core,
-  LeadLag,
+  CoreEnum,
+  LeadLagEnum,
   YesNoEnum,
 } from "../enums/enums";
 
@@ -76,7 +76,7 @@ export class AutoTrans extends BaseComponent {
    * For AutoTrans, Winding 1 is always Series and Winding 2 (the Common winding) is always Wye.
    *
    * If only 2 windings, no need to specify connections.*/
-  conn?: AutoTransConn;
+  conn?: AutoTransConnEnum;
   /** For 2-or 3-phase, enter phase-phase kV rating.  Otherwise, kV rating of the actual winding. Specify H terminal kV rating for Series winding.*/
   kV?: number;
   /** Base kVA rating of the winding. Side effect: forces change of max normal and emerg kVA ratings.If 2-winding AutoTrans, forces other winding to same value. When winding 1 is defined, all other windings are defaulted to the same rating and the first two winding resistances are defaulted to the %loadloss value.*/
@@ -88,7 +88,7 @@ export class AutoTrans extends BaseComponent {
   /** Winding dc resistance in OHMS. Specify this for GIC analysis. From transformer test report (divide by number of phases). Defaults to 85% of %R property (the ac value that includes stray losses).*/
   Rdcohms?: number;
   /** {Shell*|5-leg|3-Leg|1-phase|core-1-phase|4-leg} Core Type. Used for GIC analysis in auxiliary programs. Not used inside OpenDSS.*/
-  Core?: Core;
+  Core?: CoreEnum;
   /** Use this to specify all the bus connections at once using an array. Example:
    *
    * New AutoTrans.T1 buses=[Hbus, Xbus]
@@ -188,7 +188,7 @@ export class AutoTrans extends BaseComponent {
   /** ={Yes|No} Default is NO. Signifies whether or not the X/R is assumed contant for harmonic studies.*/
   XRConst?: YesNoEnum;
   /** {Lead | Lag (default) | ANSI (default) | Euro } Designation in mixed Delta-wye connections the relationship between HV to LV winding. Default is ANSI 30 deg lag, e.g., Dy1 of Yd1 vector group. To get typical European Dy11 connection, specify either "lead" or "Euro"*/
-  LeadLag?: LeadLag;
+  LeadLag?: LeadLagEnum;
   /** (Read only) Makes winding currents available via return on query (? AutoTrans.TX.WdgCurrents). Order: Phase 1, Wdg 1, Wdg 2, ..., Phase 2 ...*/
   WdgCurrents?: string;
   /** Normal rated current.*/

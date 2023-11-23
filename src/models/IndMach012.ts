@@ -43,7 +43,7 @@ export class IndMach012 extends BaseComponent {
   /** [Read Only] Present power factor for the machine.*/
   pf?: number;
   /** Connection of stator: Delta or Wye. Default is Delta.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** Rated kVA for the machine.*/
   kVA?: number;
   /** Per unit mass constant of the machine.  MW-sec/MVA.  Default is 1.0.*/

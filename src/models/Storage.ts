@@ -79,7 +79,7 @@ export class Storage extends BaseComponent {
    * If delta or phase-phase connected, specify phase-phase kV.*/
   kv?: number;
   /** ={wye|LN|delta|LL}.  Default is wye.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** Get/set the requested kW value. Final kW is subjected to the inverter ratings. A positive value denotes power coming OUT of the element, which is the opposite of a Load element. A negative value indicates the Storage element is in Charging state. This value is modified internally depending on the dispatch mode.*/
   kW?: number;
   /** Get/set the requested kvar value. Final kvar is subjected to the inverter ratings. Sets inverter to operate in constant kvar mode.*/

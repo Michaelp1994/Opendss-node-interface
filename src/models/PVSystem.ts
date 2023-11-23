@@ -78,7 +78,7 @@ export class PVSystem extends BaseComponent {
    * as is typical for a generator.*/
   pf?: number;
   /** ={wye|LN|delta|LL}.  Default is wye.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** Get/set the present kvar value.  Setting this property forces the inverter to operate in constant kvar mode.*/
   kvar?: number;
   /** kVA rating of inverter. Used as the base for Dynamics mode and Harmonics mode values.*/

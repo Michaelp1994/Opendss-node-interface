@@ -98,7 +98,7 @@ export class Load extends BaseComponent {
   /** Characteristic  to use for growth factors by years.  Must be previously defined as a Growthshape object. Defaults to circuit default growth factor (see Set Growth command).*/
   growth?: string;
   /** ={wye or LN | delta or LL}.  Default is wye.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** Specify the base kvar for specifying load as kW & kvar.  Assumes kW has been already defined.  Alternative to specifying the power factor.  Side effect:  the power factor and kVA is altered to agree.*/
   kvar?: number;
   /** Default is -1. Neutral resistance of wye (star)-connected load in actual ohms. If entered as a negative value, the neutral can be open, or floating, or it can be connected to node 0 (ground), which is the usual default. If >=0 be sure to explicitly specify the node connection for the neutral, or last, conductor. Otherwise, the neutral impedance will be shorted to ground.*/

@@ -71,7 +71,7 @@ export class Transformer extends BaseComponent {
   /** Bus connection spec for this winding.*/
   bus?: string;
   /** Connection of this winding {wye*, Delta, LN, LL}. Default is "wye" with the neutral solidly grounded.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** For 2-or 3-phase, enter phase-phase kV rating.  Otherwise, kV rating of the actual winding*/
   kV?: number;
   /** Base kVA rating of the winding. Side effect: forces change of max normal and emerg kVA ratings.If 2-winding transformer, forces other winding to same value. When winding 1 is defined, all other windings are defaulted to the same rating and the first two winding resistances are defaulted to the %loadloss value.*/

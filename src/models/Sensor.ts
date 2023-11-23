@@ -45,7 +45,7 @@ export class Sensor extends BaseComponent {
    * Currents are always assumed to be line currents.
    *
    * If wye or LN, voltage is assumed measured line-neutral; otherwise, line-line.*/
-  conn?: string;
+  conn?: ConnEnum;
   /** {1 or -1}  Default is 1:  1-2, 2-3, 3-1.  For reverse rotation, enter -1. Any positive or negative entry will suffice.*/
   Deltadirection?: number;
   /** Assumed percent error in the measurement. Default is 1.*/
