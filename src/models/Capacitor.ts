@@ -1,7 +1,32 @@
+import BaseComponent from "./BaseComponent";
+import { CapacitorInterface } from "../interfaces/CapacitorInterface";
+import { ConnEnum, BooleanEnum } from "../enums/enums";
 /**   Circuit Element, PD Element  */
-export default class Capacitor {
-  /** Name of the component */
-  name: string;
+export class Capacitor extends BaseComponent {
+  _type = "Capacitor";
+  _parameters = [
+    "bus1",
+    "bus2",
+    "phases",
+    "kvar",
+    "kv",
+    "conn",
+    "cmatrix",
+    "cuf",
+    "R",
+    "XL",
+    "Harm",
+    "Numsteps",
+    "states",
+    "normamps",
+    "emergamps",
+    "faultrate",
+    "pctperm",
+    "repair",
+    "basefreq",
+    "enabled",
+    "like",
+  ];
   /** Name of first bus of 2-terminal capacitor. Examples:
    *
    * bus1=busname
@@ -9,55 +34,63 @@ export default class Capacitor {
    * bus1=busname.1.2.3
    *
    * If only one bus specified, Bus2 will default to this bus, Node 0, and the capacitor will be a Yg shunt bank.*/
-  bus1: string;
+  bus1?: string;
   /** Name of 2nd bus. Defaults to all phases connected to first bus, node 0, (Shunt Wye Connection) except when Bus2 explicitly specified.
    *
    * Not necessary to specify for delta (LL) connection.*/
-  bus2: string;
+  bus2?: string;
   /** Number of phases.*/
-  phases: number;
+  phases?: number;
   /** Total kvar, if one step, or ARRAY of kvar ratings for each step.  Evenly divided among phases. See rules for NUMSTEPS.*/
-  kvar: number[];
+  kvar?: number[];
   /** For 2, 3-phase, kV phase-phase. Otherwise specify actual can rating.*/
-  kv: number;
+  kv?: number;
   /** ={wye | delta |LN |LL}  Default is wye, which is equivalent to LN*/
-  conn: string;
+  conn?: ConnEnum;
   /** Nodal cap. matrix, lower triangle, microfarads, of the following form:
    *
    * cmatrix="c11 | -c21 c22 | -c31 -c32 c33"
    *
    * All steps are assumed the same if this property is used.*/
-  cmatrix: number[];
+  cmatrix?: number[];
   /** ARRAY of Capacitance, each phase, for each step, microfarads.
    *
    * See Rules for NumSteps.*/
-  cuf: number[];
+  cuf?: number[];
   /** ARRAY of series resistance in each phase (line), ohms. Default is 0.0*/
-  R: number[];
+  R?: number[];
   /** ARRAY of series inductive reactance(s) in each phase (line) for filter, ohms at base frequency. Use this OR "h" property to define filter. Default is 0.0.*/
-  XL: number[];
+  XL?: number[];
   /** ARRAY of harmonics to which each step is tuned. Zero is interpreted as meaning zero reactance (no filter). Default is zero.*/
-  Harm: number[];
+  Harm?: number[];
   /** Number of steps in this capacitor bank. Default = 1. Forces reallocation of the capacitance, reactor, and states array.  Rules: If this property was previously =1, the value in the kvar property is divided equally among the steps. The kvar property does not need to be reset if that is accurate.  If the Cuf or Cmatrix property was used previously, all steps are set to the value of the first step. The states property is set to all steps on. All filter steps are set to the same harmonic. If this property was previously >1, the arrays are reallocated, but no values are altered. You must SUBSEQUENTLY assign all array properties.*/
-  Numsteps: number;
+  Numsteps?: number;
   /** ARRAY of integers {1|0} states representing the state of each step (on|off). Defaults to 1 when reallocated (on). Capcontrol will modify this array as it turns steps on or off.*/
-  states: number[];
+  states?: number[];
   /** Normal rated current.*/
-  normamps: number;
+  normamps?: number;
   /** Maximum or emerg current.*/
-  emergamps: number;
+  emergamps?: number;
   /** Failure rate per year.*/
-  faultrate: number;
+  faultrate?: number;
   /** Percent of failures that become permanent.*/
-  pctperm: number;
+  pctperm?: number;
   /** Hours to repair.*/
-  repair: number;
+  repair?: number;
   /** Base Frequency for ratings.*/
-  basefreq: number;
+  basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled: boolean;
-  /** Make like another object, e.g.:
-   *
-   * New Capacitor.C2 like=c1  ...*/
-  like: string;
+  enabled?: BooleanEnum;
+  constructor(
+    nameOrOptions: string | CapacitorInterface,
+    options?: Omit<CapacitorInterface, "name">
+  ) {
+    super();
+    if (typeof nameOrOptions === "string") {
+      this.name = nameOrOptions;
+      Object.assign(this, options);
+    } else {
+      Object.assign(this, nameOrOptions);
+    }
+  }
 }

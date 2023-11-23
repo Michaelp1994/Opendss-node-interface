@@ -1,11 +1,41 @@
+import BaseComponent from "./BaseComponent";
+import { EnergyMeterInterface } from "../interfaces/EnergyMeterInterface";
 /**   Circuit Element, Meter Element  */
-export default class EnergyMeter {
-  /** Name of the component */
-  name: string;
+export class EnergyMeter extends BaseComponent {
+  _type = "EnergyMeter";
+  _parameters = [
+    "element",
+    "terminal",
+    "action",
+    "option",
+    "kVAnormal",
+    "kVAemerg",
+    "peakcurrent",
+    "Zonelist",
+    "LocalOnly",
+    "Mask",
+    "Losses",
+    "LineLosses",
+    "XfmrLosses",
+    "SeqLosses",
+    "3phaseLosses",
+    "VbaseLosses",
+    "PhaseVoltageReport",
+    "Int_Rate",
+    "Int_Duration",
+    "SAIFI",
+    "SAIFIkW",
+    "SAIDI",
+    "CAIDI",
+    "CustInterrupts",
+    "basefreq",
+    "enabled",
+    "like",
+  ];
   /** Name (Full Object name) of element to which the monitor is connected.*/
-  element: string;
+  element?: string;
   /** Number of the terminal of the circuit element to which the monitor is connected. 1 or 2, typically.*/
-  terminal: number;
+  terminal?: number;
   /** {Clear (reset) | Save | Take | Zonedump | Allocate | Reduce}
    *
    * (A)llocate = Allocate loads on the meter zone to match PeakCurrent.
@@ -23,7 +53,7 @@ export default class EnergyMeter {
    * (Z)onedump = Dump names of elements in meter zone to a file
    *
    * File name is "Zone_metername.CSV".*/
-  action: string;
+  action?: string;
   /** Enter a string ARRAY of any combination of the following. Options processed left-to-right:
    *
    * (E)xcess : (default) UE/EEN is estimate of energy over capacity
@@ -39,57 +69,65 @@ export default class EnergyMeter {
    * (V)oltage : Load UE/EEN computed based on voltage only.
    *
    * Example: option=(E, R)*/
-  option: string[];
+  option?: string[];
   /** Upper limit on kVA load in the zone, Normal configuration. Default is 0.0 (ignored). Overrides limits on individual lines for overload EEN. With "LocalOnly=Yes" option, uses only load in metered branch.*/
-  kVAnormal: number;
+  kVAnormal?: number;
   /** Upper limit on kVA load in the zone, Emergency configuration. Default is 0.0 (ignored). Overrides limits on individual lines for overload UE. With "LocalOnly=Yes" option, uses only load in metered branch.*/
-  kVAemerg: number;
+  kVAemerg?: number;
   /** ARRAY of current magnitudes representing the peak currents measured at this location for the load allocation function.  Default is (400, 400, 400). Enter one current for each phase*/
-  peakcurrent: number[];
+  peakcurrent?: number[];
   /** ARRAY of full element names for this meter's zone.  Default is for meter to find it's own zone. If specified, DSS uses this list instead.  Can access the names in a single-column text file.  Examples:
    *
    * zonelist=[line.L1, transformer.T1, Line.L3]
    *
    * zonelist=(file=branchlist.txt)*/
-  Zonelist: string[];
+  Zonelist?: string[];
   /** {Yes | No}  Default is NO.  If Yes, meter considers only the monitored element for EEN and UE calcs.  Uses whole zone for losses.*/
-  LocalOnly: boolean;
+  LocalOnly?: boolean;
   /** Mask for adding registers whenever all meters are totalized.  Array of floating point numbers representing the multiplier to be used for summing each register from this meter. Default = (1, 1, 1, 1, ... ).  You only have to enter as many as are changed (positional). Useful when two meters monitor same energy, etc.*/
-  Mask: number[];
+  Mask?: number[];
   /** {Yes | No}  Default is YES. Compute Zone losses. If NO, then no losses at all are computed.*/
-  Losses: boolean;
+  Losses?: boolean;
   /** {Yes | No}  Default is YES. Compute Line losses. If NO, then none of the losses are computed.*/
-  LineLosses: boolean;
+  LineLosses?: boolean;
   /** {Yes | No}  Default is YES. Compute Transformer losses. If NO, transformers are ignored in loss calculations.*/
-  XfmrLosses: boolean;
+  XfmrLosses?: boolean;
   /** {Yes | No}  Default is YES. Compute Sequence losses in lines and segregate by line mode losses and zero mode losses.*/
-  SeqLosses: boolean;
+  SeqLosses?: boolean;
   /** {Yes | No}  Default is YES. Compute Line losses and segregate by 3-phase and other (1- and 2-phase) line losses.*/
-  "3phaseLosses": boolean;
+  "3phaseLosses"?: boolean;
   /** {Yes | No}  Default is YES. Compute losses and segregate by voltage base. If NO, then voltage-based tabulation is not reported.*/
-  VbaseLosses: boolean;
+  VbaseLosses?: boolean;
   /** {Yes | No}  Default is NO.  Report min, max, and average phase voltages for the zone and tabulate by voltage base. Demand Intervals must be turned on (Set Demand=true) and voltage bases must be defined for this property to take effect. Result is in a separate report file.*/
-  PhaseVoltageReport: boolean;
+  PhaseVoltageReport?: boolean;
   /** Average number of annual interruptions for head of the meter zone (source side of zone or feeder).*/
-  Int_Rate: number;
+  Int_Rate?: number;
   /** Average annual duration, in hr, of interruptions for head of the meter zone (source side of zone or feeder).*/
-  Int_Duration: number;
+  Int_Duration?: number;
   /** (Read only) Makes SAIFI result available via return on query (? energymeter.myMeter.SAIFI.*/
-  SAIFI: number;
+  SAIFI?: number;
   /** (Read only) Makes SAIFIkW result available via return on query (? energymeter.myMeter.SAIFIkW.*/
-  SAIFIkW: number;
+  SAIFIkW?: number;
   /** (Read only) Makes SAIDI result available via return on query (? energymeter.myMeter.SAIDI.*/
-  SAIDI: number;
+  SAIDI?: number;
   /** (Read only) Makes CAIDI result available via return on query (? energymeter.myMeter.CAIDI.*/
-  CAIDI: number;
+  CAIDI?: number;
   /** (Read only) Makes Total Customer Interrupts value result available via return on query (? energymeter.myMeter.CustInterrupts.*/
-  CustInterrupts: number;
+  CustInterrupts?: number;
   /** Base Frequency for ratings.*/
-  basefreq: number;
+  basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled: boolean;
-  /** Make like another object, e.g.:
-   *
-   * New Capacitor.C2 like=c1  ...*/
-  like: string;
+  enabled?: boolean;
+  constructor(
+    nameOrOptions: string | EnergyMeterInterface,
+    options?: Omit<EnergyMeterInterface, "name">
+  ) {
+    super();
+    if (typeof nameOrOptions === "string") {
+      this.name = nameOrOptions;
+      Object.assign(this, options);
+    } else {
+      Object.assign(this, nameOrOptions);
+    }
+  }
 }

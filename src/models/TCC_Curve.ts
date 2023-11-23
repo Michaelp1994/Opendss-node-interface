@@ -1,11 +1,13 @@
+import BaseComponent from "./BaseComponent";
+import { TCC_CurveInterface } from "../interfaces/TCC_CurveInterface";
 /**   General  */
-export default class TCC_Curve {
-  /** Name of the component */
-  name: string;
+export class TCC_Curve extends BaseComponent {
+  _type = "TCC_Curve";
+  _parameters = ["npts", "C_array", "T_array", "like"];
   /** Number of points to expect in time-current arrays.*/
-  npts: number;
+  npts?: number;
   /** Array of current (or voltage) values corresponding to time values (see help on T_Array).*/
-  C_array: number[];
+  C_array?: number[];
   /** Array of time values in sec. Typical array syntax:
    *
    * t_array = (1, 2, 3, 4, ...)
@@ -15,9 +17,18 @@ export default class TCC_Curve {
    * t_array =  (file=filename)
    *
    * The specified file has one value per line.*/
-  T_array: number[];
-  /** Make like another object, e.g.:
-   *
-   * New Capacitor.C2 like=c1  ...*/
-  like: string;
+  T_array?: number[];
+
+  constructor(
+    nameOrOptions: string | TCC_CurveInterface,
+    options?: Omit<TCC_CurveInterface, "name">
+  ) {
+    super();
+    if (typeof nameOrOptions === "string") {
+      this.name = nameOrOptions;
+      Object.assign(this, options);
+    } else {
+      Object.assign(this, nameOrOptions);
+    }
+  }
 }

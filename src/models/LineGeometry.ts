@@ -1,31 +1,54 @@
+import BaseComponent from "./BaseComponent";
+import { LineGeometryInterface } from "../interfaces/LineGeometryInterface";
 /**   General  */
-export default class LineGeometry {
-  /** Name of the component */
-  name: string;
+export class LineGeometry extends BaseComponent {
+  _type = "LineGeometry";
+  _parameters = [
+    "nconds",
+    "nphases",
+    "cond",
+    "wire",
+    "x",
+    "h",
+    "units",
+    "normamps",
+    "emergamps",
+    "reduce",
+    "spacing",
+    "wires",
+    "cncable",
+    "tscable",
+    "cncables",
+    "tscables",
+    "Seasons",
+    "Ratings",
+    "LineType",
+    "like",
+  ];
   /** Number of conductors in this geometry. Default is 3. Triggers memory allocations. Define first!*/
-  nconds: number;
+  nconds?: number;
   /** Number of phases. Default =3; All other conductors are considered neutrals and might be reduced out.*/
-  nphases: number;
+  nphases?: number;
   /** Set this = number of the conductor you wish to define. Default is 1.*/
-  cond: number;
+  cond?: number;
   /** Code from WireData. MUST BE PREVIOUSLY DEFINED. no default.
    *
    * Specifies use of Overhead Line parameter calculation,
    *
    * Unless Tape Shield cable previously assigned to phases, and this wire is a neutral.*/
-  wire: string;
+  wire?: string;
   /** x coordinate.*/
-  x: number;
+  x?: number;
   /** Height of conductor.*/
-  h: number;
+  h?: number;
   /** Units for x and h: {mi|kft|km|m|Ft|in|cm } Initial default is "ft", but defaults to last unit defined*/
-  units: string;
+  units?: string;
   /** Normal ampacity, amperes for the line. Defaults to first conductor if not specified.*/
-  normamps: number;
+  normamps?: number;
   /** Emergency ampacity, amperes. Defaults to first conductor if not specified.*/
-  emergamps: number;
+  emergamps?: number;
   /** {Yes | No} Default = no. Reduce to Nphases (Kron Reduction). Reduce out neutrals.*/
-  reduce: boolean;
+  reduce?: boolean;
   /** Reference to a LineSpacing for use in a line constants calculation.
    *
    * Alternative to x, h, and units. MUST BE PREVIOUSLY DEFINED.
@@ -33,7 +56,7 @@ export default class LineGeometry {
    * Must match "nconds" as previously defined for this geometry.
    *
    * Must be used in conjunction with the Wires property.*/
-  spacing: string;
+  spacing?: string;
   /** Array of WireData names for use in a line constants calculation.
    *
    * Alternative to individual wire inputs. ALL MUST BE PREVIOUSLY DEFINED.
@@ -45,19 +68,19 @@ export default class LineGeometry {
    * Must be used in conjunction with the Spacing property.
    *
    * Redundant with wire*/
-  wires: string[];
+  wires?: string[];
   /** Code from CNData. MUST BE PREVIOUSLY DEFINED. no default.
    *
    * Specifies use of Concentric Neutral cable parameter calculation.
    *
    * Redundant with wire*/
-  cncable: string;
+  cncable?: string;
   /** Code from TSData. MUST BE PREVIOUSLY DEFINED. no default.
    *
    * Specifies use of Tape Shield cable parameter calculation.
    *
    * Redundant with wire*/
-  tscable: string;
+  tscable?: string;
   /** Array of CNData names for cable parameter calculation.
    *
    * All must be previously defined, and match "nphases" for this geometry.
@@ -65,7 +88,7 @@ export default class LineGeometry {
    * You can later define "nconds-nphases" wires for bare neutral conductors.
    *
    * Redundant with cncable*/
-  cncables: string[];
+  cncables?: string[];
   /** Array of TSData names for cable parameter calculation.
    *
    * All must be previously defined, and match "nphases" for this geometry.
@@ -73,21 +96,30 @@ export default class LineGeometry {
    * You can later define "nconds-nphases" wires for bare neutral conductors.
    *
    * Redundant with tscable*/
-  tscables: string[];
+  tscables?: string[];
   /** Defines the number of ratings to be defined for the wire, to be used only when defining seasonal ratings using the "Ratings" property. Defaults to first conductor if not specified.*/
-  Seasons: number;
+  Seasons?: number;
   /** An array of ratings to be used when the seasonal ratings flag is True. It can be used to insert
    *
    * multiple ratings to change during a QSTS simulation to evaluate different ratings in lines.Defaults to first conductor if not specified.*/
-  Ratings: number[];
+  Ratings?: number[];
   /** Code designating the type of line.
    *
    * One of: OH, UG, UG_TS, UG_CN, SWT_LDBRK, SWT_FUSE, SWT_SECT, SWT_REC, SWT_DISC, SWT_BRK, SWT_ELBOW
    *
    * OpenDSS currently does not use this internally. For whatever purpose the user defines. Default is OH.*/
-  LineType: string;
-  /** Make like another object, e.g.:
-   *
-   * New Capacitor.C2 like=c1  ...*/
-  like: string;
+  LineType?: string;
+
+  constructor(
+    nameOrOptions: string | LineGeometryInterface,
+    options?: Omit<LineGeometryInterface, "name">
+  ) {
+    super();
+    if (typeof nameOrOptions === "string") {
+      this.name = nameOrOptions;
+      Object.assign(this, options);
+    } else {
+      Object.assign(this, nameOrOptions);
+    }
+  }
 }

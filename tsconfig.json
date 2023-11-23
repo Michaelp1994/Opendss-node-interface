@@ -4,12 +4,12 @@
   "compilerOptions": {
     "outDir": "dist",
     "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
     "noImplicitAny": false,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false
+    "experimentalDecorators": true
   },
 
   "include": ["src", "**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

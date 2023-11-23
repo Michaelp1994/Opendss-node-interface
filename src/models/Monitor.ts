@@ -1,11 +1,24 @@
+import BaseComponent from "./BaseComponent";
+import { MonitorInterface } from "../interfaces/MonitorInterface";
 /**   Circuit Element, Meter Element  */
-export default class Monitor {
-  /** Name of the component */
-  name: string;
+export class Monitor extends BaseComponent {
+  _type = "Monitor";
+  _parameters = [
+    "element",
+    "terminal",
+    "mode",
+    "action",
+    "residual",
+    "VIPolar",
+    "PPolar",
+    "basefreq",
+    "enabled",
+    "like",
+  ];
   /** Name (Full Object name) of element to which the monitor is connected.*/
-  element: string;
+  element?: string;
   /** Number of the terminal of the circuit element to which the monitor is connected. 1 or 2, typically. For monitoring states, attach monitor to terminal 1.*/
-  terminal: number;
+  terminal?: number;
   /** Bitmask integer designating the values the monitor is to capture:
    *
    * 0 = Voltages and currents at designated terminal
@@ -55,7 +68,7 @@ export default class Monitor {
    * Mode=112 will save positive sequence voltage and current magnitudes only
    *
    * Mode=48 will save all sequence voltages and currents, but magnitude only.*/
-  mode: number;
+  mode?: number;
   /** {Clear | Save | Take | Process}
    *
    * (C)lears or (S)aves current buffer.
@@ -65,19 +78,28 @@ export default class Monitor {
    * (P)rocesses the data taken so far (e.g. Pst for mode 4).
    *
    * Note that monitors are automatically reset (cleared) when the Set Mode= command is issued. Otherwise, the user must explicitly reset all monitors (reset monitors command) or individual monitors with the Clear action.*/
-  action: string;
+  action?: string;
   /** {Yes/True | No/False} Default = No.  Include Residual cbannel (sum of all phases) for voltage and current. Does not apply to sequence quantity modes or power modes.*/
-  residual: boolean;
+  residual?: boolean;
   /** {Yes/True | No/False} Default = YES. Report voltage and current in polar form (Mag/Angle). (default)  Otherwise, it will be real and imaginary.*/
-  VIPolar: boolean;
+  VIPolar?: boolean;
   /** {Yes/True | No/False} Default = YES. Report power in Apparent power, S, in polar form (Mag/Angle).(default)  Otherwise, is P and Q*/
-  PPolar: boolean;
+  PPolar?: boolean;
   /** Base Frequency for ratings.*/
-  basefreq: number;
+  basefreq?: number;
   /** {Yes|No or True|False} Indicates whether this element is enabled.*/
-  enabled: boolean;
-  /** Make like another object, e.g.:
-   *
-   * New Capacitor.C2 like=c1  ...*/
-  like: string;
+  enabled?: boolean;
+
+  constructor(
+    nameOrOptions: string | MonitorInterface,
+    options?: Omit<MonitorInterface, "name">
+  ) {
+    super();
+    if (typeof nameOrOptions === "string") {
+      this.name = nameOrOptions;
+      Object.assign(this, options);
+    } else {
+      Object.assign(this, nameOrOptions);
+    }
+  }
 }

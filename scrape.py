@@ -4,7 +4,7 @@ import re
 
 
 def parseName(name: str):
-    if name.startswith("%") or name[0].isdigit():
+    if name.startswith("%") or name[0].isdigit() or "-" in name:
         return '"{0}"'.format(name)
     else:
         return name
@@ -12,9 +12,10 @@ def parseName(name: str):
 
 def parseDescription(description: str):
     addCommentFormatting = re.sub(r"\n", "\n\t* \n\t* ", description)
-    addCommentFormatting.replace("*/", "/")
+    nextStep = re.sub(r"\*/", "/", addCommentFormatting)
+    # addCommentFormatting.replace("*/", "/")
     # removeinvalid = re.sub("*/", "/", addCommentFormatting)
-    formatted = "\t/** " + addCommentFormatting + "*/\n"
+    formatted = "\t/** " + nextStep + "*/\n"
     return formatted
 
 
@@ -71,12 +72,21 @@ for element in elements:
     element_name = element_name_type[:element_type_sindex].strip()
     element_type = element_name_type[element_type_sindex + 1 : element_type_eindex]
     tbody = element.findNext("tbody")
-    f = open("models/{0}.ts".format(element_name), "w")
+    f = open("src/models/{0}.ts".format(element_name), "w")
     options = tbody.findAll("tr")
-    file = "/**  {0} */\n".format(element_type)
-    file += "export default class {0} {{\n".format(element_name)
-    file += "/** Name of the component */\n"
-    file += "name: string;\n"
+    file = 'import BaseComponent from "./BaseComponent";\n'
+    file += 'import {{ {0}Interface }} from "../interfaces/{0}Interface";\n'.format(
+        element_name
+    )
+    file += "/**  {0} */\n".format(element_type)
+    file += "export class {0} extends BaseComponent {{\n".format(element_name)
+    file += '_type= "{0}";\n'.format(element_name)
+    file += "_parameters= [\n"
+    for option in options:
+        elements = option.findAll("td")
+        name = elements[1].text
+        file += '"{0}", \n'.format(name)
+    file += "]; \n"
     for option in options:
         elements = option.findAll("td")
         index = elements[0].text
@@ -85,6 +95,18 @@ for element in elements:
         description = elements[3].text
         jsType = getType(type)
         file += parseDescription(description)
-        file += "\t{0}: {1};\n".format(parseName(name), jsType)
-    file += "}"
+        file += "\t{0}?: {1};\n".format(parseName(name), jsType)
+    file += "  constructor(\n"
+    file += "    nameOrOptions: string | {0}Interface,\n".format(element_name)
+    file += '    options?: Omit<{0}Interface, "name">,\n'.format(element_name)
+    file += "  ) {\n"
+    file += "    super();\n"
+    file += '    if (typeof nameOrOptions === "string") {\n'
+    file += "      this.name = nameOrOptions;\n"
+    file += "      Object.assign(this, options);\n"
+    file += "    } else {\n"
+    file += "      Object.assign(this, nameOrOptions);\n"
+    file += "    }\n"
+    file += "  }\n"
+    file += "}\n"
     f.write(file)
