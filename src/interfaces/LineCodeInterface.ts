@@ -1,4 +1,4 @@
-import { UnitsEnum } from "../enums/enums";
+import { UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   General  */

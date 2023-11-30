@@ -1,14 +1,4 @@
-import {
-  BalancedEnum,
-  BooleanEnum,
-  ConnEnum,
-  DebugTraceEnum,
-  DispmodeEnum,
-  ForceOnEnum,
-  FuelkWhEnum,
-  StatusEnum,
-  UseFuelEnum,
-} from "../enums/enums";
+import { ConnEnum, DispmodeEnum, FuelkWhEnum, StatusEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -102,7 +92,7 @@ export interface GeneratorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Generator#forceon
    */
-  forceOn?: ForceOnEnum;
+  forceOn?: boolean;
   /**
    *@inheritdoc Models.Generator#kVA
    */
@@ -154,11 +144,11 @@ export interface GeneratorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Generator#debugtrace
    */
-  debugtrace?: DebugTraceEnum;
+  debugtrace?: boolean;
   /**
    *@inheritdoc Models.Generator#Balanced
    */
-  Balanced?: BalancedEnum;
+  Balanced?: boolean;
   /**
    *@inheritdoc Models.Generator#XRdp
    */
@@ -166,7 +156,7 @@ export interface GeneratorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Generator#UseFuel
    */
-  UseFuel?: UseFuelEnum;
+  UseFuel?: boolean;
   /**
    *@inheritdoc Models.Generator#FuelkWh
    */
@@ -202,5 +192,5 @@ export interface GeneratorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Generator#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

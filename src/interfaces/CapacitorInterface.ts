@@ -1,4 +1,4 @@
-import { BooleanEnum, ConnEnum, StatesEnum } from "../enums/enums";
+import { ConnEnum, StatesEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
@@ -84,5 +84,5 @@ export interface CapacitorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Capacitor#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

@@ -1,12 +1,4 @@
-import {
-  BalancedEnum,
-  BooleanEnum,
-  ConnEnum,
-  ControlModeEnum,
-  DebugTraceEnum,
-  PFPriorityEnum,
-  WattPriorityEnum,
-} from "../enums/enums";
+import { ConnEnum, ControlModeEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -96,7 +88,7 @@ export interface PVSystemInterface extends BaseInterface {
   /**
    *@inheritdoc Models.PVSystem#Balanced
    */
-  Balanced?: BalancedEnum;
+  Balanced?: boolean;
   /**
    *@inheritdoc Models.PVSystem#LimitCurrent
    */
@@ -140,7 +132,7 @@ export interface PVSystemInterface extends BaseInterface {
   /**
    *@inheritdoc Models.PVSystem#debugtrace
    */
-  debugTrace?: DebugTraceEnum;
+  debugTrace?: boolean;
   /**
    *@inheritdoc Models.PVSystem#VarFollowInverter
    */
@@ -152,11 +144,11 @@ export interface PVSystemInterface extends BaseInterface {
   /**
    *@inheritdoc Models.PVSystem#WattPriority
    */
-  WattPriority?: WattPriorityEnum;
+  WattPriority?: boolean;
   /**
    *@inheritdoc Models.PVSystem#PFPriority
    */
-  PFPriority?: PFPriorityEnum;
+  PFPriority?: boolean;
   /**
    *@inheritdoc Models.PVSystem#%PminNoVars
    */
@@ -216,5 +208,5 @@ export interface PVSystemInterface extends BaseInterface {
   /**
    *@inheritdoc Models.PVSystem#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

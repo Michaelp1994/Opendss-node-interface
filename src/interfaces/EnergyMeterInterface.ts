@@ -1,15 +1,4 @@
-import {
-  BooleanEnum,
-  EnergyMeterActionEnum,
-  LineLossesEnum,
-  LocalOnlyEnum,
-  LossesEnum,
-  PhaseVoltageReportEnum,
-  SeqLossesEnum,
-  VbaseLossesEnum,
-  XfmrLossesEnum,
-  YesNoEnum,
-} from "../enums/enums";
+import { EnergyMeterActionEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Meter Element  */
@@ -19,7 +8,7 @@ export interface EnergyMeterInterface extends BaseInterface {
   /**
    *@inheritdoc Models.EnergyMeter#element
    */
-  element?: string;
+  element: string;
   /**
    *@inheritdoc Models.EnergyMeter#terminal
    */
@@ -51,7 +40,7 @@ export interface EnergyMeterInterface extends BaseInterface {
   /**
    *@inheritdoc Models.EnergyMeter#LocalOnly
    */
-  LocalOnly?: LocalOnlyEnum;
+  LocalOnly?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#Mask
    */
@@ -59,31 +48,31 @@ export interface EnergyMeterInterface extends BaseInterface {
   /**
    *@inheritdoc Models.EnergyMeter#Losses
    */
-  Losses?: LossesEnum;
+  Losses?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#LineLosses
    */
-  LineLosses?: LineLossesEnum;
+  LineLosses?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#XfmrLosses
    */
-  XfmrLosses?: XfmrLossesEnum;
+  XfmrLosses?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#SeqLosses
    */
-  SeqLosses?: SeqLossesEnum;
+  SeqLosses?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#3phaseLosses
    */
-  "3phaseLosses"?: YesNoEnum;
+  "3phaseLosses"?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#VbaseLosses
    */
-  VbaseLosses?: VbaseLossesEnum;
+  VbaseLosses?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#PhaseVoltageReport
    */
-  PhaseVoltageReport?: PhaseVoltageReportEnum;
+  PhaseVoltageReport?: boolean;
   /**
    *@inheritdoc Models.EnergyMeter#Int_Rate
    */
@@ -119,5 +108,5 @@ export interface EnergyMeterInterface extends BaseInterface {
   /**
    *@inheritdoc Models.EnergyMeter#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

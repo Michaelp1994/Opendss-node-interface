@@ -1,4 +1,9 @@
-import { UnitsEnum } from "../enums/enums";
+import {
+  GMRunitsEnum,
+  RadunitsEnum,
+  UnitsEnum,
+  UnitsWithMilliMeterEnum,
+} from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Conductor Data, Cable Data  */
@@ -56,7 +61,7 @@ export interface CNDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CNData#GMRunits
    */
-  GMRunits?: UnitsEnum;
+  GMRunits?: GMRunitsEnum;
   /**
    *@inheritdoc Models.CNData#radius
    */
@@ -64,7 +69,7 @@ export interface CNDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CNData#radunits
    */
-  radunits?: UnitsEnum;
+  radunits?: RadunitsEnum;
   /**
    *@inheritdoc Models.CNData#normamps
    */

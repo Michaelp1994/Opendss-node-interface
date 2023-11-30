@@ -1,4 +1,3 @@
-import { BooleanEnum, EventLogEnum, PreferQEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -8,7 +7,7 @@ export interface ExpControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ExpControl#PVSystemList
    */
-  PVSystemList?: string[];
+  PVSystemList?: string;
   /**
    *@inheritdoc Models.ExpControl#Vreg
    */
@@ -44,7 +43,7 @@ export interface ExpControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ExpControl#EventLog
    */
-  EventLog?: EventLogEnum;
+  EventLog?: boolean;
   /**
    *@inheritdoc Models.ExpControl#DeltaQ_factor
    */
@@ -52,7 +51,7 @@ export interface ExpControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ExpControl#PreferQ
    */
-  PreferQ?: PreferQEnum;
+  PreferQ?: boolean;
   /**
    *@inheritdoc Models.ExpControl#Tresponse
    */
@@ -68,5 +67,5 @@ export interface ExpControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ExpControl#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

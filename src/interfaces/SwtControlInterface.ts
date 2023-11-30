@@ -1,9 +1,4 @@
-import {
-  BooleanEnum,
-  LockEnum,
-  ResetEnum,
-  SwtControlActionEnum,
-} from "../enums/enums";
+import { SwtControlActionEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -13,7 +8,7 @@ export interface SwtControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.SwtControl#SwitchedObj
    */
-  SwitchedObj?: string;
+  SwitchedObj: string;
   /**
    *@inheritdoc Models.SwtControl#SwitchedTerm
    */
@@ -25,7 +20,7 @@ export interface SwtControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.SwtControl#Lock
    */
-  Lock?: LockEnum;
+  Lock?: boolean;
   /**
    *@inheritdoc Models.SwtControl#Delay
    */
@@ -41,7 +36,7 @@ export interface SwtControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.SwtControl#Reset
    */
-  Reset?: ResetEnum;
+  Reset?: boolean;
   /**
    *@inheritdoc Models.SwtControl#basefreq
    */
@@ -49,5 +44,5 @@ export interface SwtControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.SwtControl#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

@@ -1,4 +1,4 @@
-import { BooleanEnum, NormalEnum, StateEnum } from "../enums/enums";
+import { NormalEnum, StateEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -8,7 +8,7 @@ export interface FuseInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Fuse#MonitoredObj
    */
-  monitoredObj?: string;
+  monitoredObj: string;
   /**
    *@inheritdoc Models.Fuse#MonitoredTerm
    */
@@ -52,5 +52,5 @@ export interface FuseInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Fuse#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

@@ -1,4 +1,4 @@
-import { BooleanEnum, NormalEnum, StateEnum } from "../enums/enums";
+import { NormalEnum, StateEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -8,7 +8,7 @@ export interface RecloserInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Recloser#MonitoredObj
    */
-  MonitoredObj?: string;
+  monitoredObj: string;
   /**
    *@inheritdoc Models.Recloser#MonitoredTerm
    */
@@ -108,5 +108,5 @@ export interface RecloserInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Recloser#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

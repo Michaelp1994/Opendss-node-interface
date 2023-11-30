@@ -1,4 +1,4 @@
-import { ConnEnum } from "../enums/enums";
+import { ConnEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   General  */

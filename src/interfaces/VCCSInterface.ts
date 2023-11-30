@@ -1,4 +1,3 @@
-import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -68,5 +67,5 @@ export interface VCCSInterface extends BaseInterface {
   /**
    *@inheritdoc Models.VCCS#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

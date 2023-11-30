@@ -1,4 +1,4 @@
-import { UnitsEnum } from "../enums/enums";
+import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Conductor Data, Cable Data  */
@@ -52,7 +52,7 @@ export interface TSDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.TSData#GMRunits
    */
-  GMRunits?: UnitsEnum;
+  GMRunits?: GMRunitsEnum;
   /**
    *@inheritdoc Models.TSData#radius
    */
@@ -60,7 +60,7 @@ export interface TSDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.TSData#radunits
    */
-  radunits?: UnitsEnum;
+  radunits?: RadunitsEnum;
   /**
    *@inheritdoc Models.TSData#normamps
    */

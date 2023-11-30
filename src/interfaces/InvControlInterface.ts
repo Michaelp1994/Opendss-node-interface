@@ -1,13 +1,11 @@
 import {
-  BooleanEnum,
   CombiModeEnum,
-  EventLogEnum,
   ModeEnum,
   MonVoltageCalcEnum,
   RateofChangeModeEnum,
   VoltageCurvexRefEnum,
   VoltwattYAxisEnum,
-} from "../enums/enums";
+} from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -101,7 +99,7 @@ export interface InvControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.InvControl#EventLog
    */
-  EventLog?: EventLogEnum;
+  EventLog?: boolean;
   /**
    *@inheritdoc Models.InvControl#RefReactivePower
    */
@@ -157,5 +155,5 @@ export interface InvControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.InvControl#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

@@ -1,4 +1,4 @@
-import { BooleanEnum, ConnEnum, ParallelEnum } from "../enums/enums";
+import { ConnEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
@@ -40,7 +40,7 @@ export interface ReactorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Reactor#Parallel
    */
-  Parallel?: ParallelEnum;
+  Parallel?: boolean;
   /**
    *@inheritdoc Models.Reactor#R
    */
@@ -108,5 +108,5 @@ export interface ReactorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Reactor#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

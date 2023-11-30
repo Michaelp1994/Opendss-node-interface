@@ -1,4 +1,4 @@
-import { ReduceEnum, UnitsEnum } from "../enums/enums";
+import { UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   General  */
@@ -44,7 +44,7 @@ export interface LineGeometryInterface extends BaseInterface {
   /**
    *@inheritdoc Models.LineGeometry#reduce
    */
-  reduce?: ReduceEnum;
+  reduce?: boolean;
   /**
    *@inheritdoc Models.LineGeometry#spacing
    */

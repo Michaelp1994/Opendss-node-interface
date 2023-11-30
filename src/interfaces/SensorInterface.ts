@@ -1,9 +1,4 @@
-import {
-  BooleanEnum,
-  ClearEnum,
-  ConnEnum,
-  DeltaDirectionEnum,
-} from "../enums/enums";
+import { ConnEnum, DeltaDirectionEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Meter Element  */
@@ -25,7 +20,7 @@ export interface SensorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Sensor#clear
    */
-  clear?: ClearEnum;
+  clear?: boolean;
   /**
    *@inheritdoc Models.Sensor#kVs
    */
@@ -65,5 +60,5 @@ export interface SensorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Sensor#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

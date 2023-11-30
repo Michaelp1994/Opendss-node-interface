@@ -1,4 +1,3 @@
-import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -8,7 +7,7 @@ export interface GenDispatcherInterface extends BaseInterface {
   /**
    *@inheritdoc Models.GenDispatcher#Element
    */
-  Element?: string;
+  element: string;
   /**
    *@inheritdoc Models.GenDispatcher#Terminal
    */
@@ -32,7 +31,7 @@ export interface GenDispatcherInterface extends BaseInterface {
   /**
    *@inheritdoc Models.GenDispatcher#Weights
    */
-  Weights?: number[];
+  // weights?: number[];
   /**
    *@inheritdoc Models.GenDispatcher#basefreq
    */
@@ -40,5 +39,5 @@ export interface GenDispatcherInterface extends BaseInterface {
   /**
    *@inheritdoc Models.GenDispatcher#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

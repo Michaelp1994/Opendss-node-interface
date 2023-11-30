@@ -1,4 +1,4 @@
-import { GMRunitsEnum, UnitsEnum } from "../enums/enums";
+import { GMRunitsEnum, UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Conductor Data  */

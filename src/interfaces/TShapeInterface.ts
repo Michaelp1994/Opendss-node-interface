@@ -1,4 +1,4 @@
-import { ActionEnum } from "../enums/enums";
+import { ActionEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   General  */

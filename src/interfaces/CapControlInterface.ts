@@ -1,12 +1,4 @@
-import {
-  BooleanEnum,
-  CapControlTypeEnum,
-  CTPhaseEnum,
-  EventLogEnum,
-  PTPhaseEnum,
-  ResetEnum,
-  VoltOverrideEnum,
-} from "../enums/enums";
+import { CapControlTypeEnum, CTPhaseEnum, PTPhaseEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -16,7 +8,7 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#element
    */
-  element?: string;
+  element: string;
   /**
    *@inheritdoc Models.CapControl#terminal
    */
@@ -24,7 +16,7 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#capacitor
    */
-  capacitor?: string;
+  capacitor: string;
   /**
    *@inheritdoc Models.CapControl#type
    */
@@ -52,7 +44,7 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#VoltOverride
    */
-  VoltOverride?: VoltOverrideEnum;
+  VoltOverride?: boolean;
   /**
    *@inheritdoc Models.CapControl#Vmax
    */
@@ -84,7 +76,7 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#EventLog
    */
-  EventLog?: EventLogEnum;
+  EventLog?: boolean;
   /**
    *@inheritdoc Models.CapControl#UserModel
    */
@@ -100,7 +92,7 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#Reset
    */
-  Reset?: ResetEnum;
+  Reset?: boolean;
   /**
    *@inheritdoc Models.CapControl#basefreq
    */
@@ -108,5 +100,5 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

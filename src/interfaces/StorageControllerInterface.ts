@@ -1,10 +1,4 @@
-import {
-  BooleanEnum,
-  EventLogEnum,
-  ModeChargeEnum,
-  ModeDischargeEnum,
-  MonPhaseEnum,
-} from "../enums/enums";
+import { ModeChargeEnum, ModeDischargeEnum, MonPhaseEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -14,7 +8,7 @@ export interface StorageControllerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.StorageController#Element
    */
-  Element?: string;
+  Element: string;
   /**
    *@inheritdoc Models.StorageController#Terminal
    */
@@ -118,7 +112,7 @@ export interface StorageControllerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.StorageController#EventLog
    */
-  EventLog?: EventLogEnum;
+  EventLog?: boolean;
   /**
    *@inheritdoc Models.StorageController#InhibitTime
    */
@@ -166,5 +160,5 @@ export interface StorageControllerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.StorageController#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

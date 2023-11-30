@@ -1,4 +1,4 @@
-import { BooleanEnum, TypeEnum } from "../enums/enums";
+import { TypeEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
@@ -92,5 +92,5 @@ export interface GICTransformerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.GICTransformer#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

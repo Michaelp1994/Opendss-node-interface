@@ -1,8 +1,4 @@
-import {
-  LoadShapeActionEnum,
-  MemoryMappingEnum,
-  UseActualEnum,
-} from "../enums/enums";
+import { LoadShapeActionEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   General  */
@@ -56,7 +52,7 @@ export interface LoadShapeInterface extends BaseInterface {
   /**
    *@inheritdoc Models.LoadShape#UseActual
    */
-  UseActual?: UseActualEnum;
+  UseActual?: boolean;
   /**
    *@inheritdoc Models.LoadShape#Pmax
    */
@@ -92,5 +88,5 @@ export interface LoadShapeInterface extends BaseInterface {
   /**
    *@inheritdoc Models.LoadShape#MemoryMapping
    */
-  MemoryMapping?: MemoryMappingEnum;
+  MemoryMapping?: boolean;
 }

@@ -1,4 +1,3 @@
-import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -8,7 +7,7 @@ export interface ESPVLControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ESPVLControl#Element
    */
-  Element?: string;
+  element: string;
   /**
    *@inheritdoc Models.ESPVLControl#Terminal
    */
@@ -56,5 +55,5 @@ export interface ESPVLControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ESPVLControl#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

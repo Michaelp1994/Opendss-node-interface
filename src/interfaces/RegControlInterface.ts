@@ -1,14 +1,4 @@
-import {
-  BooleanEnum,
-  CogenEnum,
-  DebugTraceEnum,
-  EventLogEnum,
-  InverseTimeEnum,
-  PTphaseEnum,
-  ResetEnum,
-  ReversibleEnum,
-  RevNeutralEnum,
-} from "../enums/enums";
+import { PTphaseEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -18,7 +8,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#transformer
    */
-  transformer?: string;
+  transformer: string;
   /**
    *@inheritdoc Models.RegControl#winding
    */
@@ -58,7 +48,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#reversible
    */
-  reversible?: ReversibleEnum;
+  reversible?: boolean;
   /**
    *@inheritdoc Models.RegControl#revvreg
    */
@@ -82,7 +72,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#debugtrace
    */
-  debugtrace?: DebugTraceEnum;
+  debugtrace?: boolean;
   /**
    *@inheritdoc Models.RegControl#maxtapchange
    */
@@ -90,7 +80,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#inversetime
    */
-  inversetime?: InverseTimeEnum;
+  inversetime?: boolean;
   /**
    *@inheritdoc Models.RegControl#tapwinding
    */
@@ -114,11 +104,11 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#revNeutral
    */
-  revNeutral?: RevNeutralEnum;
+  revNeutral?: boolean;
   /**
    *@inheritdoc Models.RegControl#EventLog
    */
-  EventLog?: EventLogEnum;
+  EventLog?: boolean;
   /**
    *@inheritdoc Models.RegControl#RemotePTRatio
    */
@@ -130,7 +120,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#Reset
    */
-  Reset?: ResetEnum;
+  Reset?: boolean;
   /**
    *@inheritdoc Models.RegControl#LDC_Z
    */
@@ -142,7 +132,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#Cogen
    */
-  Cogen?: CogenEnum;
+  Cogen?: boolean;
   /**
    *@inheritdoc Models.RegControl#basefreq
    */
@@ -150,5 +140,5 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

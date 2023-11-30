@@ -1,4 +1,3 @@
-import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -92,5 +91,5 @@ export interface VSConverterInterface extends BaseInterface {
   /**
    *@inheritdoc Models.VSConverter#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

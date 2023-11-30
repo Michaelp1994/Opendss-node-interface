@@ -1,11 +1,4 @@
-import {
-  BooleanEnum,
-  ConnEnum,
-  CoreEnum,
-  LeadLagEnum,
-  SubEnum,
-  XRConstEnum,
-} from "../enums/enums";
+import { ConnEnum, CoreEnum, LeadLagEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
@@ -131,7 +124,7 @@ export interface TransformerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Transformer#sub
    */
-  sub?: SubEnum;
+  sub?: boolean;
   /**
    *@inheritdoc Models.Transformer#MaxTap
    */
@@ -171,7 +164,7 @@ export interface TransformerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Transformer#XRConst
    */
-  XRConst?: XRConstEnum;
+  XRConst?: boolean;
   /**
    *@inheritdoc Models.Transformer#X12
    */
@@ -235,5 +228,5 @@ export interface TransformerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Transformer#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

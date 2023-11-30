@@ -1,4 +1,4 @@
-import { BooleanEnum, ScanTypeEnum, SequenceEnum } from "../enums/enums";
+import { ScanTypeEnum, SequenceEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -60,5 +60,5 @@ export interface IsourceInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Isource#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

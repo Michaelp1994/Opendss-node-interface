@@ -2,20 +2,18 @@ import BaseInterface from "./BaseInterface";
 
 /**   General  */
 export interface GrowthShapeInterface extends BaseInterface {
-  /** Name of the component */
-  name: string;
   /**
    *@inheritdoc Models.GrowthShape#npts
    */
-  npts?: number;
+  npts: number;
   /**
    *@inheritdoc Models.GrowthShape#year
    */
-  year?: number[];
+  year: number[];
   /**
    *@inheritdoc Models.GrowthShape#mult
    */
-  mult?: number[];
+  mult: number[];
   /**
    *@inheritdoc Models.GrowthShape#csvfile
    */

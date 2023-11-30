@@ -1,13 +1,9 @@
 import {
-  BalancedEnum,
-  BooleanEnum,
   ConnEnum,
   ControlModeEnum,
-  DebugtraceEnum,
   DispModeEnum,
   StorageStateEnum,
-  WattPriorityEnum,
-} from "../enums/enums";
+} from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -73,7 +69,7 @@ export interface StorageInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Storage#WattPriority
    */
-  WattPriority?: WattPriorityEnum;
+  WattPriority?: boolean;
   /**
    *@inheritdoc Models.Storage#PFPriority
    */
@@ -161,7 +157,7 @@ export interface StorageInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Storage#Balanced
    */
-  Balanced?: BalancedEnum;
+  Balanced?: boolean;
   /**
    *@inheritdoc Models.Storage#LimitCurrent
    */
@@ -217,7 +213,7 @@ export interface StorageInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Storage#debugtrace
    */
-  debugtrace?: DebugtraceEnum;
+  debugtrace?: boolean;
   /**
    *@inheritdoc Models.Storage#kVDC
    */
@@ -261,5 +257,5 @@ export interface StorageInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Storage#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

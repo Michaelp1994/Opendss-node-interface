@@ -1,10 +1,4 @@
-import {
-  AutoTransConnEnum,
-  BooleanEnum,
-  CoreEnum,
-  LeadLagEnum,
-  YesNoEnum,
-} from "../enums/enums";
+import { AutoTransConnEnum, CoreEnum, LeadLagEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
@@ -130,7 +124,7 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#sub
    */
-  sub?: YesNoEnum;
+  sub?: boolean;
   /**
    *@inheritdoc Models.AutoTrans#MaxTap
    */
@@ -162,7 +156,7 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#XRConst
    */
-  XRConst?: YesNoEnum;
+  XRConst?: boolean;
   /**
    *@inheritdoc Models.AutoTrans#LeadLag
    */
@@ -198,5 +192,5 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

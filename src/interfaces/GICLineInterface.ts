@@ -1,4 +1,3 @@
-import { BooleanEnum } from "../enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PC Element  */
@@ -76,5 +75,5 @@ export interface GICLineInterface extends BaseInterface {
   /**
    *@inheritdoc Models.GICLine#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

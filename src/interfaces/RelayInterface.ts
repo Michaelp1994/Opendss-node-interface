@@ -1,12 +1,4 @@
-import {
-  BooleanEnum,
-  DebugTraceEnum,
-  DistReverseEnum,
-  DOC_P1BlockingEnum,
-  EventLogEnum,
-  NormalEnum,
-  StateEnum,
-} from "../enums/enums";
+import { NormalEnum, StateEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Control Element  */
@@ -16,7 +8,7 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#MonitoredObj
    */
-  MonitoredObj?: string;
+  MonitoredObj: string;
   /**
    *@inheritdoc Models.Relay#MonitoredTerm
    */
@@ -156,15 +148,15 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#EventLog
    */
-  EventLog?: EventLogEnum;
+  EventLog?: boolean;
   /**
    *@inheritdoc Models.Relay#DebugTrace
    */
-  DebugTrace?: DebugTraceEnum;
+  DebugTrace?: boolean;
   /**
    *@inheritdoc Models.Relay#DistReverse
    */
-  DistReverse?: DistReverseEnum;
+  DistReverse?: boolean;
   /**
    *@inheritdoc Models.Relay#Normal
    */
@@ -212,7 +204,7 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#DOC_P1Blocking
    */
-  DOC_P1Blocking?: DOC_P1BlockingEnum;
+  DOC_P1Blocking?: boolean;
   /**
    *@inheritdoc Models.Relay#basefreq
    */
@@ -220,5 +212,5 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

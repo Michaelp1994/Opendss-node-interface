@@ -1,10 +1,4 @@
-import {
-  BooleanEnum,
-  MonitorActionEnum,
-  PPolarEnum,
-  ResidualEnum,
-  VIPolarEnum,
-} from "../enums/enums";
+import { MonitorActionEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, Meter Element  */
@@ -30,15 +24,15 @@ export interface MonitorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Monitor#residual
    */
-  residual?: ResidualEnum;
+  residual?: boolean;
   /**
    *@inheritdoc Models.Monitor#VIPolar
    */
-  VIPolar?: VIPolarEnum;
+  VIPolar?: boolean;
   /**
    *@inheritdoc Models.Monitor#PPolar
    */
-  PPolar?: PPolarEnum;
+  PPolar?: boolean;
   /**
    *@inheritdoc Models.Monitor#basefreq
    */
@@ -46,5 +40,5 @@ export interface MonitorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Monitor#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }

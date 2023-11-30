@@ -1,9 +1,4 @@
-import {
-  BooleanEnum,
-  EarthModelEnum,
-  SwitchEnum,
-  UnitsEnum,
-} from "../enums/enums";
+import { EarthModelEnum, UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
@@ -69,7 +64,7 @@ export interface LineInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Line#Switch
    */
-  Switch?: SwitchEnum;
+  Switch?: boolean;
   /**
    *@inheritdoc Models.Line#Rg
    */
@@ -157,5 +152,5 @@ export interface LineInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Line#enabled
    */
-  enabled?: BooleanEnum;
+  enabled?: boolean;
 }
