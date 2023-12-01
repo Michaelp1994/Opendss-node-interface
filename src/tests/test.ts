@@ -48,7 +48,7 @@ test("Create a Circuit", () => {
   circuit.add(reactor);
   circuit.add(fault);
   circuit.solve();
-  const current = circuit.readCurrent(fault);
+  const current = circuit.readCurrent(fault, 1);
   expect(current).toBeGreaterThan(0);
 });
 

@@ -70,8 +70,11 @@ export class Circuit extends Vsource {
     );
   }
 
-  readCurrent(component: CircuitElementComponent) {
-    return this.driver.readCurrent(`${component._type}.${component.name}`);
+  readCurrent(component: CircuitElementComponent, index: number) {
+    return this.driver.readCurrent(
+      `${component._type}.${component.name}`,
+      index
+    );
   }
 
   solve() {
