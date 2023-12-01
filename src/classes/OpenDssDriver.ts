@@ -57,12 +57,13 @@ export class OpenDssDriver {
     this.setActiveElement(prevName);
   }
 
-  readCurrent(location: string) {
+  readCurrent(location: string, phase: number) {
     const prevName = this.dssElem.Name;
     this.setActiveElement(location);
+    const index = (phase - 1) * 2;
     const current = this.dssMathLib.ctopolardeg(
-      this.dssElem.Currents[0], // FIXME: figure out the right current to extract
-      this.dssElem.Currents[1]
+      this.dssElem.Currents[index],
+      this.dssElem.Currents[index + 1]
     )[0];
     this.setActiveElement(prevName);
     return current;
