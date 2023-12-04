@@ -10,6 +10,7 @@ describe("Testing RegControl Model", () => {
   });
   circuit.add(transformer);
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

@@ -5,6 +5,7 @@ describe("Testing Line Model", () => {
   const circuit = new Circuit("Esoura");
   const line = new Line("example_line");
   circuit.add(line);
+  circuit.build();
   circuit.solve();
   test.each(line._parameters)("if %s is in OpenDSS", (parameter) =>
     expect(() => circuit.getParameter(line, parameter)).not.toThrow()

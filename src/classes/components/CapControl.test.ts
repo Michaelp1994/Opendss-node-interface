@@ -13,6 +13,7 @@ describe("Testing CapControl Model", () => {
   circuit.add(line);
   circuit.add(capacitor);
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

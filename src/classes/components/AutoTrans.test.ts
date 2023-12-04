@@ -5,6 +5,7 @@ describe("Testing AutoTrans Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new AutoTrans("example_autotrans");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

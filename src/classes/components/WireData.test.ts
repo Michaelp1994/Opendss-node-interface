@@ -31,6 +31,7 @@ describe("Testing WireData Model", () => {
   circuit.add(wireData);
   circuit.add(line);
 
+  circuit.build();
   circuit.solve();
 
   test("if wireData is properly loaded", () => {

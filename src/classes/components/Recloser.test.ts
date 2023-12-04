@@ -10,6 +10,7 @@ describe("Testing Recloser Model", () => {
   });
   circuit.add(line);
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

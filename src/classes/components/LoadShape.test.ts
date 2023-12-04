@@ -11,6 +11,7 @@ describe("Testing LoadShape Model", () => {
 
   circuit.add(loadShape);
   circuit.add(load);
+  circuit.build();
   circuit.solve();
 
   test("if loadshape is properly loaded", () => {

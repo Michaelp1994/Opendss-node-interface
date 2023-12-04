@@ -10,6 +10,7 @@ describe("Testing LineCode Model", () => {
   });
   circuit.add(linecode);
   circuit.add(line);
+  circuit.build();
   circuit.solve();
 
   test("if lineCode is properly loaded", () => {

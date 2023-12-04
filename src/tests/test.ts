@@ -47,6 +47,7 @@ test("Create a Circuit", () => {
   circuit.add(line2);
   circuit.add(reactor);
   circuit.add(fault);
+  circuit.build();
   circuit.solve();
   const current = circuit.readCurrent(fault, 1);
   expect(current).toBeGreaterThan(0);
@@ -77,6 +78,7 @@ test("should build a basic circuit and test the correct buses.", () => {
   });
 
   circuit.add(line);
+  circuit.build();
   circuit.solve();
   const buses = circuit.getBuses();
   expect(buses).toStrictEqual(["b_toyota", "b_esoura"]);

@@ -12,6 +12,7 @@ describe("Testing GrowthShape Model", () => {
   const load = new Load("example_load", { growth: "growthShape1" });
   circuit.add(component);
   circuit.add(load);
+  circuit.build();
   circuit.solve();
   test("if GrowthShape is added to circuit", () => {
     expect(circuit.getParameter(load, "growth")).toBe("growthShape1");

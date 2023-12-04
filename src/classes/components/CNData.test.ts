@@ -35,6 +35,7 @@ describe("Testing CNData Model", () => {
   circuit.add(cnData);
   circuit.add(lineSpacing);
   circuit.add(line);
+  circuit.build();
   circuit.solve();
 
   test("if CNData is properly loaded", () => {

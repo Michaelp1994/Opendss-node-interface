@@ -10,6 +10,7 @@ describe("Testing XYcurve Model", () => {
   });
   circuit.add(curve);
   circuit.add(reactor);
+  circuit.build();
   circuit.solve();
 
   test("if lineCode is properly loaded", () => {

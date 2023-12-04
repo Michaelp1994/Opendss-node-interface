@@ -5,6 +5,7 @@ describe("Testing Generator Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new Generator("example_component");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

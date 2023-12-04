@@ -5,6 +5,7 @@ describe("Testing PriceShape Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new PriceShape("example_component");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   // FIXME: don't know how to test.

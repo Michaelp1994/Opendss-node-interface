@@ -5,6 +5,7 @@ describe("Testing GICTransformer Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new GICTransformer("example_component");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

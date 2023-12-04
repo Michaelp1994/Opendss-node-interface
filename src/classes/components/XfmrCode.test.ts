@@ -10,6 +10,7 @@ describe("Testing XfmrCode Model", () => {
   });
   circuit.add(code);
   circuit.add(transformer);
+  circuit.build();
   circuit.solve();
 
   test("if XFMRCode is properly loaded", () => {

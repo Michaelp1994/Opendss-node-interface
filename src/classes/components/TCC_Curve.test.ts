@@ -17,8 +17,8 @@ describe("Testing TCC_Curve Model", () => {
   circuit.add(curve);
   circuit.add(line);
   circuit.add(fuse);
+  circuit.build();
   circuit.solve();
-  circuit.save("");
   test("if TShape is properly loaded", () => {
     expect(circuit.getParameter(fuse, "fuseCurve")).toBe("curve1");
   });

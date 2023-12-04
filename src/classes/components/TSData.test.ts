@@ -34,6 +34,7 @@ describe("Testing TSData Model", () => {
   circuit.add(lineSpacing);
   circuit.add(tsData);
   circuit.add(line);
+  circuit.build();
   circuit.solve();
 
   test("if TSData is properly loaded", () => {

@@ -12,6 +12,7 @@ describe("Testing StorageController Model", () => {
   circuit.add(line);
   circuit.add(storage);
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

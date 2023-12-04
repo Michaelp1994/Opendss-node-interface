@@ -5,6 +5,7 @@ describe("Testing UPFCControl Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new UPFCControl("example_component");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

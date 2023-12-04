@@ -10,6 +10,7 @@ describe("Testing DynamicExp Model", () => {
   });
   circuit.add(dynamic);
   circuit.add(generator);
+  circuit.build();
   circuit.solve();
 
   test("if dynamicExp is properly loaded", () => {

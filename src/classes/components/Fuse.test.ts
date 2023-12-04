@@ -10,7 +10,7 @@ describe("Testing Fuse Model", () => {
   });
   circuit.add(line);
   circuit.add(fuse);
-  circuit.save("");
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

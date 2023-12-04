@@ -11,6 +11,7 @@ describe("Testing TShape Model", () => {
   circuit.add(shape);
   circuit.add(pvsystem);
 
+  circuit.build();
   circuit.solve();
   test("if TShape is properly loaded", () => {
     expect(circuit.getParameter(pvsystem, "Tyearly")).toBe("shape1");

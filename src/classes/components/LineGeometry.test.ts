@@ -10,6 +10,7 @@ describe("Testing LineGeometry Model", () => {
   });
   circuit.add(geometry);
   circuit.add(line);
+  circuit.build();
   circuit.solve();
 
   test("if lineSpacing is properly loaded", () => {

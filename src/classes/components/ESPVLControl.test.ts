@@ -24,7 +24,7 @@ describe("Testing ESPVLControl Model", () => {
   circuit.add(pvSystem);
   circuit.add(pvSystem2);
   // circuit.add(controller);
-  circuit.save("");
+  circuit.build();
   circuit.solve();
 
   // FIXME: don't know how to test yet.

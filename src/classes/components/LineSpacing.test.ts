@@ -10,6 +10,7 @@ describe("Testing LineSpacing Model", () => {
   });
   circuit.add(spacing);
   circuit.add(line);
+  circuit.build();
   circuit.solve();
   test("if lineSpacing is properly loaded", () => {
     expect(circuit.getParameter(line, "spacing")).toBe("spacing1");

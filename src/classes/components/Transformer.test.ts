@@ -5,6 +5,7 @@ describe("Testing Transformer Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new Transformer("example_component");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

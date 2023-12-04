@@ -8,6 +8,7 @@ describe("Testing InvControl Model", () => {
   const invControl = new InvControl("invControl1");
   circuit.add(pvSystem);
   circuit.add(invControl);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

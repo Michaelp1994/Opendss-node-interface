@@ -10,7 +10,7 @@ describe("Testing ExpControl Model", () => {
   });
   circuit.add(pvSystem);
   circuit.add(component);
-  circuit.save("");
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

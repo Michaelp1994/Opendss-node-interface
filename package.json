@@ -1,6 +1,6 @@
 {
   "name": "opendss-node-interface",
-  "version": "1.0.2",
+  "version": "0.0.2",
   "description": "An interface to communicate with OpenDSS (Using ActiveX)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "start": "ts-node ./src/index.ts",
     "typecheck": "tsc ./src/index.ts --noEmit",
     "typedoc": "typedoc --out docs src/index.ts",
@@ -24,12 +24,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "reflect-metadata": "^0.1.13",
-    "typedi": "^0.10.0",
-    "typedoc": "^0.25.4",
     "winax": "^3.4.1"
   },
   "devDependencies": {
+    "typedoc": "^0.25.4",
     "@tsconfig/node20": "^20.1.2",
     "@tsconfig/recommended": "^1.0.3",
     "@types/activex-opendssengine": "^4.0.0",

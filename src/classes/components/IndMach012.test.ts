@@ -5,6 +5,7 @@ describe("Testing IndMach012 Model", () => {
   const circuit = new Circuit("Esoura");
   const component = new IndMach012("example_component");
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {

@@ -9,6 +9,7 @@ describe("Testing GICsource Model", () => {
   const component = new GICsource("example_component");
   circuit.add(line);
   circuit.add(component);
+  circuit.build();
   circuit.solve();
 
   test("if component is in circuit", () => {
