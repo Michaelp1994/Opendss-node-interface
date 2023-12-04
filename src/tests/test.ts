@@ -48,6 +48,13 @@ test("Create a Circuit", () => {
   circuit.add(reactor);
   circuit.add(fault);
   circuit.build();
+  circuit.setOptions({ earthModel: "Carson", basefrequency: 60 });
+  const earthModel = circuit.getOption("earthModel");
+  const basefreq = circuit.getOption("basefrequency");
+  expect(earthModel).toBe("Carson");
+  expect(basefreq).toBe("60");
+
+  console.log(earthModel);
   circuit.solve();
   const current = circuit.readCurrent(fault, 1);
   expect(current).toBeGreaterThan(0);

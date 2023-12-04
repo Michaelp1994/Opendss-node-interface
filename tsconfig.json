@@ -21,9 +21,7 @@
     "resolveJsonModule": true,
     "strictPropertyInitialization": false,
     "noImplicitAny": false,
-    "resolvePackageJsonImports": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "resolvePackageJsonImports": true
   },
 
   "include": ["src", "*.ts"],

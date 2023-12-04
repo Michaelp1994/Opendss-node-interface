@@ -1,3 +1,4 @@
+import { OpenDSSOptionsInterface } from "@interfaces/OpenDSSOptionsInterface";
 import { VsourceInterface } from "@interfaces/VsourceInterface";
 import { open } from "node:fs/promises";
 import { OpenDssDriver } from "../OpenDssDriver";
@@ -40,7 +41,7 @@ export class Circuit extends Vsource {
   }
 
   load(file: string) {}
-
+  /** save the script to a file */
   async saveScript(fileName: string) {
     const file = await open(fileName, "w");
     await file.appendFile(this.create().join("\n") + "\n");
@@ -49,7 +50,7 @@ export class Circuit extends Vsource {
     }
     file.close();
   }
-
+  /** output the script to console */
   printScript() {
     console.log(this.create());
     this.components.forEach((component) => {
@@ -59,6 +60,14 @@ export class Circuit extends Vsource {
 
   showCurrents() {
     this.driver.getCurrents();
+  }
+
+  setOptions(options: OpenDSSOptionsInterface) {
+    this.driver.setOptions(options);
+  }
+
+  getOption(option: keyof OpenDSSOptionsInterface) {
+    return this.driver.getOption(option);
   }
 
   setActiveElement(component: CircuitElementComponent) {
@@ -101,10 +110,6 @@ export class Circuit extends Vsource {
   solve() {
     this.driver.solve();
     this._circuitSolved = true;
-  }
-
-  command(text: string) {
-    this.driver.setOptions(text); //FIXME:
   }
 
   getBuses() {

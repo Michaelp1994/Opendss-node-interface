@@ -1,3 +1,5 @@
+import { OpenDSSOptionsInterface } from "@interfaces/OpenDSSOptionsInterface";
+import { text } from "stream/consumers";
 import winax from "winax";
 import { ParameterUnknownError } from "../errors/ParameterUnknownError";
 
@@ -76,9 +78,19 @@ export class OpenDssDriver {
   getCurrents() {
     this.dssText.Command = "Show Currents Elements";
   }
-  setOptions(text: string) {
-    this.dssText.Command = text;
+
+  setOptions(options: OpenDSSOptionsInterface) {
+    Object.keys(options).forEach((optionName) => {
+      this.dssText.Command = `SET ${optionName} = ${options[optionName]}`;
+    });
+    // this.dssText.Command = text;
   }
+
+  getOption(option: keyof OpenDSSOptionsInterface) {
+    this.dssText.Command = `GET ${option}`;
+    return this.dssText.Result;
+  }
+
   solve() {
     this.dssSolution.Solve();
   }
