@@ -43,7 +43,7 @@ export type GMRunitsEnum =
   | "in"
   | "cm"
   | "mm";
-export type LeadLagEnum = "Lead" | "Lag (default)" | "ANSI (default)" | "Euro";
+export type LeadLagEnum = "Lead" | "Lag" | "ANSI" | "Euro";
 export type ModeChargeEnum =
   | "Loadshape"
   | "Time"
@@ -57,7 +57,7 @@ export type ModeDischargeEnum =
   | "Time"
   | "Schedule"
   | "I-PeakShave";
-export type ModeEnum =
+export type InvControlModeEnum =
   | "VOLTVAR"
   | "VOLTWATT"
   | "DYNAMICREACCURR"
@@ -127,3 +127,37 @@ export type VoltwattYAxisEnum =
   | "PAVAILABLEPU"
   | "PCTPMPPPU"
   | "KVARATINGPU";
+export type CktModelEnum = "Multiphase" | "Positive";
+export type ControlModeOptionEnum = "OFF" | "STATIC" | "EVENT" | "TIME";
+export type LoadModelEnum = "Powerflow" | "Admittance";
+
+export type LoadShapeClassEnum = "Daily" | "Yearly" | "Duty" | "None";
+export type ModeEnum =
+  | "Daily"
+  | "Yearly DIrect"
+  | "DUtycycle"
+  | "Time"
+  | " DYnamic"
+  | " Harmonic"
+  | "HarmonicT"
+  | " M1"
+  | " M2"
+  | " M3"
+  | " Faultstudy"
+  | "MF"
+  | " Peakday"
+  | "LD1"
+  | "LD2"
+  | "AutoAdd"
+  | "YearlyVQ"
+  | "DutyVQ";
+
+export type RandomEnum = "Uniform" | "Gaussian" | "Lognormal" | "None";
+export type ReduceOptionEnum =
+  | "Default"
+  | "Shortlines"
+  | "MergeParallel"
+  | "BreakLoops"
+  | "Switches"
+  | "Ends"
+  | "Laterals";

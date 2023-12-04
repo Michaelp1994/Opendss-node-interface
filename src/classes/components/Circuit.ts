@@ -1,4 +1,5 @@
 import { VsourceInterface } from "@interfaces/VsourceInterface";
+import { open } from "node:fs/promises";
 import { OpenDssDriver } from "../OpenDssDriver";
 import BaseComponent from "./BaseComponent";
 import CircuitElementComponent from "./CircuitElementComponent";
@@ -40,11 +41,24 @@ export class Circuit extends Vsource {
 
   load(file: string) {}
 
-  save(fileName: string) {
+  async saveScript(fileName: string) {
+    const file = await open(fileName, "w");
+    await file.appendFile(this.create().join("\n") + "\n");
+    for (const component of this.components) {
+      await file.appendFile(component.create().join("\n") + "\n");
+    }
+    file.close();
+  }
+
+  printScript() {
     console.log(this.create());
     this.components.forEach((component) => {
       console.log(component.create());
     });
+  }
+
+  showCurrents() {
+    this.driver.getCurrents();
   }
 
   setActiveElement(component: CircuitElementComponent) {
@@ -77,14 +91,20 @@ export class Circuit extends Vsource {
     );
   }
 
-  solve() {
+  build() {
     this.driver.clear();
     this.driver.send(this.create());
     this.components.forEach((component) => {
       this.driver.send(component.create());
     });
+  }
+  solve() {
     this.driver.solve();
     this._circuitSolved = true;
+  }
+
+  command(text: string) {
+    this.driver.setOptions(text); //FIXME:
   }
 
   getBuses() {

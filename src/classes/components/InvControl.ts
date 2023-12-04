@@ -1,6 +1,6 @@
 import {
   CombiModeEnum,
-  ModeEnum,
+  InvControlModeEnum,
   MonVoltageCalcEnum,
   RateofChangeModeEnum,
   VoltageCurvexRefEnum,
@@ -72,7 +72,7 @@ export class InvControl extends CircuitElementComponent {
    * In watt-var mode. This mode attempts to CONTROL the vars, according to a watt-var curve, depending on the present active power output, and the capabilities of the PVSystem/Storage.
    *
    * In GFM mode this control will trigger the GFM control routine for the DERs within the DERList. The GFM actiosn will only take place if the pointed DERs are in GFM mode. The controller parameters are locally setup at the DER.*/
-  Mode?: ModeEnum;
+  Mode?: InvControlModeEnum;
   /** Combination of smart inverter functions in which the InvControl will control the PC elements in DERList, according to the options below:
    *
    * Must be a combination of the following: {VV_VW | VV_DRC}. Default is to not set this property, in which case the single control mode in Mode is active.

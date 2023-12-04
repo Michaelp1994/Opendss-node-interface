@@ -1,4 +1,4 @@
-import { GMRunitsEnum, UnitsEnum } from "@enums/enums";
+import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Conductor Data  */
@@ -32,7 +32,7 @@ export interface WireDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.WireData#radunits
    */
-  radunits?: UnitsEnum;
+  radunits?: RadunitsEnum;
   /**
    *@inheritdoc Models.WireData#normamps
    */

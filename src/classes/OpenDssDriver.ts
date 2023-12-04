@@ -11,12 +11,12 @@ export class OpenDssDriver {
   private dssText: OpenDSSengine.DSS["Text"];
   constructor() {
     this.dss = winax.Object("OpenDSSengine.DSS");
+    this.dssMathLib = this.dss.CmathLib;
+    this.dssText = this.dss.Text;
     this.dssCircuit = this.dss.ActiveCircuit;
     this.dssSolution = this.dssCircuit.Solution;
     this.dssElem = this.dssCircuit.ActiveCktElement;
-    this.dssMathLib = this.dss.CmathLib;
     this.dssBus = this.dssCircuit.ActiveBus;
-    this.dssText = this.dss.Text;
   }
 
   clear() {
@@ -73,6 +73,12 @@ export class OpenDssDriver {
     return this.dssCircuit.AllBusNames;
   }
 
+  getCurrents() {
+    this.dssText.Command = "Show Currents Elements";
+  }
+  setOptions(text: string) {
+    this.dssText.Command = text;
+  }
   solve() {
     this.dssSolution.Solve();
   }

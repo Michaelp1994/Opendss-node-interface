@@ -1,6 +1,6 @@
 import {
   CombiModeEnum,
-  ModeEnum,
+  InvControlModeEnum,
   MonVoltageCalcEnum,
   RateofChangeModeEnum,
   VoltageCurvexRefEnum,
@@ -19,7 +19,7 @@ export interface InvControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.InvControl#Mode
    */
-  Mode?: ModeEnum;
+  Mode?: InvControlModeEnum;
   /**
    *@inheritdoc Models.InvControl#CombiMode
    */
