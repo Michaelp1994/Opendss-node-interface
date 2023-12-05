@@ -1,4 +1,5 @@
 export { AutoTrans } from "./AutoTrans";
+export { default as BaseComponent } from "./BaseComponent";
 export { CNData } from "./CNData";
 export { CapControl } from "./CapControl";
 export { Capacitor } from "./Capacitor";

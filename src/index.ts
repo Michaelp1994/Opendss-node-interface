@@ -1,5 +1,6 @@
 export {
   AutoTrans,
+  BaseComponent,
   CNData,
   CapControl,
   Capacitor,
