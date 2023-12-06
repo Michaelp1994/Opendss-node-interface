@@ -3,7 +3,10 @@ import { CapacitorInterface } from "@interfaces/CapacitorInterface";
 import CircuitElementComponent from "./CircuitElementComponent";
 
 /**   Circuit Element, PD Element  */
-export class Capacitor extends CircuitElementComponent {
+export class Capacitor
+  extends CircuitElementComponent
+  implements CircuitElementComponent
+{
   _type = "Capacitor";
   _parameters = [
     "bus1",

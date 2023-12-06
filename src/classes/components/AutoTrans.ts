@@ -1,9 +1,17 @@
-import { ConnEnum, CoreEnum, LeadLagEnum } from "@enums/enums";
+import {
+  AutoTransConnEnum,
+  ConnEnum,
+  CoreEnum,
+  LeadLagEnum,
+} from "@enums/enums";
 import { AutoTransInterface } from "@interfaces/AutoTransInterface";
 import CircuitElementComponent from "./CircuitElementComponent";
 
 /**   Circuit Element, PD Element  */
-export class AutoTrans extends CircuitElementComponent {
+export class AutoTrans
+  extends CircuitElementComponent
+  implements AutoTransInterface
+{
   _type = "AutoTrans";
   _parameters = [
     "phases",
@@ -68,7 +76,7 @@ export class AutoTrans extends CircuitElementComponent {
    * For AutoTrans, Winding 1 is always Series and Winding 2 (the Common winding) is always Wye.
    *
    * If only 2 windings, no need to specify connections.*/
-  conn?: ConnEnum;
+  conn?: AutoTransConnEnum;
   /** For 2-or 3-phase, enter phase-phase kV rating.  Otherwise, kV rating of the actual winding. Specify H terminal kV rating for Series winding.*/
   kV?: number;
   /** Base kVA rating of the winding. Side effect: forces change of max normal and emerg kVA ratings.If 2-winding AutoTrans, forces other winding to same value. When winding 1 is defined, all other windings are defaulted to the same rating and the first two winding resistances are defaulted to the %loadloss value.*/
@@ -92,7 +100,7 @@ export class AutoTrans extends CircuitElementComponent {
    * New AutoTrans.T1 buses=[Hbus, Xbus] ~ conns=(series, wye)
    *
    * Redundant with conn*/
-  conns?: string[];
+  conns?: AutoTransConnEnum[];
   /** Use this to specify the kV ratings of all windings at once using an array. Example:
    *
    * New AutoTrans.T1 buses=[Hbus, Xbus]

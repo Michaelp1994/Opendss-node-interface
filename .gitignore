@@ -15,7 +15,6 @@ tmp
 
 # Build
 public/css/main.css
-
 # Coverage reports
 coverage
 
@@ -35,7 +34,8 @@ bower_components
 Thumbs.db
 
 # Ignore built ts files
-dist/**/*
+dist
+# dist/**/*
 
 # ignore yarn.lock
 yarn.lock
