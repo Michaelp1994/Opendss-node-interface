@@ -1,6 +1,6 @@
 {
   "name": "opendss-node-interface",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An interface to communicate with OpenDSS (Using ActiveX)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "test": "jest --runInBand",
-    "start": "ts-node ./src/index.ts",
     "typecheck": "tsc ./src/index.ts --noEmit",
     "typedoc": "typedoc --out docs src/index.ts",
     "build": "tsup",
