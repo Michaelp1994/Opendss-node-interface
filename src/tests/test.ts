@@ -1,7 +1,10 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { Circuit, Fault, Line, Reactor, Vsource } from "@components/index";
 
 test("Create a Circuit", () => {
-  const circuit = new Circuit("Toyota", {
+  const study = new GeneralStudy();
+
+  const toyota = new Circuit("Toyota", {
     bus1: "b_toyota",
     Isc1: 3000,
     Isc3: 4000,
@@ -15,7 +18,7 @@ test("Create a Circuit", () => {
     Isc3: 4000,
     x0r0: 3,
     x1r1: 4,
-    phases: 4,
+    phases: 3,
   });
   const line = new Line("Line", {
     bus1: "b_toyota",
@@ -25,7 +28,8 @@ test("Create a Circuit", () => {
     phases: 4,
   });
   const reactor = new Reactor("T1_RT", {
-    bus1: "T1",
+    bus1: "T1.4",
+    bus2: "T1.0",
     X: 0,
     R: 2,
     phases: 1,
@@ -35,32 +39,33 @@ test("Create a Circuit", () => {
     bus2: "b_esoura",
     length: 1,
     units: "km",
-    phases: 5,
+    phases: 4,
   });
 
   const fault = new Fault("SHORT_CIRCUIT", {
     bus1: "T1.1",
     bus2: "T1.4",
   });
-  circuit.add(esoura);
-  circuit.add(line);
-  circuit.add(line2);
-  circuit.add(reactor);
-  circuit.add(fault);
-  circuit.build();
-  circuit.setOptions({ earthModel: "Carson", basefrequency: 60 });
-  const earthModel = circuit.getOption("earthModel");
-  const basefreq = circuit.getOption("basefrequency");
+  study.add(toyota);
+  study.add(esoura);
+  study.add(line);
+  study.add(line2);
+  study.add(reactor);
+  study.add(fault);
+  study.build();
+  study.setOptions({ earthModel: "Carson", basefrequency: 60 });
+  const earthModel = study.getOption("earthModel");
+  const basefreq = study.getOption("basefrequency");
   expect(earthModel).toBe("Carson");
   expect(basefreq).toBe("60");
-
-  console.log(earthModel);
-  circuit.solve();
-  const current = circuit.readCurrent(fault, 1);
+  study.solve();
+  const current = study.readCurrent(fault, 1);
   expect(current).toBeGreaterThan(0);
 });
 
 test("should build a basic circuit and test the correct buses.", () => {
+  const study = new GeneralStudy();
+
   const circuit = new Circuit("Toyota", { bus1: "b_toyota" });
   const line = new Line("Line1", {
     bus1: "b_toyota",
@@ -81,12 +86,11 @@ test("should build a basic circuit and test the correct buses.", () => {
     EarthModel: "Carson",
     x0: 10,
     x1: 10,
-    basefreq: 60,
   });
-
-  circuit.add(line);
-  circuit.build();
-  circuit.solve();
-  const buses = circuit.getBuses();
+  study.add(circuit);
+  study.add(line);
+  study.build();
+  study.solve();
+  const buses = study.getBuses();
   expect(buses).toStrictEqual(["b_toyota", "b_esoura"]);
 });

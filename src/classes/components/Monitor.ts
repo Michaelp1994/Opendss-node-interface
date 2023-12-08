@@ -1,11 +1,15 @@
-import { ActionEnum } from "@enums/enums";
+import { MonitorActionEnum } from "@enums/enums";
 import { MonitorInterface } from "@interfaces/MonitorInterface";
 import CircuitElementComponent from "./CircuitElementComponent";
 
 /**   Circuit Element, Meter Element  */
-export class Monitor extends CircuitElementComponent {
+export default class Monitor
+  extends CircuitElementComponent
+  implements HasKeys<MonitorInterface>
+{
   _type = "Monitor";
-  _parameters = [
+
+  parameters: Array<keyof this> = [
     "element",
     "terminal",
     "mode",
@@ -17,10 +21,13 @@ export class Monitor extends CircuitElementComponent {
     "enabled",
     "like",
   ];
-  /** Name (Full Object name) of element to which the monitor is connected.*/
-  element?: string;
-  /** Number of the terminal of the circuit element to which the monitor is connected. 1 or 2, typically. For monitoring states, attach monitor to terminal 1.*/
+
+  /** Name (Full Object name) of element to which the monitor is connected. */
+  element: string;
+
+  /** Number of the terminal of the circuit element to which the monitor is connected. 1 or 2, typically. For monitoring states, attach monitor to terminal 1. */
   terminal?: number;
+
   /** Bitmask integer designating the values the monitor is to capture:
    *
    * 0 = Voltages and currents at designated terminal
@@ -69,8 +76,9 @@ export class Monitor extends CircuitElementComponent {
    *
    * Mode=112 will save positive sequence voltage and current magnitudes only
    *
-   * Mode=48 will save all sequence voltages and currents, but magnitude only.*/
+   * Mode=48 will save all sequence voltages and currents, but magnitude only. */
   mode?: number;
+
   /** {Clear | Save | Take | Process}
    *
    * (C)lears or (S)aves current buffer.
@@ -79,28 +87,39 @@ export class Monitor extends CircuitElementComponent {
    *
    * (P)rocesses the data taken so far (e.g. Pst for mode 4).
    *
-   * Note that monitors are automatically reset (cleared) when the Set Mode= command is issued. Otherwise, the user must explicitly reset all monitors (reset monitors command) or individual monitors with the Clear action.*/
-  action?: ActionEnum;
-  /** {Yes/True | No/False} Default = No.  Include Residual cbannel (sum of all phases) for voltage and current. Does not apply to sequence quantity modes or power modes.*/
+   * Note that monitors are automatically reset (cleared) when the Set Mode= command is issued. Otherwise, the user must explicitly reset all monitors (reset monitors command) or individual monitors with the Clear action. */
+  action?: MonitorActionEnum;
+
+  /** {Yes/True | No/False} Default = No.  Include Residual cbannel (sum of all phases) for voltage and current. Does not apply to sequence quantity modes or power modes. */
   residual?: boolean;
-  /** {Yes/True | No/False} Default = YES. Report voltage and current in polar form (Mag/Angle). (default)  Otherwise, it will be real and imaginary.*/
+
+  /** {Yes/True | No/False} Default = YES. Report voltage and current in polar form (Mag/Angle). (default)  Otherwise, it will be real and imaginary. */
   VIPolar?: boolean;
-  /** {Yes/True | No/False} Default = YES. Report power in Apparent power, S, in polar form (Mag/Angle).(default)  Otherwise, is P and Q*/
+
+  /** {Yes/True | No/False} Default = YES. Report power in Apparent power, S, in polar form (Mag/Angle).(default)  Otherwise, is P and Q */
   PPolar?: boolean;
-  /** Base Frequency for ratings.*/
+
+  /** Base Frequency for ratings. */
   basefreq?: number;
-  /** {Yes|No or True|False} Indicates whether this element is enabled.*/
+
+  /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;
+
+  constructor(options: MonitorInterface);
+  constructor(name: string, options: OmitName<MonitorInterface>);
   constructor(
     nameOrOptions: string | MonitorInterface,
-    options?: Omit<MonitorInterface, "name">
+    options?: OmitName<MonitorInterface>,
   ) {
-    super();
+    super(nameOrOptions);
     if (typeof nameOrOptions === "string") {
-      this.name = nameOrOptions;
-      Object.assign(this, options);
+      const { element, ...optOptions } = options!;
+      this.element = element;
+      Object.assign(this, optOptions);
     } else {
-      Object.assign(this, nameOrOptions);
+      const { name, element, ...otherOptions } = nameOrOptions;
+      this.element = element;
+      Object.assign(this, otherOptions);
     }
   }
 }

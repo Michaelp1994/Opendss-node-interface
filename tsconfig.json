@@ -19,11 +19,11 @@
     },
     "outDir": "dist",
     "resolveJsonModule": true,
-    "strictPropertyInitialization": false,
-    "noImplicitAny": false,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true,
     "resolvePackageJsonImports": true
   },
 
-  "include": ["src", "*.ts"],
+  "include": ["src", "*.ts", ".eslintrc.js"],
   "exclude": ["node_modules", "dist", "docs"]
 }

@@ -1,31 +1,37 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { PVSystem } from ".";
-import { Circuit } from "./Circuit";
-import { ExpControl } from "./ExpControl";
+import Circuit from "./Circuit";
+import ExpControl from "./ExpControl";
 
 describe("Testing ExpControl Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const pvSystem = new PVSystem("pvsystem1");
   const component = new ExpControl("example_component", {
     // PVSystemList: "[pvsystem1]",
   });
-  circuit.add(pvSystem);
-  circuit.add(component);
-  circuit.build();
-  circuit.solve();
+  study.add(pvSystem);
+  study.add(component);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(component)).not.toThrow();
+    expect(() => study.setActiveElement(component)).not.toThrow();
   });
 
-  test.each(component._parameters)(
+  test.each(component.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(component.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(component, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(component, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(component, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(component, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(component, "fakeParameter")).toThrow();
   });
 });

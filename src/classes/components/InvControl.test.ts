@@ -1,29 +1,35 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { PVSystem } from ".";
-import { Circuit } from "./Circuit";
-import { InvControl } from "./InvControl";
+import Circuit from "./Circuit";
+import InvControl from "./InvControl";
 
 describe("Testing InvControl Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const pvSystem = new PVSystem("pvsystem");
   const invControl = new InvControl("invControl1");
-  circuit.add(pvSystem);
-  circuit.add(invControl);
-  circuit.build();
-  circuit.solve();
+  study.add(pvSystem);
+  study.add(invControl);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(invControl)).not.toThrow();
+    expect(() => study.setActiveElement(invControl)).not.toThrow();
   });
 
-  test.each(invControl._parameters)(
+  test.each(invControl.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(invControl.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(invControl, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(invControl, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(invControl, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(invControl, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(invControl, "fakeParameter")).toThrow();
   });
 });

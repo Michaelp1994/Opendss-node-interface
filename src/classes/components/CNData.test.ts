@@ -1,25 +1,29 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { Line, LineSpacing } from ".";
-import { CNData } from "./CNData";
-import { Circuit } from "./Circuit";
+import CNData from "./CNData";
+import Circuit from "./Circuit";
 
 describe("Testing CNData Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const cnData = new CNData("cable1", {
     diam: 46,
-    Rac: 2.8e-5,
-    GMRac: 27.105829484365415,
-    Runits: "km",
-    radunits: "mm",
-    GMRunits: "mm",
-    normamps: 793,
-    InsLayer: 21,
-    DiaIns: 92.6,
-    EpsR: 2.3,
+    rac: 2.8e-5,
+    gmrAc: 27.105,
+    rUnits: "km",
+    radUnits: "mm",
+    gmrUnits: "mm",
+    normAmps: 793,
+    insLayer: 21,
+    diaIns: 92.6,
+    epsR: 2.3,
     k: 50,
-    DiaStrand: 2.2,
-    Rstrand: 2.8e-5,
-    GmrStrand: 0.85668,
-    DiaCable: 119.5,
+    diaStrand: 2.2,
+    rStrand: 2.8e-5,
+    gmrStrand: 0.85668,
+    diaCable: 119.5,
   });
   const lineSpacing = new LineSpacing("spacing1", {
     nconds: 3,
@@ -32,13 +36,14 @@ describe("Testing CNData Model", () => {
     cncables: ["cable1", "cable1", "cable1"],
   });
 
-  circuit.add(cnData);
-  circuit.add(lineSpacing);
-  circuit.add(line);
-  circuit.build();
-  circuit.solve();
+  study.add(cnData);
+  study.add(lineSpacing);
+  study.add(line);
+  study.build();
+  study.saveScript("test.dss");
+  study.solve();
 
   test("if CNData is properly loaded", () => {
-    expect(circuit.getParameter(line, "cncables")).toBe("cable1 cable1 cable1");
+    expect(study.getParameter(line, "cncables")).toBe("cable1 cable1 cable1");
   });
 });

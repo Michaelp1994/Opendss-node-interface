@@ -7,59 +7,59 @@ export interface ExpControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.ExpControl#PVSystemList
    */
-  PVSystemList?: string;
+  pvSystemList?: string[];
   /**
    *@inheritdoc Models.ExpControl#Vreg
    */
-  Vreg?: number;
+  vReg?: number;
   /**
    *@inheritdoc Models.ExpControl#Slope
    */
-  Slope?: number;
+  slope?: number;
   /**
    *@inheritdoc Models.ExpControl#VregTau
    */
-  VregTau?: number;
+  vRegTau?: number;
   /**
    *@inheritdoc Models.ExpControl#Qbias
    */
-  Qbias?: number;
+  qBias?: number;
   /**
    *@inheritdoc Models.ExpControl#VregMin
    */
-  VregMin?: number;
+  vRegMin?: number;
   /**
    *@inheritdoc Models.ExpControl#VregMax
    */
-  VregMax?: number;
+  vRegMax?: number;
   /**
    *@inheritdoc Models.ExpControl#QmaxLead
    */
-  QmaxLead?: number;
+  qMaxLead?: number;
   /**
    *@inheritdoc Models.ExpControl#QmaxLag
    */
-  QmaxLag?: number;
+  qMaxLag?: number;
   /**
    *@inheritdoc Models.ExpControl#EventLog
    */
-  EventLog?: boolean;
+  eventLog?: boolean;
   /**
    *@inheritdoc Models.ExpControl#DeltaQ_factor
    */
-  DeltaQ_factor?: number;
+  deltaQ_factor?: number;
   /**
    *@inheritdoc Models.ExpControl#PreferQ
    */
-  PreferQ?: boolean;
+  preferQ?: boolean;
   /**
    *@inheritdoc Models.ExpControl#Tresponse
    */
-  Tresponse?: number;
+  tresponse?: number;
   /**
    *@inheritdoc Models.ExpControl#DERList
    */
-  DERList?: string[];
+  derList?: string[];
   /**
    *@inheritdoc Models.ExpControl#basefreq
    */

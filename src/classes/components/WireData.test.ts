@@ -1,18 +1,22 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { Line } from ".";
-import { Circuit } from "./Circuit";
-import { LineSpacing } from "./LineSpacing";
-import { WireData } from "./WireData";
+import Circuit from "./Circuit";
+import LineSpacing from "./LineSpacing";
+import WireData from "./WireData";
 
 describe("Testing WireData Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const wireData = new WireData("wire1", {
-    normamps: 100,
+    normAmps: 100,
     diam: 0.368,
-    GMRac: 0.13356,
-    Rac: 0.607,
-    Runits: "mi",
-    radunits: "in",
-    GMRunits: "in",
+    gmrac: 0.13356,
+    rac: 0.607,
+    rUnits: "mi",
+    radUnits: "in",
+    gmrUnits: "in",
   });
 
   const lineSpacing = new LineSpacing("spacing1", {
@@ -27,14 +31,14 @@ describe("Testing WireData Model", () => {
     wires: ["wire1", "wire1", "wire1"],
   });
 
-  circuit.add(lineSpacing);
-  circuit.add(wireData);
-  circuit.add(line);
+  study.add(lineSpacing);
+  study.add(wireData);
+  study.add(line);
 
-  circuit.build();
-  circuit.solve();
+  study.build();
+  study.solve();
 
   test("if wireData is properly loaded", () => {
-    expect(circuit.getParameter(line, "wires")).toBe("wire1 wire1 wire1");
+    expect(study.getParameter(line, "wires")).toBe("wire1 wire1 wire1");
   });
 });

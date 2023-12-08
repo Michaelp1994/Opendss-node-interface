@@ -1,5 +1,5 @@
-import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
-import BaseInterface from "./BaseInterface";
+import type { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
+import type BaseInterface from "./BaseInterface";
 
 /**   Conductor Data  */
 export interface WireDataInterface extends BaseInterface {
@@ -8,23 +8,23 @@ export interface WireDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.WireData#Rdc
    */
-  Rdc?: number;
+  rdc?: number;
   /**
    *@inheritdoc Models.WireData#Rac
    */
-  Rac?: number;
+  rac?: number;
   /**
    *@inheritdoc Models.WireData#Runits
    */
-  Runits?: UnitsEnum;
+  rUnits?: UnitsEnum;
   /**
    *@inheritdoc Models.WireData#GMRac
    */
-  GMRac?: number;
+  gmrac?: number;
   /**
    *@inheritdoc Models.WireData#GMRunits
    */
-  GMRunits?: GMRunitsEnum;
+  gmrUnits?: GMRunitsEnum;
   /**
    *@inheritdoc Models.WireData#radius
    */
@@ -32,15 +32,15 @@ export interface WireDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.WireData#radunits
    */
-  radunits?: RadunitsEnum;
+  radUnits?: RadunitsEnum;
   /**
    *@inheritdoc Models.WireData#normamps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
    *@inheritdoc Models.WireData#emergamps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
    *@inheritdoc Models.WireData#diam
    */
@@ -48,13 +48,13 @@ export interface WireDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.WireData#Seasons
    */
-  Seasons?: number;
+  seasons?: number;
   /**
    *@inheritdoc Models.WireData#Ratings
    */
-  Ratings?: number[];
+  ratings?: number[];
   /**
    *@inheritdoc Models.WireData#Capradius
    */
-  Capradius?: number;
+  capRadius?: number;
 }

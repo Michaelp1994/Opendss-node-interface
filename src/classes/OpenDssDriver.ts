@@ -1,18 +1,23 @@
-import { OpenDSSOptionsInterface } from "@interfaces/OpenDSSOptionsInterface";
-import { text } from "stream/consumers";
+import OpenDSSOptionsInterface from "@interfaces/OpenDSSOptionsInterface";
 import winax from "winax";
-import { ParameterUnknownError } from "../errors/ParameterUnknownError";
 
-export class OpenDssDriver {
+export default class OpenDssDriver {
   private dss: OpenDSSengine.DSS;
+
   private dssCircuit: OpenDSSengine.DSS["ActiveCircuit"];
+
   private dssSolution: OpenDSSengine.DSS["ActiveCircuit"]["Solution"];
+
   private dssElem: OpenDSSengine.DSS["ActiveCircuit"]["ActiveCktElement"];
+
   private dssMathLib: OpenDSSengine.DSS["CmathLib"];
+
   private dssBus: OpenDSSengine.DSS["ActiveCircuit"]["ActiveBus"];
+
   private dssText: OpenDSSengine.DSS["Text"];
+
   constructor() {
-    this.dss = winax.Object("OpenDSSengine.DSS");
+    this.dss = new winax.Object("OpenDSSengine.DSS");
     this.dssMathLib = this.dss.CmathLib;
     this.dssText = this.dss.Text;
     this.dssCircuit = this.dss.ActiveCircuit;
@@ -30,7 +35,7 @@ export class OpenDssDriver {
     this.dssCircuit.SetActiveElement(name);
     if (this.dssElem.Name.toLowerCase() !== name.toLowerCase())
       throw Error(
-        `Can't find ${name} in circuit. [Found ${this.dssElem.Name}]`
+        `Can't find ${name} in circuit. [Found ${this.dssElem.Name}]`,
       );
   }
 
@@ -41,7 +46,7 @@ export class OpenDssDriver {
       this.dssElem.Properties(property).Name.toLowerCase() !==
       property.toLowerCase()
     )
-      throw new ParameterUnknownError();
+      throw new Error(`Parameter unknown ${name}`);
     const val = this.dssElem.Properties(property).Val;
     this.setActiveElement(prevName);
     return val;
@@ -65,7 +70,7 @@ export class OpenDssDriver {
     const index = (phase - 1) * 2;
     const current = this.dssMathLib.ctopolardeg(
       this.dssElem.Currents[index],
-      this.dssElem.Currents[index + 1]
+      this.dssElem.Currents[index + 1],
     )[0];
     this.setActiveElement(prevName);
     return current;
@@ -76,12 +81,16 @@ export class OpenDssDriver {
   }
 
   getCurrents() {
-    this.dssText.Command = "Show Currents Elements";
+    this.send("Show Currents Elements");
   }
 
   setOptions(options: OpenDSSOptionsInterface) {
     Object.keys(options).forEach((optionName) => {
-      this.dssText.Command = `SET ${optionName} = ${options[optionName]}`;
+      this.send(
+        `SET ${optionName} = ${
+          options[optionName as keyof OpenDSSOptionsInterface]
+        }`,
+      );
     });
     // this.dssText.Command = text;
   }
@@ -93,15 +102,33 @@ export class OpenDssDriver {
 
   solve() {
     this.dssSolution.Solve();
+    if (this.dss.Error.Description || this.dss.Error.Number)
+      throw Error(
+        `Error solving: ${this.dss.Error.Description} [${this.dss.Error.Number}]`,
+      );
+    if (!this.dssSolution.Converged)
+      throw Error("Unknown Error, Solution did not converge.");
   }
 
   send(commands: string | string[]) {
     if (Array.isArray(commands)) {
       commands.forEach((commandLine) => {
         this.dssText.Command = commandLine;
+        if (this.dssText.Result)
+          throw Error(`Error sending ${commandLine}: ${this.dssText.Result}`);
+        if (this.dss.Error.Description || this.dss.Error.Number)
+          throw Error(
+            `Error sending ${commandLine}: ${this.dss.Error.Description} [${this.dss.Error.Number}]`,
+          );
       });
     } else {
       this.dssText.Command = commands;
+      if (this.dssText.Result)
+        throw Error(`Error sending ${commands}: ${this.dssText.Result}`);
+      if (this.dss.Error.Description || this.dss.Error.Number)
+        throw Error(
+          `Error sending ${commands}: ${this.dss.Error.Description} [${this.dss.Error.Number}]`,
+        );
     }
   }
 }

@@ -1,26 +1,34 @@
-import { Circuit } from "./Circuit";
-import { Monitor } from "./Monitor";
+import GeneralStudy from "@classes/GeneralStudy";
+import { Line } from ".";
+import Circuit from "./Circuit";
+import Monitor from "./Monitor";
 
 describe("Testing Monitor Model", () => {
-  const circuit = new Circuit("Esoura");
-  const component = new Monitor("example_component");
-  circuit.add(component);
-  circuit.build();
-  circuit.solve();
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+  const line1 = new Line("line1", { bus1: "bus1", bus2: "bus2" });
+  const monitor = new Monitor("monitor", { element: "Line.line1" });
+  study.add(line1);
+  study.add(monitor);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(component)).not.toThrow();
+    expect(() => study.setActiveElement(monitor)).not.toThrow();
   });
 
-  test.each(component._parameters)(
+  test.each(monitor.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(component.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(component, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(monitor, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(monitor, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(component, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(monitor, "fakeParameter")).toThrow();
   });
 });

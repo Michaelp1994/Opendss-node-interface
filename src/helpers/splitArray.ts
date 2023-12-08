@@ -1,6 +1,6 @@
 const MAX_LENGTH = 100;
 
-export function splitStringsIntoRows(inputArray: string[]): string[] {
+export default function splitStringsIntoRows(inputArray: string[]): string[] {
   const resultArray: string[] = [];
 
   let currentRow: string[] = [];
@@ -12,7 +12,7 @@ export function splitStringsIntoRows(inputArray: string[]): string[] {
       currentRowLength += str.length;
     } else {
       resultArray.push(currentRow.join(" "));
-      currentRow = ["~ " + str];
+      currentRow = [`~ ${str}`];
       currentRowLength = str.length;
     }
   });

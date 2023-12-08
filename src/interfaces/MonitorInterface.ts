@@ -8,7 +8,7 @@ export interface MonitorInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Monitor#element
    */
-  element?: string;
+  element: string;
   /**
    *@inheritdoc Models.Monitor#terminal
    */

@@ -9,7 +9,7 @@ import {
   ReduceOptionEnum,
 } from "@enums/enums";
 
-export interface OpenDSSOptionsInterface {
+export default interface OpenDSSOptionsInterface {
   /** Set default annual growth rate, percent, for loads with no growth curve specified. Default is 2.5. */
   "%growth"?: number;
   /** Percent mean to use for global load multiplier. Default is 65%. */
@@ -31,7 +31,7 @@ export interface OpenDSSOptionsInterface {
   /** {YES/TRUE | NO/FALSE}   Default is No. Flag to indicate if it is OK to have devices of same name in the same class. If No, then a New command is treated as an Edit command. If Yes, then a New command will always result in a device being added. */
   allowduplicates?: boolean;
   /** Array of bus names to include in AutoAdd searches. Or, you can specify a text file holding the names, one to a line, by using the syntax (file=filename) instead of the actual array elements. Default is null, which results in the program using either the buses in the EnergyMeter object zones or, if no EnergyMeters, all the buses, which can make for lengthy solution times.  */
-  autobuslist?: string[]; //FIXME:
+  autobuslist?: string[]; // FIXME:
   /** Default = 60. Set the fundamental frequency for harmonic solution and the default base frequency for all impedance quantities. Side effect: also changes the value of the solution frequency. Saved as default for next circuit. */
   basefrequency?: number;
   /** Set Active Bus by name.  Can also be done with Select and SetkVBase commands and the "Set Terminal="  option. The bus connected to the active terminal becomes the active bus. See Zsc and Zsc012 commands. */
@@ -292,7 +292,7 @@ export interface OpenDSSOptionsInterface {
   /** Sets the active DSS class type.  Same as Class=... */
   type?: number;
   /** Which EnergyMeter register(s) to use for UE in AutoAdd Mode. May be one or more registers.  if more than one, register values are summed together. Array of integer values > 0.  Defaults to 11 (for Load EEN).  */
-  uEregs?: number; //FIXME:
+  uEregs?: number; // FIXME:
   /** Weighting factor for UE/EEN in AutoAdd functions.  Defaults to 1.0. */
   UEweight?: number;
   /** Define legal bus voltage bases for this circuit.  Enter an array of the legal voltage bases, in phase-to-phase voltages, for example: */

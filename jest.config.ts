@@ -15,7 +15,7 @@ const config: Config = {
   },
   // moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   modulePaths: ["<rootDir>"],
-  //moduleDirectories: ["node_modules"],
+  // moduleDirectories: ["node_modules"],
 };
 
 export default config;

@@ -1,19 +1,23 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { Reactor } from ".";
-import { Circuit } from "./Circuit";
-import { XYcurve } from "./XYcurve";
+import Circuit from "./Circuit";
+import XYcurve from "./XYcurve";
 
 describe("Testing XYcurve Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const curve = new XYcurve("curve1");
   const reactor = new Reactor("reactor1", {
     RCurve: "curve1",
   });
-  circuit.add(curve);
-  circuit.add(reactor);
-  circuit.build();
-  circuit.solve();
+  study.add(curve);
+  study.add(reactor);
+  study.build();
+  study.solve();
 
   test("if lineCode is properly loaded", () => {
-    expect(circuit.getParameter(reactor, "RCurve")).toBe("curve1");
+    expect(study.getParameter(reactor, "RCurve")).toBe("curve1");
   });
 });

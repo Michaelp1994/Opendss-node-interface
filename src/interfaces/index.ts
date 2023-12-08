@@ -35,7 +35,7 @@ export { SpectrumInterface } from "./SpectrumInterface";
 export { StorageControllerInterface } from "./StorageControllerInterface";
 export { StorageInterface } from "./StorageInterface";
 export { SwtControlInterface } from "./SwtControlInterface";
-export { TCC_CurveInterface } from "./TCC_CurveInterface";
+export { TCCCurveInterface } from "./TCCCurveInterface";
 export { TSDataInterface } from "./TSDataInterface";
 export { TShapeInterface } from "./TShapeInterface";
 export { TransformerInterface } from "./TransformerInterface";

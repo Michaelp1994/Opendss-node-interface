@@ -1,26 +1,43 @@
-import { Circuit } from "./Circuit";
-import { Vsource } from "./Vsource";
+import GeneralStudy from "@classes/GeneralStudy";
+import { Line } from ".";
+import Circuit from "./Circuit";
+import Vsource from "./Vsource";
 
 describe("Testing Vsource Model", () => {
-  const circuit = new Circuit("Esoura");
-  const component = new Vsource("example_component");
-  circuit.add(component);
-  circuit.build();
-  circuit.solve();
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit", {
+    bus1: "bus1",
+  });
+  study.add(circuit);
+  const line = new Line("Line1", {
+    bus1: "bus1",
+    bus2: "bus2",
+    length: 400,
+    units: "m",
+  });
+  study.add(line);
+  const vsource = new Vsource("vsource", {
+    bus1: "bus2",
+  });
+  study.add(vsource);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(component)).not.toThrow();
+    expect(() => study.setActiveElement(vsource)).not.toThrow();
   });
 
-  test.each(component._parameters)(
+  test.each(vsource.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(component.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(component, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(vsource, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(vsource, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(component, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(vsource, "fakeParameter")).toThrow();
   });
 });

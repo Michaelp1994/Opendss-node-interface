@@ -1,31 +1,37 @@
-import { Circuit } from "./Circuit";
-import { Fuse } from "./Fuse";
-import { Line } from "./Line";
+import GeneralStudy from "@classes/GeneralStudy";
+import Circuit from "./Circuit";
+import Fuse from "./Fuse";
+import Line from "./Line";
 
 describe("Testing Fuse Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const line = new Line("line1");
   const fuse = new Fuse("fuse1", {
     monitoredObj: "Line.line1",
   });
-  circuit.add(line);
-  circuit.add(fuse);
-  circuit.build();
-  circuit.solve();
+  study.add(line);
+  study.add(fuse);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(fuse)).not.toThrow();
+    expect(() => study.setActiveElement(fuse)).not.toThrow();
   });
 
-  test.each(fuse._parameters)(
+  test.each(fuse.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(fuse.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(fuse, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(fuse, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(fuse, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(fuse, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(fuse, "fakeParameter")).toThrow();
   });
 });

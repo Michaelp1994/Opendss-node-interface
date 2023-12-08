@@ -1,7 +1,7 @@
 import BaseInterface from "./BaseInterface";
 
 /**   General  */
-export interface TCC_CurveInterface extends BaseInterface {
+export interface TCCCurveInterface extends BaseInterface {
   /** Name of the component */
   name: string;
   /**

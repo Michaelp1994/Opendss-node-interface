@@ -1,9 +1,13 @@
-import { CNData, Line, LineSpacing } from ".";
-import { Circuit } from "./Circuit";
-import { TSData } from "./TSData";
+import GeneralStudy from "@classes/GeneralStudy";
+import { Line, LineSpacing } from ".";
+import Circuit from "./Circuit";
+import TSData from "./TSData";
 
 describe("Testing TSData Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const tsData = new TSData("cable1", {
     normamps: 165,
     diam: 0.368,
@@ -31,13 +35,13 @@ describe("Testing TSData Model", () => {
     spacing: "spacing1",
     tscables: ["cable1", "cable1", "cable1"],
   });
-  circuit.add(lineSpacing);
-  circuit.add(tsData);
-  circuit.add(line);
-  circuit.build();
-  circuit.solve();
+  study.add(lineSpacing);
+  study.add(tsData);
+  study.add(line);
+  study.build();
+  study.solve();
 
   test("if TSData is properly loaded", () => {
-    expect(circuit.getParameter(line, "tscables")).toBe("cable1 cable1 cable1");
+    expect(study.getParameter(line, "tscables")).toBe("cable1 cable1 cable1");
   });
 });

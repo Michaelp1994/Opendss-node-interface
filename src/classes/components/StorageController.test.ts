@@ -1,33 +1,39 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { Line, Storage } from ".";
-import { Circuit } from "./Circuit";
-import { StorageController } from "./StorageController";
+import Circuit from "./Circuit";
+import StorageController from "./StorageController";
 
 describe("Testing StorageController Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const line = new Line("line1");
   const storage = new Storage("storage1");
   const component = new StorageController("example_component", {
     Element: "Line.line1",
   });
-  circuit.add(line);
-  circuit.add(storage);
-  circuit.add(component);
-  circuit.build();
-  circuit.solve();
+  study.add(line);
+  study.add(storage);
+  study.add(component);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(component)).not.toThrow();
+    expect(() => study.setActiveElement(component)).not.toThrow();
   });
 
-  test.each(component._parameters)(
+  test.each(component.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(component.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(component, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(component, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(component, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(component, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(component, "fakeParameter")).toThrow();
   });
 });

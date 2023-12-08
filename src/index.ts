@@ -51,3 +51,4 @@ export {
   XYcurve,
   XfmrCode,
 } from "./classes/components";
+export { default as GeneralStudy } from "@classes/GeneralStudy";

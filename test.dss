@@ -1,0 +1,5 @@
+New Circuit.TestCircuit
+New CNData.cable1 k=50 diaStrand=2.2 gmrStrand=0.85668 rStrand=0.000028 epsR=2.3 insLayer=21 diaIns=92.6
+~ diaCable=119.5 rac=0.000028 rUnits=km gmrAc=27.105 gmrUnits=mm radUnits=mm normAmps=793 diam=46
+New LineSpacing.spacing1 nconds=3 nphases=3 x=[-1.5 0 1.5] h=[15 15 15]
+New Line.line1 spacing=spacing1 cncables=[cable1 cable1 cable1]

@@ -1,67 +1,60 @@
-import {
-  GMRunitsEnum,
-  RadunitsEnum,
-  UnitsEnum,
-  UnitsWithMilliMeterEnum,
-} from "@enums/enums";
+import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
 import BaseInterface from "./BaseInterface";
 
 /**   Conductor Data, Cable Data  */
 export interface CNDataInterface extends BaseInterface {
-  /** Name of the component */
-  name: string;
   /**
    *@inheritdoc Models.CNData#k
    */
   k?: number;
   /**
-   *@inheritdoc Models.CNData#DiaStrand
+   *@inheritdoc Models.CNData#diaStrand
    */
-  DiaStrand?: number;
+  diaStrand?: number;
   /**
-   *@inheritdoc Models.CNData#GmrStrand
+   *@inheritdoc Models.CNData#gmrStrand
    */
-  GmrStrand?: number;
+  gmrStrand?: number;
   /**
-   *@inheritdoc Models.CNData#Rstrand
+   *@inheritdoc Models.CNData#rStrand
    */
-  Rstrand?: number;
+  rStrand?: number;
   /**
-   *@inheritdoc Models.CNData#EpsR
+   *@inheritdoc Models.CNData#epsR
    */
-  EpsR?: number;
+  epsR?: number;
   /**
    *@inheritdoc Models.CNData#InsLayer
    */
-  InsLayer?: number;
+  insLayer?: number;
   /**
    *@inheritdoc Models.CNData#DiaIns
    */
-  DiaIns?: number;
+  diaIns?: number;
   /**
    *@inheritdoc Models.CNData#DiaCable
    */
-  DiaCable?: number;
+  diaCable?: number;
   /**
    *@inheritdoc Models.CNData#Rdc
    */
-  Rdc?: number;
+  rdc?: number;
   /**
    *@inheritdoc Models.CNData#Rac
    */
-  Rac?: number;
+  rac?: number;
   /**
    *@inheritdoc Models.CNData#Runits
    */
-  Runits?: UnitsEnum;
+  rUnits?: UnitsEnum;
   /**
    *@inheritdoc Models.CNData#GMRac
    */
-  GMRac?: number;
+  gmrAc?: number;
   /**
    *@inheritdoc Models.CNData#GMRunits
    */
-  GMRunits?: GMRunitsEnum;
+  gmrUnits?: GMRunitsEnum;
   /**
    *@inheritdoc Models.CNData#radius
    */
@@ -69,15 +62,15 @@ export interface CNDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CNData#radunits
    */
-  radunits?: RadunitsEnum;
+  radUnits?: RadunitsEnum;
   /**
    *@inheritdoc Models.CNData#normamps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
    *@inheritdoc Models.CNData#emergamps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
    *@inheritdoc Models.CNData#diam
    */
@@ -85,13 +78,13 @@ export interface CNDataInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CNData#Seasons
    */
-  Seasons?: number;
+  seasons?: number;
   /**
    *@inheritdoc Models.CNData#Ratings
    */
-  Ratings?: number[];
+  ratings?: number[];
   /**
    *@inheritdoc Models.CNData#Capradius
    */
-  Capradius?: number;
+  capRadius?: number;
 }

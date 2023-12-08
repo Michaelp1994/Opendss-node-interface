@@ -3,9 +3,13 @@ import { IsourceInterface } from "@interfaces/IsourceInterface";
 import CircuitElementComponent from "./CircuitElementComponent";
 
 /**   Circuit Element, PC Element  */
-export class Isource extends CircuitElementComponent {
+export default class Isource
+  extends CircuitElementComponent
+  implements HasKeys<IsourceInterface>
+{
   _type = "Isource";
-  _parameters = [
+
+  parameters: Array<keyof this> = [
     "bus1",
     "amps",
     "angle",
@@ -22,68 +26,85 @@ export class Isource extends CircuitElementComponent {
     "enabled",
     "like",
   ];
+
   /** Name of bus to which source is connected.
    *
    * bus1=busname
    *
-   * bus1=busname.1.2.3*/
+   * bus1=busname.1.2.3 */
   bus1?: string;
-  /** Magnitude of current source, each phase, in Amps.*/
+
+  /** Magnitude of current source, each phase, in Amps. */
   amps?: number;
+
   /** Phase angle in degrees of first phase: e.g.,Angle=10.3.
    *
-   * Phase shift between phases is assumed 120 degrees when number of phases <= 3*/
+   * Phase shift between phases is assumed 120 degrees when number of phases <= 3 */
   angle?: number;
-  /** Source frequency.  Defaults to  circuit fundamental frequency.*/
+
+  /** Source frequency.  Defaults to  circuit fundamental frequency. */
   frequency?: number;
-  /** Number of phases.  Defaults to 3. For 3 or less, phase shift is 120 degrees.*/
+
+  /** Number of phases.  Defaults to 3. For 3 or less, phase shift is 120 degrees. */
   phases?: number;
-  /** {pos*| zero | none} Maintain specified sequence for harmonic solution. Default is positive sequence. Otherwise, angle between phases rotates with harmonic.*/
+
+  /** {pos*| zero | none} Maintain specified sequence for harmonic solution. Default is positive sequence. Otherwise, angle between phases rotates with harmonic. */
   scantype?: ScanTypeEnum;
-  /** {pos*| neg | zero} Set the phase angles for the specified symmetrical component sequence for non-harmonic solution modes. Default is positive sequence.*/
+
+  /** {pos*| neg | zero} Set the phase angles for the specified symmetrical component sequence for non-harmonic solution modes. Default is positive sequence. */
   sequence?: SequenceEnum;
+
   /** LOADSHAPE object to use for the per-unit current for YEARLY-mode simulations. Set the Mult property of the LOADSHAPE to the pu curve. Qmult is not used. If UseActual=Yes then the Mult curve should be actual Amp.
    *
    * Must be previously defined as a LOADSHAPE object.
    *
-   * Is set to the Daily load shape when Daily is defined.  The daily load shape is repeated in this case. Set to NONE to reset to no loadahape for Yearly mode. The default is no variation.*/
+   * Is set to the Daily load shape when Daily is defined.  The daily load shape is repeated in this case. Set to NONE to reset to no loadahape for Yearly mode. The default is no variation. */
   Yearly?: string;
+
   /** LOADSHAPE object to use for the per-unit current for DAILY-mode simulations. Set the Mult property of the LOADSHAPE to the pu curve. Qmult is not used. If UseActual=Yes then the Mult curve should be actual A.
    *
    * Must be previously defined as a LOADSHAPE object.
    *
-   * Sets Yearly curve if it is not already defined.   Set to NONE to reset to no loadahape for Yearly mode. The default is no variation.*/
+   * Sets Yearly curve if it is not already defined.   Set to NONE to reset to no loadahape for Yearly mode. The default is no variation. */
   Daily?: string;
+
   /** LOADSHAPE object to use for the per-unit current for DUTYCYCLE-mode simulations. Set the Mult property of the LOADSHAPE to the pu curve. Qmult is not used. If UseActual=Yes then the Mult curve should be actual A.
    *
    * Must be previously defined as a LOADSHAPE object.
    *
-   * Defaults to Daily load shape when Daily is defined.   Set to NONE to reset to no loadahape for Yearly mode. The default is no variation.*/
+   * Defaults to Daily load shape when Daily is defined.   Set to NONE to reset to no loadahape for Yearly mode. The default is no variation. */
   Duty?: string;
+
   /** Name of bus to which 2nd terminal is connected.
    *
    * bus2=busname
    *
    * bus2=busname.1.2.3
    *
-   * Default is Bus1.0.0.0 (grounded-wye connection)*/
+   * Default is Bus1.0.0.0 (grounded-wye connection) */
   Bus2?: string;
-  /** Harmonic spectrum assumed for this source.  Default is "default".*/
+
+  /** Harmonic spectrum assumed for this source.  Default is "default". */
   spectrum?: string;
-  /** Base Frequency for ratings.*/
+
+  /** Base Frequency for ratings. */
   basefreq?: number;
-  /** {Yes|No or True|False} Indicates whether this element is enabled.*/
+
+  /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;
+
+  constructor(options: IsourceInterface);
+  constructor(name: string, options?: OmitName<IsourceInterface>);
   constructor(
     nameOrOptions: string | IsourceInterface,
-    options?: Omit<IsourceInterface, "name">
+    options?: OmitName<IsourceInterface>,
   ) {
-    super();
+    super(nameOrOptions);
     if (typeof nameOrOptions === "string") {
-      this.name = nameOrOptions;
       Object.assign(this, options);
     } else {
-      Object.assign(this, nameOrOptions);
+      const { name, ...otherOptions } = nameOrOptions;
+      Object.assign(this, otherOptions);
     }
   }
 }

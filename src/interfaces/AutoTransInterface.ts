@@ -3,8 +3,6 @@ import BaseInterface from "./BaseInterface";
 
 /**   Circuit Element, PD Element  */
 export interface AutoTransInterface extends BaseInterface {
-  /** Name of the component */
-  name: string;
   /**
    *@inheritdoc Models.AutoTrans#phases
    */
@@ -44,11 +42,11 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#Rdcohms
    */
-  Rdcohms?: number;
+  RdcOhms?: number;
   /**
    *@inheritdoc Models.AutoTrans#Core
    */
-  Core?: CoreEnum;
+  core?: CoreEnum;
   /**
    *@inheritdoc Models.AutoTrans#buses
    */
@@ -100,19 +98,19 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#flrise
    */
-  flrise?: number;
+  flRise?: number;
   /**
    *@inheritdoc Models.AutoTrans#hsrise
    */
-  hsrise?: number;
+  hsRise?: number;
   /**
    *@inheritdoc Models.AutoTrans#%loadloss
    */
-  "%loadloss"?: number;
+  "%loadLoss"?: number;
   /**
    *@inheritdoc Models.AutoTrans#%noloadloss
    */
-  "%noloadloss"?: number;
+  "%noLoadLoss"?: number;
   /**
    *@inheritdoc Models.AutoTrans#normhkVA
    */
@@ -128,19 +126,19 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#MaxTap
    */
-  MaxTap?: number;
+  maxTap?: number;
   /**
    *@inheritdoc Models.AutoTrans#MinTap
    */
-  MinTap?: number;
+  minTap?: number;
   /**
    *@inheritdoc Models.AutoTrans#NumTaps
    */
-  NumTaps?: number;
+  numTaps?: number;
   /**
    *@inheritdoc Models.AutoTrans#subname
    */
-  subname?: string;
+  subName?: string;
   /**
    *@inheritdoc Models.AutoTrans#%imag
    */
@@ -160,27 +158,27 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#LeadLag
    */
-  LeadLag?: LeadLagEnum;
+  leadLag?: LeadLagEnum;
   /**
    *@inheritdoc Models.AutoTrans#WdgCurrents
    */
-  WdgCurrents?: string;
+  wdgCurrents?: string;
   /**
    *@inheritdoc Models.AutoTrans#normamps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
    *@inheritdoc Models.AutoTrans#emergamps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
    *@inheritdoc Models.AutoTrans#faultrate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.AutoTrans#pctperm
    */
-  pctperm?: number;
+  pctPerm?: number;
   /**
    *@inheritdoc Models.AutoTrans#repair
    */
@@ -188,7 +186,7 @@ export interface AutoTransInterface extends BaseInterface {
   /**
    *@inheritdoc Models.AutoTrans#basefreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.AutoTrans#enabled
    */

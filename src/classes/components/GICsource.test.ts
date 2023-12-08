@@ -1,30 +1,36 @@
-import { GICLine, Line } from ".";
-import { Circuit } from "./Circuit";
-import { GICsource } from "./GICsource";
+import GeneralStudy from "@classes/GeneralStudy";
+import { Line } from ".";
+import Circuit from "./Circuit";
+import GICsource from "./GICsource";
 
 describe("Testing GICsource Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   // const gicLine = new GICLine("example_component");
   const line = new Line("example_component");
   const component = new GICsource("example_component");
-  circuit.add(line);
-  circuit.add(component);
-  circuit.build();
-  circuit.solve();
+  study.add(line);
+  study.add(component);
+  study.build();
+  study.solve();
 
   test("if component is in circuit", () => {
-    expect(() => circuit.setActiveElement(component)).not.toThrow();
+    expect(() => study.setActiveElement(component)).not.toThrow();
   });
 
-  test.each(component._parameters)(
+  test.each(component.parameters)(
     "if %s is in OpenDSS and the class model",
     (parameter) => {
-      expect(component.hasOwnProperty(parameter)).toBeTruthy();
-      expect(() => circuit.getParameter(component, parameter)).not.toThrow();
-    }
+      expect(
+        Object.prototype.hasOwnProperty.call(component, parameter),
+      ).toBeTruthy();
+      expect(() => study.getParameter(component, parameter)).not.toThrow();
+    },
   );
 
   test("Unknown property will throw error", () => {
-    expect(() => circuit.getParameter(component, "fakeParameter")).toThrow();
+    expect(() => study.getParameter(component, "fakeParameter")).toThrow();
   });
 });

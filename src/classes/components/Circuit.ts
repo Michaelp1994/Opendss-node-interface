@@ -1,118 +1,24 @@
-import { OpenDSSOptionsInterface } from "@interfaces/OpenDSSOptionsInterface";
 import { VsourceInterface } from "@interfaces/VsourceInterface";
-import { open } from "node:fs/promises";
-import { OpenDssDriver } from "../OpenDssDriver";
-import BaseComponent from "./BaseComponent";
-import CircuitElementComponent from "./CircuitElementComponent";
-import { Vsource } from "./Vsource";
+
+import Vsource from "./Vsource";
 
 /**   Circuit Element, PC Element  */
-export class Circuit extends Vsource {
+export default class Circuit extends Vsource {
   _type = "Circuit";
-  driver: OpenDssDriver;
-  private components: Array<BaseComponent>;
-  private _circuitSolved: Boolean;
+
+  constructor(options: VsourceInterface);
+  constructor(name: string, options?: OmitName<VsourceInterface>);
   constructor(
-    /** Name of the circuit or an object containing parameters */
     nameOrOptions: string | VsourceInterface,
-    /** Options for the circuit Vsource */
-    options?: Omit<VsourceInterface, "name">
+    optionalOptions?: OmitName<VsourceInterface>,
   ) {
-    super(nameOrOptions, options);
-    this.components = [];
-    this.driver = new OpenDssDriver();
-    this.driver.clear();
-  }
-
-  /** Add Component to the circuit  */
-  add(component: BaseComponent) {
-    this.components.push(component);
-    this._circuitSolved = false;
-  }
-
-  /** remove component from a circuit */
-  remove(component: BaseComponent) {
-    const index = this.components.findIndex((c) => c.name == component.name);
-    if (index === -1) throw Error("cannot find component in circuit");
-    const removed = this.components.splice(index, 1);
-    this._circuitSolved = false;
-    if (removed[0].name !== component.name)
-      throw Error(`Removed ${removed[0].name} instead of ${component.name}`);
-  }
-
-  load(file: string) {}
-  /** save the script to a file */
-  async saveScript(fileName: string) {
-    const file = await open(fileName, "w");
-    await file.appendFile(this.create().join("\n") + "\n");
-    for (const component of this.components) {
-      await file.appendFile(component.create().join("\n") + "\n");
+    if (typeof nameOrOptions === "string") {
+      super(nameOrOptions, optionalOptions);
+      if (optionalOptions) Object.assign(this, optionalOptions);
+    } else {
+      super(nameOrOptions);
+      const { name, ...otherOptions } = nameOrOptions;
+      Object.assign(this, otherOptions);
     }
-    file.close();
-  }
-  /** output the script to console */
-  printScript() {
-    console.log(this.create());
-    this.components.forEach((component) => {
-      console.log(component.create());
-    });
-  }
-
-  showCurrents() {
-    this.driver.getCurrents();
-  }
-
-  setOptions(options: OpenDSSOptionsInterface) {
-    this.driver.setOptions(options);
-  }
-
-  getOption(option: keyof OpenDSSOptionsInterface) {
-    return this.driver.getOption(option);
-  }
-
-  setActiveElement(component: CircuitElementComponent) {
-    this.driver.setActiveElement(`${component._type}.${component.name}`);
-  }
-
-  getParameter(component: CircuitElementComponent, property: string) {
-    return this.driver.getParameter(
-      `${component._type}.${component.name}`,
-      property
-    );
-  }
-
-  changeParameter(
-    component: CircuitElementComponent,
-    property: string,
-    value: string
-  ) {
-    this.driver.changeParameter(
-      `${component._type}.${component.name}`,
-      property,
-      value
-    );
-  }
-
-  readCurrent(component: CircuitElementComponent, index: number) {
-    return this.driver.readCurrent(
-      `${component._type}.${component.name}`,
-      index
-    );
-  }
-
-  build() {
-    this.driver.clear();
-    this.driver.send(this.create());
-    this.components.forEach((component) => {
-      this.driver.send(component.create());
-    });
-  }
-  solve() {
-    this.driver.solve();
-    this._circuitSolved = true;
-  }
-
-  getBuses() {
-    return this.driver.getBuses();
   }
 }

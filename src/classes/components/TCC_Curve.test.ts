@@ -1,9 +1,13 @@
+import GeneralStudy from "@classes/GeneralStudy";
 import { Fuse, Line } from ".";
-import { Circuit } from "./Circuit";
-import { TCC_Curve } from "./TCC_Curve";
+import Circuit from "./Circuit";
+import TCC_Curve from "./TCC_Curve";
 
 describe("Testing TCC_Curve Model", () => {
-  const circuit = new Circuit("Esoura");
+  const study = new GeneralStudy();
+  const circuit = new Circuit("TestCircuit");
+  study.add(circuit);
+
   const curve = new TCC_Curve("curve1", {
     npts: 3,
     C_array: [1, 2, 3],
@@ -14,12 +18,12 @@ describe("Testing TCC_Curve Model", () => {
     monitoredObj: "Line.line1",
     fuseCurve: "curve1",
   });
-  circuit.add(curve);
-  circuit.add(line);
-  circuit.add(fuse);
-  circuit.build();
-  circuit.solve();
+  study.add(curve);
+  study.add(line);
+  study.add(fuse);
+  study.build();
+  study.solve();
   test("if TShape is properly loaded", () => {
-    expect(circuit.getParameter(fuse, "fuseCurve")).toBe("curve1");
+    expect(study.getParameter(fuse, "fuseCurve")).toBe("curve1");
   });
 });
