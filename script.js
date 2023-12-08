@@ -1,47 +1,31 @@
 const fs = require("fs");
 const path = require("path");
 
-const componentsDir = "./src/classes/components";
+const interfacesDir = path.join(__dirname, "src/interfaces");
+const componentsDir = path.join(__dirname, "src/classes/components");
 
-fs.readdir(componentsDir, (err, files) => {
+fs.readdir(interfacesDir, (err, files) => {
   if (err) {
     console.error(`Error reading directory: ${err}`);
     return;
   }
 
   files.forEach((file) => {
-    const filePath = path.join(componentsDir, file);
-    const fileNameWithoutExt = path.parse(file).name;
-    const newDirPath = path.join(componentsDir, fileNameWithoutExt);
+    if (path.extname(file) === ".ts") {
+      const baseName = path.basename(file, "Interface.ts");
+      const newDir = path.join(componentsDir, baseName);
 
-    fs.mkdir(newDirPath, { recursive: true }, (err) => {
-      if (err) {
-        console.error(`Error creating directory: ${err}`);
-        return;
-      }
-
-      const newFilePath = path.join(newDirPath, file);
-      fs.rename(filePath, newFilePath, (err) => {
-        if (err) {
-          console.error(`Error moving file: ${err}`);
-        }
-      });
-
-      const testFilePath = path.join(
-        componentsDir,
-        `${fileNameWithoutExt}.test.ts`,
-      );
-      if (fs.existsSync(testFilePath)) {
-        const newTestFilePath = path.join(
-          newDirPath,
-          `${fileNameWithoutExt}.test.ts`,
-        );
-        fs.rename(testFilePath, newTestFilePath, (err) => {
+      // Move interface file
+      fs.rename(
+        path.join(interfacesDir, file),
+        path.join(newDir, file),
+        (err) => {
           if (err) {
-            console.error(`Error moving test file: ${err}`);
+            console.error(`Error moving file: ${err}`);
+            return;
           }
-        });
-      }
-    });
+        },
+      );
+    }
   });
 });
