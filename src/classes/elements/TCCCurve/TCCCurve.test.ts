@@ -1,14 +1,12 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Fuse, Line } from ".";
-import Circuit from "./Circuit";
-import TCC_Curve from "./TCC_Curve";
+import { Circuit, Fuse, Line, TCCCurve } from "@elements";
 
 describe("Testing TCC_Curve Model", () => {
   const study = new GeneralStudy();
   const circuit = new Circuit("TestCircuit");
   study.add(circuit);
 
-  const curve = new TCC_Curve("curve1", {
+  const curve = new TCCCurve("curve1", {
     npts: 3,
     C_array: [1, 2, 3],
     T_array: [1, 2, 3],

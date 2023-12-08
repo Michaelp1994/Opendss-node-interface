@@ -1,12 +1,9 @@
 import { ConnEnum, DeltaDirectionEnum } from "@enums/enums";
-import { SensorInterface } from "./SensorInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import SensorInterface from "./SensorInterface";
 
 /**   Circuit Element, Meter Element  */
-export default class Sensor
-  extends CircuitElementComponent
-  implements HasKeys<SensorInterface>
-{
+export default class Sensor extends CircuitElement implements SensorInterface {
   _type = "Sensor";
 
   parameters: Array<keyof this> = [
@@ -22,7 +19,7 @@ export default class Sensor
     "Deltadirection",
     "%Error",
     "Weight",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -72,7 +69,7 @@ export default class Sensor
   Weight?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

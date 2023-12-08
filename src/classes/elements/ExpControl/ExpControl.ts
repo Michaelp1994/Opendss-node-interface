@@ -1,10 +1,10 @@
-import { ExpControlInterface } from "./ExpControlInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import ExpControlInterface from "./ExpControlInterface";
 
 /**   Circuit Element, Control Element  */
 export default class ExpControl
-  extends CircuitElementComponent
-  implements HasKeys<HasKeys<ExpControlInterface>>
+  extends CircuitElement
+  implements ExpControlInterface
 {
   _type = "ExpControl";
 
@@ -18,12 +18,12 @@ export default class ExpControl
     "VregMax",
     "QmaxLead",
     "QmaxLag",
-    "EventLog",
+    "eventLog",
     "DeltaQ_factor",
     "PreferQ",
     "Tresponse",
     "DERList",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ] as const;
@@ -70,7 +70,7 @@ export default class ExpControl
   QmaxLag?: number;
 
   /** {Yes/True* | No/False} Default is No for ExpControl. Log control actions to Eventlog. */
-  EventLog?: boolean;
+  eventLog?: boolean;
 
   /** Convergence parameter; Defaults to 0.7.
    *
@@ -93,7 +93,7 @@ export default class ExpControl
   DERList?: string[];
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

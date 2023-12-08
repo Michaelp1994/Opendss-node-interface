@@ -1,8 +1,8 @@
 import { SwtControlActionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface SwtControlInterface extends BaseInterface {
+export default interface SwtControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -24,7 +24,7 @@ export interface SwtControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.SwtControl#Delay
    */
-  Delay?: number;
+  delay?: number;
   /**
    *@inheritdoc Models.SwtControl#Normal
    */
@@ -36,11 +36,11 @@ export interface SwtControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.SwtControl#Reset
    */
-  Reset?: boolean;
+  reset?: boolean;
   /**
-   *@inheritdoc Models.SwtControl#basefreq
+   *@inheritdoc Models.SwtControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.SwtControl#enabled
    */

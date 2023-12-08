@@ -1,11 +1,11 @@
-import { SlipOptionEnum } from "@enums/enums";
-import { IndMach012Interface } from "./IndMach012Interface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import { ConnEnum, SlipOptionEnum } from "@enums/enums";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import IndMach012Interface from "./IndMach012Interface";
 
 /**   Circuit Element, PC Element  */
 export default class IndMach012
-  extends CircuitElementComponent
-  implements HasKeys<IndMach012Interface>
+  extends CircuitElement
+  implements IndMach012Interface
 {
   _type = "IndMach012";
 
@@ -32,7 +32,7 @@ export default class IndMach012
     "Duty",
     "Debugtrace",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -52,10 +52,10 @@ export default class IndMach012
   kW?: number;
 
   /** [Read Only] Present power factor for the machine. */
-  pf?: number;
+  readonly pf?: number;
 
   /** Connection of stator: Delta or Wye. Default is Delta. */
-  conn?: string;
+  conn?: ConnEnum;
 
   /** Rated kVA for the machine. */
   kVA?: number;
@@ -106,7 +106,7 @@ export default class IndMach012
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

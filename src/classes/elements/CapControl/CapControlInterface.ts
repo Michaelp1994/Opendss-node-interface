@@ -1,8 +1,8 @@
 import { CapControlTypeEnum, CTPhaseEnum, PTPhaseEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface CapControlInterface extends BaseInterface {
+export default interface CapControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -22,69 +22,69 @@ export interface CapControlInterface extends BaseInterface {
    */
   type?: CapControlTypeEnum;
   /**
-   *@inheritdoc Models.CapControl#PTratio
+   *@inheritdoc Models.CapControl#ptRatio
    */
-  PTratio?: number;
+  ptRatio?: number;
   /**
-   *@inheritdoc Models.CapControl#CTratio
+   *@inheritdoc Models.CapControl#ctRatio
    */
-  CTratio?: number;
+  ctRatio?: number;
   /**
-   *@inheritdoc Models.CapControl#ONsetting
+   *@inheritdoc Models.CapControl#onSetting
    */
-  ONsetting?: number;
+  onSetting?: number;
   /**
-   *@inheritdoc Models.CapControl#OFFsetting
+   *@inheritdoc Models.CapControl#offSetting
    */
-  OFFsetting?: number;
+  offSetting?: number;
   /**
    *@inheritdoc Models.CapControl#Delay
    */
-  Delay?: number;
+  delay?: number;
   /**
-   *@inheritdoc Models.CapControl#VoltOverride
+   *@inheritdoc Models.CapControl#voltOverride
    */
-  VoltOverride?: boolean;
+  voltOverride?: boolean;
   /**
    *@inheritdoc Models.CapControl#Vmax
    */
-  Vmax?: number;
+  vMax?: number;
   /**
    *@inheritdoc Models.CapControl#Vmin
    */
-  Vmin?: number;
+  vMin?: number;
   /**
-   *@inheritdoc Models.CapControl#DelayOFF
+   *@inheritdoc Models.CapControl#delayOff
    */
-  DelayOFF?: number;
+  delayOff?: number;
   /**
-   *@inheritdoc Models.CapControl#DeadTime
+   *@inheritdoc Models.CapControl#deadTime
    */
-  DeadTime?: number;
+  deadTime?: number;
   /**
-   *@inheritdoc Models.CapControl#CTPhase
+   *@inheritdoc Models.CapControl#ctPhase
    */
-  CTPhase?: CTPhaseEnum;
+  ctPhase?: CTPhaseEnum;
   /**
-   *@inheritdoc Models.CapControl#PTPhase
+   *@inheritdoc Models.CapControl#ptPhase
    */
-  PTPhase?: PTPhaseEnum;
+  ptPhase?: PTPhaseEnum;
   /**
-   *@inheritdoc Models.CapControl#VBus
+   *@inheritdoc Models.CapControl#vBus
    */
-  VBus?: string;
+  vBus?: string;
   /**
    *@inheritdoc Models.CapControl#EventLog
    */
-  EventLog?: boolean;
+  eventLog?: boolean;
   /**
-   *@inheritdoc Models.CapControl#UserModel
+   *@inheritdoc Models.CapControl#userModel
    */
-  UserModel?: string;
+  userModel?: string;
   /**
-   *@inheritdoc Models.CapControl#UserData
+   *@inheritdoc Models.CapControl#userData
    */
-  UserData?: string;
+  userData?: string;
   /**
    *@inheritdoc Models.CapControl#pctMinkvar
    */
@@ -92,11 +92,11 @@ export interface CapControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.CapControl#Reset
    */
-  Reset?: boolean;
+  reset?: boolean;
   /**
-   *@inheritdoc Models.CapControl#basefreq
+   *@inheritdoc Models.CapControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.CapControl#enabled
    */

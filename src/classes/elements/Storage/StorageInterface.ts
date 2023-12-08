@@ -4,10 +4,10 @@ import {
   DispModeEnum,
   StorageStateEnum,
 } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface StorageInterface extends BaseInterface {
+export default interface StorageInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -203,13 +203,13 @@ export interface StorageInterface extends BaseInterface {
    */
   DynaData?: string;
   /**
-   *@inheritdoc Models.Storage#UserModel
+   *@inheritdoc Models.Storage#userModel
    */
-  UserModel?: string;
+  userModel?: string;
   /**
-   *@inheritdoc Models.Storage#UserData
+   *@inheritdoc Models.Storage#userData
    */
-  UserData?: string;
+  userData?: string;
   /**
    *@inheritdoc Models.Storage#debugtrace
    */
@@ -251,9 +251,9 @@ export interface StorageInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.Storage#basefreq
+   *@inheritdoc Models.Storage#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Storage#enabled
    */

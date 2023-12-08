@@ -1,8 +1,8 @@
 import { NormalEnum, StateEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface FuseInterface extends BaseInterface {
+export default interface FuseInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -46,9 +46,9 @@ export interface FuseInterface extends BaseInterface {
    */
   state?: StateEnum[];
   /**
-   *@inheritdoc Models.Fuse#basefreq
+   *@inheritdoc Models.Fuse#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Fuse#enabled
    */

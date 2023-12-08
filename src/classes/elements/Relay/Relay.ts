@@ -1,12 +1,9 @@
 import { NormalEnum, StateEnum } from "@enums/enums";
-import { RelayInterface } from "./RelayInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import RelayInterface from "./RelayInterface";
 
 /**   Circuit Element, Control Element  */
-export default class Relay
-  extends CircuitElementComponent
-  implements HasKeys<RelayInterface>
-{
+export default class Relay extends CircuitElement implements RelayInterface {
   _type = "Relay";
 
   parameters: Array<keyof this> = [
@@ -23,10 +20,10 @@ export default class Relay
     "TDGround",
     "PhaseInst",
     "GroundInst",
-    "Reset",
+    "reset",
     "Shots",
     "RecloseIntervals",
-    "Delay",
+    "delay",
     "Overvoltcurve",
     "Undervoltcurve",
     "kvbase",
@@ -45,7 +42,7 @@ export default class Relay
     "Z0ang",
     "Mphase",
     "Mground",
-    "EventLog",
+    "eventLog",
     "DebugTrace",
     "DistReverse",
     "Normal",
@@ -60,7 +57,7 @@ export default class Relay
     "DOC_PhaseTripInner",
     "DOC_TDPhaseInner",
     "DOC_P1Blocking",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -125,7 +122,7 @@ export default class Relay
   GroundInst?: number;
 
   /** Reset time in sec for relay.  Default is 15. If this much time passes between the last pickup event, and the relay has not locked out, the operation counter resets. */
-  Reset?: number;
+  reset?: number;
 
   /** Number of shots to lockout.  Default is 4. This is one more than the number of reclose intervals. */
   Shots?: number;
@@ -134,7 +131,7 @@ export default class Relay
   RecloseIntervals?: number[];
 
   /** Trip time delay (sec) for DEFINITE TIME relays. Default is 0.0 for current, voltage and DOC relays. If >0 then this value is used instead of curves. Used by Generic, RevPower, 46 and 47 relays. Defaults to 0.1 s for these relays. */
-  Delay?: number;
+  delay?: number;
 
   /** TCC Curve object to use for overvoltage relay.  Curve is assumed to be defined with per unit voltage values. Voltage base should be defined for the relay. Default is none (ignored). */
   Overvoltcurve?: string;
@@ -193,7 +190,7 @@ export default class Relay
   Mground?: number;
 
   /** {Yes/True* | No/False} Default is Yes for Relay. Write trips, reclose and reset events to EventLog. */
-  EventLog?: boolean;
+  eventLog?: boolean;
 
   /** {Yes/True* | No/False} Default is No for Relay. Write extra details to Eventlog. */
   DebugTrace?: boolean;
@@ -238,7 +235,7 @@ export default class Relay
   DOC_P1Blocking?: boolean;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface ExpControlInterface extends BaseInterface {
+export default interface ExpControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -61,9 +61,9 @@ export interface ExpControlInterface extends BaseInterface {
    */
   derList?: string[];
   /**
-   *@inheritdoc Models.ExpControl#basefreq
+   *@inheritdoc Models.ExpControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.ExpControl#enabled
    */

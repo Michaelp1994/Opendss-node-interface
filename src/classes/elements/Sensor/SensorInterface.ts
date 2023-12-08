@@ -1,8 +1,8 @@
 import { ConnEnum, DeltaDirectionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Meter Element  */
-export interface SensorInterface extends BaseInterface {
+export default interface SensorInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -54,9 +54,9 @@ export interface SensorInterface extends BaseInterface {
    */
   Weight?: number;
   /**
-   *@inheritdoc Models.Sensor#basefreq
+   *@inheritdoc Models.Sensor#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Sensor#enabled
    */

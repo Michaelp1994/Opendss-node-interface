@@ -1,10 +1,10 @@
-import { GenDispatcherInterface } from "./GenDispatcherInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import GenDispatcherInterface from "./GenDispatcherInterface";
 
 /**   Circuit Element, Control Element  */
 export default class GenDispatcher
-  extends CircuitElementComponent
-  implements HasKeys<GenDispatcherInterface>
+  extends CircuitElement
+  implements GenDispatcherInterface
 {
   _type = "GenDispatcher";
 
@@ -16,7 +16,7 @@ export default class GenDispatcher
     "kvarlimit",
     "genList",
     // "weights",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -42,7 +42,7 @@ export default class GenDispatcher
   /** GenDispatcher.Weights */
   // weights?: number[]; // FIXME: not able to be read.
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

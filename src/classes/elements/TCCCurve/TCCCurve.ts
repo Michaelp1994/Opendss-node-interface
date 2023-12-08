@@ -1,5 +1,5 @@
-import GeneralElement from "@components/GeneralElement";
-import { TCCCurveInterface } from "./TCCCurveInterface";
+import { GeneralElement } from "@elements";
+import TCCCurveInterface from "./TCCCurveInterface";
 
 /**   General
  *
@@ -11,7 +11,7 @@ import { TCCCurveInterface } from "./TCCCurveInterface";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default class TCCCurve
   extends GeneralElement
-  implements HasKeys<TCCCurveInterface>
+  implements TCCCurveInterface
 {
   _type = "TCC_Curve";
 

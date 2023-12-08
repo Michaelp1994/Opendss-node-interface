@@ -1,10 +1,10 @@
-import { GICsourceInterface } from "./GICsourceInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import GICsourceInterface from "./GICsourceInterface";
 
 /**   Circuit Element, PC Element  */
 export default class GICsource
-  extends CircuitElementComponent
-  implements HasKeys<GICsourceInterface>
+  extends CircuitElement
+  implements GICsourceInterface
 {
   _type = "GICsource";
 
@@ -20,7 +20,7 @@ export default class GICsource
     "Lat2",
     "Lon2",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -67,7 +67,7 @@ export default class GICsource
   spectrum?: string;
 
   /** Not used. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

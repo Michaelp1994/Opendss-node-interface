@@ -1,11 +1,11 @@
 import { NormalEnum, StateEnum } from "@enums/enums";
-import { RecloserInterface } from "./RecloserInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import RecloserInterface from "./RecloserInterface";
 
 /**   Circuit Element, Control Element  */
 export default class Recloser
-  extends CircuitElementComponent
-  implements HasKeys<RecloserInterface>
+  extends CircuitElement
+  implements RecloserInterface
 {
   _type = "Recloser";
 
@@ -23,10 +23,10 @@ export default class Recloser
     "GroundTrip",
     "PhaseInst",
     "GroundInst",
-    "Reset",
+    "reset",
     "Shots",
     "RecloseIntervals",
-    "Delay",
+    "delay",
     "Action",
     "TDPhFast",
     "TDGrFast",
@@ -34,7 +34,7 @@ export default class Recloser
     "TDGrDelayed",
     "Normal",
     "State",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -79,7 +79,7 @@ export default class Recloser
   GroundInst?: number;
 
   /** Reset time in sec for Recloser.  Default is 15. */
-  Reset?: number;
+  reset?: number;
 
   /** Total Number of fast and delayed shots to lockout.  Default is 4. This is one more than the number of reclose intervals. */
   Shots?: number;
@@ -88,7 +88,7 @@ export default class Recloser
   RecloseIntervals?: number[];
 
   /** Fixed delay time (sec) added to Recloser trip time. Default is 0.0. Used to represent breaker time or any other delay. */
-  Delay?: number;
+  delay?: number;
 
   /** DEPRECATED. See "State" property
    *
@@ -114,7 +114,7 @@ export default class Recloser
   State?: StateEnum;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

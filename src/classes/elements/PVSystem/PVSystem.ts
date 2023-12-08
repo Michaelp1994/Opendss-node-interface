@@ -1,11 +1,11 @@
 import { ConnEnum, ControlModeEnum } from "@enums/enums";
-import { PVSystemInterface } from "./PVSystemInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import PVSystemInterface from "./PVSystemInterface";
 
 /**   Circuit Element, PC Element  */
 export default class PVSystem
-  extends CircuitElementComponent
-  implements HasKeys<PVSystemInterface>
+  extends CircuitElement
+  implements PVSystemInterface
 {
   _type = "PVSystem";
 
@@ -39,8 +39,8 @@ export default class PVSystem
     "Tdaily",
     "Tduty",
     "class",
-    "UserModel",
-    "UserData",
+    "userModel",
+    "userData",
     "debugtrace",
     "VarFollowInverter",
     "DutyStart",
@@ -59,7 +59,7 @@ export default class PVSystem
     "DynOut",
     "ControlMode",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -162,10 +162,10 @@ export default class PVSystem
   class?: number;
 
   /** Name of DLL containing user-written model, which computes the terminal currents for Dynamics studies, overriding the default model.  Set to "none" to negate previous setting. */
-  UserModel?: string;
+  userModel?: string;
 
   /** String (in quotes or parentheses) that gets passed to user-written model for defining the data required for that model. */
-  UserData?: string;
+  userData?: string;
 
   /** {Yes | No }  Default is no.  Turn this on to capture the progress of the PVSystem model for each iteration.  Creates a separate file for each PVSystem element named "PVSystem_name.CSV". */
   debugtrace?: boolean;
@@ -230,7 +230,7 @@ export default class PVSystem
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

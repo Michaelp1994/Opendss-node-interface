@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface DynamicExpInterface extends BaseInterface {
+export default interface DynamicExpInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

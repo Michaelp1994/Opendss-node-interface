@@ -1,12 +1,9 @@
 import { ConnEnum, StatusEnum } from "@enums/enums";
-import { LoadInterface } from "./LoadInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import LoadInterface from "./LoadInterface";
 
 /**   Circuit Element, PC Element  */
-export default class Load
-  extends CircuitElementComponent
-  implements HasKeys<LoadInterface>
-{
+export default class Load extends CircuitElement implements LoadInterface {
   _type = "Load";
 
   parameters: Array<keyof this> = [
@@ -49,7 +46,7 @@ export default class Load
     "puXharm",
     "XRharm",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -236,7 +233,7 @@ export default class Load
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

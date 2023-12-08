@@ -1,8 +1,8 @@
 import { ActionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface TShapeInterface extends BaseInterface {
+export default interface TShapeInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

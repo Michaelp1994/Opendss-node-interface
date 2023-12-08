@@ -1,11 +1,8 @@
-import { VCCSInterface } from "./VCCSInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import VCCSInterface from "./VCCSInterface";
 
 /**   Circuit Element, PC Element  */
-export default class VCCS
-  extends CircuitElementComponent
-  implements HasKeys<VCCSInterface>
-{
+export default class VCCS extends CircuitElement implements VCCSInterface {
   _type = "VCCS";
 
   parameters: Array<keyof this> = [
@@ -23,7 +20,7 @@ export default class VCCS
     "vrmstau",
     "irmstau",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -75,7 +72,7 @@ export default class VCCS
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

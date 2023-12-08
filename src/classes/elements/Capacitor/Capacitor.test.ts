@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Capacitor from "./Capacitor";
-import Circuit from "./Circuit";
+import { Circuit, Capacitor } from "@elements";
 
 describe("Testing Capacitor Model", () => {
   const study = new GeneralStudy();

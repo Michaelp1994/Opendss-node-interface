@@ -1,10 +1,10 @@
-import { DynamicExpInterface } from "./DynamicExpInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import DynamicExpInterface from "./DynamicExpInterface";
 
 /**   General  */
 export default class DynamicExp
   extends GeneralElement
-  implements HasKeys<DynamicExpInterface>
+  implements DynamicExpInterface
 {
   _type = "DynamicExp";
 

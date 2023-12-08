@@ -1,11 +1,11 @@
 import { ConnEnum, CoreEnum, LeadLagEnum } from "@enums/enums";
-import { TransformerInterface } from "./TransformerInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import TransformerInterface from "./TransformerInterface";
 
 /**   Circuit Element, PD Element  */
 export default class Transformer
-  extends CircuitElementComponent
-  implements HasKeys<TransformerInterface>
+  extends CircuitElement
+  implements TransformerInterface
 {
   _type = "Transformer";
 
@@ -59,12 +59,12 @@ export default class Transformer
     "RdcOhms",
     "Seasons",
     "Ratings",
-    "normamps",
-    "emergamps",
-    "faultrate",
+    "normAmps",
+    "emergAmps",
+    "faultRate",
     "pctperm",
     "repair",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -265,13 +265,13 @@ export default class Transformer
   Ratings?: number[];
 
   /** Normal rated current. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Maximum or emerg current. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Failure rate per year. */
-  faultrate?: number;
+  faultRate?: number;
 
   /** Percent of failures that become permanent. */
   pctperm?: number;
@@ -280,7 +280,7 @@ export default class Transformer
   repair?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

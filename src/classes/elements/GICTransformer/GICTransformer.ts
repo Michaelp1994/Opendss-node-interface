@@ -1,11 +1,11 @@
 import { TypeEnum } from "@enums/enums";
-import { GICTransformerInterface } from "./GICTransformerInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import GICTransformerInterface from "./GICTransformerInterface";
 
 /**   Circuit Element, PD Element  */
 export default class GICTransformer
-  extends CircuitElementComponent
-  implements HasKeys<GICTransformerInterface>
+  extends CircuitElement
+  implements GICTransformerInterface
 {
   _type = "GICTransformer";
 
@@ -25,12 +25,12 @@ export default class GICTransformer
     "%R1",
     "%R2",
     "K",
-    "normamps",
-    "emergamps",
-    "faultrate",
+    "normAmps",
+    "emergAmps",
+    "faultRate",
     "pctperm",
     "repair",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -93,13 +93,13 @@ export default class GICTransformer
   K?: number;
 
   /** Normal rated current. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Maximum or emerg current. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Failure rate per year. */
-  faultrate?: number;
+  faultRate?: number;
 
   /** Percent of failures that become permanent. */
   pctperm?: number;
@@ -108,7 +108,7 @@ export default class GICTransformer
   repair?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

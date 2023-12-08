@@ -1,10 +1,10 @@
-import { GICLineInterface } from "./GICLineInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import GICLineInterface from "./GICLineInterface";
 
 /**   Circuit Element, PC Element  */
 export default class GICLine
-  extends CircuitElementComponent
-  implements HasKeys<GICLineInterface>
+  extends CircuitElement
+  implements GICLineInterface
 {
   _type = "GICLine";
 
@@ -25,7 +25,7 @@ export default class GICLine
     "Lat2",
     "Lon2",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -35,7 +35,7 @@ export default class GICLine
    * bus1=busname
    *
    * bus1=busname.1.2.3 */
-  bus1?: string;
+  bus1: string;
 
   /** Name of bus to which 2nd terminal is connected.
    *
@@ -44,7 +44,7 @@ export default class GICLine
    * bus2=busname.1.2.3
    *
    * No Default; must be specified. */
-  bus2?: string;
+  bus2: string;
 
   /** Voltage magnitude, in volts, of the GIC voltage induced across this line. When spedified, voltage source is assumed defined by Voltage and Angle properties.
    *
@@ -97,22 +97,27 @@ export default class GICLine
   spectrum?: string;
 
   /** Inherited Property for all PCElements. Base frequency for specification of reactance value. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;
 
   constructor(options: GICLineInterface);
-  constructor(name: string, options?: OmitName<GICLineInterface>);
+  constructor(name: string, options: OmitName<GICLineInterface>);
   constructor(
     nameOrOptions: string | GICLineInterface,
     options?: OmitName<GICLineInterface>,
   ) {
     super(nameOrOptions);
     if (typeof nameOrOptions === "string") {
-      Object.assign(this, options);
+      const { bus1, bus2, ...otherOptions } = options!;
+      this.bus1 = bus1;
+      this.bus2 = bus2;
+      Object.assign(this, otherOptions);
     } else {
-      const { name, ...otherOptions } = nameOrOptions;
+      const { name, bus1, bus2, ...otherOptions } = nameOrOptions;
+      this.bus1 = bus1;
+      this.bus2 = bus2;
       Object.assign(this, otherOptions);
     }
   }

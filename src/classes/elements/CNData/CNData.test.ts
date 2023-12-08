@@ -1,7 +1,7 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line, LineSpacing } from ".";
+import { Circuit, Line, LineSpacing } from "@elements";
+
 import CNData from "./CNData";
-import Circuit from "./Circuit";
 
 describe("Testing CNData Model", () => {
   const study = new GeneralStudy();
@@ -26,8 +26,8 @@ describe("Testing CNData Model", () => {
     diaCable: 119.5,
   });
   const lineSpacing = new LineSpacing("spacing1", {
-    nconds: 3,
-    nphases: 3,
+    nConds: 3,
+    nPhases: 3,
     x: [-1.5, 0, 1.5],
     h: [15, 15, 15],
   });

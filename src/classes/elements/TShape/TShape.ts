@@ -1,12 +1,9 @@
 import { ActionEnum } from "@enums/enums";
-import { TShapeInterface } from "./TShapeInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import TShapeInterface from "./TShapeInterface";
 
 /**   General  */
-export default class TShape
-  extends GeneralElement
-  implements HasKeys<TShapeInterface>
-{
+export default class TShape extends GeneralElement implements TShapeInterface {
   _type = "TShape";
 
   parameters: Array<keyof this> = [

@@ -1,11 +1,11 @@
 import { UnitsEnum } from "@enums/enums";
-import { LineGeometryInterface } from "./LineGeometryInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import LineGeometryInterface from "./LineGeometryInterface";
 
 /**   General  */
 export default class LineGeometry
   extends GeneralElement
-  implements HasKeys<LineGeometryInterface>
+  implements LineGeometryInterface
 {
   _type = "LineGeometry";
 
@@ -17,8 +17,8 @@ export default class LineGeometry
     "x",
     "h",
     "units",
-    "normamps",
-    "emergamps",
+    "normAmps",
+    "emergAmps",
     "reduce",
     "spacing",
     "wires",
@@ -58,10 +58,10 @@ export default class LineGeometry
   units?: UnitsEnum;
 
   /** Normal ampacity, amperes for the line. Defaults to first conductor if not specified. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Emergency ampacity, amperes. Defaults to first conductor if not specified. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** {Yes | No} Default = no. Reduce to Nphases (Kron Reduction). Reduce out neutrals. */
   reduce?: boolean;

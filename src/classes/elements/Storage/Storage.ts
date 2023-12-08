@@ -2,15 +2,15 @@ import {
   ConnEnum,
   ControlModeEnum,
   DispModeEnum,
-  StateEnum,
+  StorageStateEnum,
 } from "@enums/enums";
-import { StorageInterface } from "./StorageInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import StorageInterface from "./StorageInterface";
 
 /**   Circuit Element, PC Element  */
 export default class Storage
-  extends CircuitElementComponent
-  implements HasKeys<StorageInterface>
+  extends CircuitElement
+  implements StorageInterface
 {
   _type = "Storage";
 
@@ -63,8 +63,8 @@ export default class Storage
     "class",
     "DynaDLL",
     "DynaData",
-    "UserModel",
-    "UserData",
+    "userModel",
+    "userData",
     "debugtrace",
     "kVDC",
     "Kp",
@@ -75,7 +75,7 @@ export default class Storage
     "DynOut",
     "ControlMode",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -163,7 +163,7 @@ export default class Storage
   "%reserve"?: number;
 
   /** {IDLING | CHARGING | DISCHARGING}  Get/Set present operational state. In DISCHARGING mode, the Storage element acts as a generator and the kW property is positive. The element continues discharging at the scheduled output power level until the Storage reaches the reserve value. Then the state reverts to IDLING. In the CHARGING state, the Storage element behaves like a Load and the kW property is negative. The element continues to charge until the max Storage kWh is reached and then switches to IDLING state. In IDLING state, the element draws the idling losses plus the associated inverter losses. */
-  State?: StateEnum;
+  State?: StorageStateEnum;
 
   /** Discharge rate (output power) in percentage of rated kW. Default = 100. */
   "%Discharge"?: number;
@@ -254,17 +254,17 @@ export default class Storage
   /** An arbitrary integer number representing the class of Storage element so that Storage values may be segregated by class. */
   class?: number;
 
-  /** Name of DLL containing user-written dynamics model, which computes the terminal currents for Dynamics-mode simulations, overriding the default model.  Set to "none" to negate previous setting. This DLL has a simpler interface than the UserModel DLL and is only used for Dynamics mode. */
+  /** Name of DLL containing user-written dynamics model, which computes the terminal currents for Dynamics-mode simulations, overriding the default model.  Set to "none" to negate previous setting. This DLL has a simpler interface than the userModel DLL and is only used for Dynamics mode. */
   DynaDLL?: string;
 
   /** String (in quotes or parentheses if necessary) that gets passed to the user-written dynamics model Edit function for defining the data required for that model. */
   DynaData?: string;
 
   /** Name of DLL containing user-written model, which computes the terminal currents for both power flow and dynamics, overriding the default model.  Set to "none" to negate previous setting. */
-  UserModel?: string;
+  userModel?: string;
 
   /** String (in quotes or parentheses) that gets passed to user-written model for defining the data required for that model. */
-  UserData?: string;
+  userData?: string;
 
   /** {Yes | No }  Default is no.  Turn this on to capture the progress of the Storage model for each iteration.  Creates a separate file for each Storage element named "Storage_name.CSV". */
   debugtrace?: boolean;
@@ -305,7 +305,7 @@ export default class Storage
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

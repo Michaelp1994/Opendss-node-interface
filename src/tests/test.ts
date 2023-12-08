@@ -1,5 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Circuit, Fault, Line, Reactor, Vsource } from "@components/index";
+import { Circuit, Fault, Line, Reactor, Vsource } from "@elements";
 
 test("Create a Circuit", () => {
   const study = new GeneralStudy();
@@ -80,7 +80,7 @@ test("should build a basic circuit and test the correct buses.", () => {
     C1: 1,
     B0: 10,
     B1: 500,
-    normamps: 1000,
+    normAmps: 1000,
     r0: 500,
     r1: 500,
     EarthModel: "Carson",

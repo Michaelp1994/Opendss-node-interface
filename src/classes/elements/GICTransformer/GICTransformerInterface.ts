@@ -1,8 +1,8 @@
 import { TypeEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PD Element  */
-export interface GICTransformerInterface extends BaseInterface {
+export default interface GICTransformerInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -66,17 +66,17 @@ export interface GICTransformerInterface extends BaseInterface {
    */
   K?: number;
   /**
-   *@inheritdoc Models.GICTransformer#normamps
+   *@inheritdoc Models.GICTransformer#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.GICTransformer#emergamps
+   *@inheritdoc Models.GICTransformer#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.GICTransformer#faultrate
+   *@inheritdoc Models.GICTransformer#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.GICTransformer#pctperm
    */
@@ -86,9 +86,9 @@ export interface GICTransformerInterface extends BaseInterface {
    */
   repair?: number;
   /**
-   *@inheritdoc Models.GICTransformer#basefreq
+   *@inheritdoc Models.GICTransformer#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.GICTransformer#enabled
    */

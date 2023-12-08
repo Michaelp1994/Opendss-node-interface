@@ -1,11 +1,11 @@
 import { ScanTypeEnum, SequenceEnum } from "@enums/enums";
-import { IsourceInterface } from "./IsourceInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import IsourceInterface from "./IsourceInterface";
 
 /**   Circuit Element, PC Element  */
 export default class Isource
-  extends CircuitElementComponent
-  implements HasKeys<IsourceInterface>
+  extends CircuitElement
+  implements IsourceInterface
 {
   _type = "Isource";
 
@@ -22,7 +22,7 @@ export default class Isource
     "Duty",
     "Bus2",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -88,7 +88,7 @@ export default class Isource
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

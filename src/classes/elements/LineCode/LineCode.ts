@@ -1,11 +1,11 @@
 import { UnitsEnum } from "@enums/enums";
-import { LineCodeInterface } from "./LineCodeInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import LineCodeInterface from "./LineCodeInterface";
 
 /**   General  */
 export default class LineCode
   extends GeneralElement
-  implements HasKeys<LineCodeInterface>
+  implements LineCodeInterface
 {
   _type = "LineCode";
 
@@ -20,11 +20,11 @@ export default class LineCode
     "units",
     "rmatrix",
     "xmatrix",
-    "cmatrix",
+    "cMatrix",
     "baseFreq",
-    "normamps",
-    "emergamps",
-    "faultrate",
+    "normAmps",
+    "emergAmps",
+    "faultRate",
     "pctperm",
     "repair",
     "Kron",
@@ -71,19 +71,19 @@ export default class LineCode
   xmatrix?: number[];
 
   /** Nodal Capacitance matrix, lower triangle, nf per unit length.Order of the matrix is the number of phases. May be used to specify the shunt capacitance of any line configuration.  For balanced line models, you may use the standard symmetrical component data definition instead. */
-  cmatrix?: number[];
+  cMatrix?: number[];
 
   /** Frequency at which impedances are specified. */
   baseFreq?: number;
 
   /** Normal ampere limit on line.  This is the so-called Planning Limit. It may also be the value above which load will have to be dropped in a contingency.  Usually about 75% - 80% of the emergency (one-hour) rating. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Emergency ampere limit on line (usually one-hour rating). */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Number of faults per unit length per year. */
-  faultrate?: number;
+  faultRate?: number;
 
   /** Percentage of the faults that become permanent. */
   pctperm?: number;

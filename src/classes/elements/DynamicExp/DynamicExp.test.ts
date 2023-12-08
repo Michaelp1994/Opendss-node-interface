@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Generator } from ".";
-import Circuit from "./Circuit";
+import { Circuit, Generator } from "@elements";
 import DynamicExp from "./DynamicExp";
 
 describe("Testing DynamicExp Model", () => {

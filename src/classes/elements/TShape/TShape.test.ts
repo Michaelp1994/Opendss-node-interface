@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { PVSystem } from ".";
-import Circuit from "./Circuit";
+import { Circuit , PVSystem } from "@elements";
 import TShape from "./TShape";
 
 describe("Testing TShape Model", () => {

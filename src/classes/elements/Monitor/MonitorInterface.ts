@@ -1,8 +1,8 @@
 import { MonitorActionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Meter Element  */
-export interface MonitorInterface extends BaseInterface {
+export default interface MonitorInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -34,9 +34,9 @@ export interface MonitorInterface extends BaseInterface {
    */
   PPolar?: boolean;
   /**
-   *@inheritdoc Models.Monitor#basefreq
+   *@inheritdoc Models.Monitor#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Monitor#enabled
    */

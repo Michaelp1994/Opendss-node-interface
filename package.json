@@ -16,7 +16,8 @@
     "build": "tsup",
     "format": "prettier ./src/**/*.ts --write",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "script": "ts-node ./script"
   },
   "author": "",
   "license": "ISC",

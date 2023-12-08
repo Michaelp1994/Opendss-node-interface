@@ -1,8 +1,8 @@
 import { NormalEnum, StateEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface RecloserInterface extends BaseInterface {
+export default interface RecloserInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -60,7 +60,7 @@ export interface RecloserInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Recloser#Reset
    */
-  Reset?: number;
+  reset?: number;
   /**
    *@inheritdoc Models.Recloser#Shots
    */
@@ -72,7 +72,7 @@ export interface RecloserInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Recloser#Delay
    */
-  Delay?: number;
+  delay?: number;
   /**
    *@inheritdoc Models.Recloser#Action
    */
@@ -102,9 +102,9 @@ export interface RecloserInterface extends BaseInterface {
    */
   State?: StateEnum;
   /**
-   *@inheritdoc Models.Recloser#basefreq
+   *@inheritdoc Models.Recloser#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Recloser#enabled
    */

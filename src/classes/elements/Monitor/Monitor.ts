@@ -1,11 +1,11 @@
 import { MonitorActionEnum } from "@enums/enums";
-import { MonitorInterface } from "./MonitorInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import MonitorInterface from "./MonitorInterface";
 
 /**   Circuit Element, Meter Element  */
 export default class Monitor
-  extends CircuitElementComponent
-  implements HasKeys<MonitorInterface>
+  extends CircuitElement
+  implements MonitorInterface
 {
   _type = "Monitor";
 
@@ -17,7 +17,7 @@ export default class Monitor
     "residual",
     "VIPolar",
     "PPolar",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -100,7 +100,7 @@ export default class Monitor
   PPolar?: boolean;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

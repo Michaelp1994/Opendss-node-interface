@@ -1,11 +1,11 @@
 import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
-import { CNDataInterface } from "./CNDataInterface";
-import ConductorDataElement from "./ConductorDataElement";
+import { ConductorDataElement } from "@elements";
+import CNDataInterface from "./CNDataInterface";
 
 /**   Conductor Data, Cable Data  */
 export default class CNData
   extends ConductorDataElement
-  implements HasKeys<CNDataInterface>
+  implements CNDataInterface
 {
   _type = "CNData";
 

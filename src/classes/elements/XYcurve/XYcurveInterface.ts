@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface XYcurveInterface extends BaseInterface {
+export default interface XYcurveInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

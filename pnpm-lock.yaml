@@ -52,6 +52,9 @@ devDependencies:
   eslint-define-config:
     specifier: ^2.0.0
     version: 2.0.0
+  eslint-plugin-classes:
+    specifier: link:..\eslint-plugin-classes
+    version: link:../eslint-plugin-classes
   eslint-plugin-import:
     specifier: ^2.29.0
     version: 2.29.0(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)

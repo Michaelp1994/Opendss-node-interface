@@ -1,8 +1,8 @@
 import { ConnEnum, StatesEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PD Element  */
-export interface CapacitorInterface extends BaseInterface {
+export default interface CapacitorInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -30,9 +30,9 @@ export interface CapacitorInterface extends BaseInterface {
    */
   conn?: ConnEnum;
   /**
-   *@inheritdoc Models.Capacitor#cmatrix
+   *@inheritdoc Models.Capacitor#cMatrix
    */
-  cmatrix?: number[];
+  cMatrix?: number[];
   /**
    *@inheritdoc Models.Capacitor#cuf
    */
@@ -58,17 +58,17 @@ export interface CapacitorInterface extends BaseInterface {
    */
   states?: StatesEnum;
   /**
-   *@inheritdoc Models.Capacitor#normamps
+   *@inheritdoc Models.Capacitor#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.Capacitor#emergamps
+   *@inheritdoc Models.Capacitor#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.Capacitor#faultrate
+   *@inheritdoc Models.Capacitor#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.Capacitor#pctperm
    */
@@ -78,9 +78,9 @@ export interface CapacitorInterface extends BaseInterface {
    */
   repair?: number;
   /**
-   *@inheritdoc Models.Capacitor#basefreq
+   *@inheritdoc Models.Capacitor#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Capacitor#enabled
    */

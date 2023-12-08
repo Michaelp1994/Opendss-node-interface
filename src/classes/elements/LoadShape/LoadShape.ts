@@ -1,11 +1,11 @@
 import { ActionEnum } from "@enums/enums";
-import { LoadShapeInterface } from "./LoadShapeInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import LoadShapeInterface from "./LoadShapeInterface";
 
 /**   General  */
 export default class LoadShape
   extends GeneralElement
-  implements HasKeys<LoadShapeInterface>
+  implements LoadShapeInterface
 {
   _type = "LoadShape";
 

@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface VCCSInterface extends BaseInterface {
+export default interface VCCSInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -61,9 +61,9 @@ export interface VCCSInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.VCCS#basefreq
+   *@inheritdoc Models.VCCS#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.VCCS#enabled
    */

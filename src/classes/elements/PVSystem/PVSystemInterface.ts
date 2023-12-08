@@ -1,8 +1,8 @@
 import { ConnEnum, ControlModeEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface PVSystemInterface extends BaseInterface {
+export default interface PVSystemInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -122,11 +122,11 @@ export interface PVSystemInterface extends BaseInterface {
    */
   class?: number;
   /**
-   *@inheritdoc Models.PVSystem#UserModel
+   *@inheritdoc Models.PVSystem#userModel
    */
   userModel?: string;
   /**
-   *@inheritdoc Models.PVSystem#UserData
+   *@inheritdoc Models.PVSystem#userData
    */
   userData?: string;
   /**
@@ -202,9 +202,9 @@ export interface PVSystemInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.PVSystem#basefreq
+   *@inheritdoc Models.PVSystem#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.PVSystem#enabled
    */

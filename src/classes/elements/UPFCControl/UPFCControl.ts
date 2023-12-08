@@ -1,20 +1,20 @@
-import { UPFCControlInterface } from "./UPFCControlInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import UPFCControlInterface from "./UPFCControlInterface";
 
 /**   Circuit Element, Control Element  */
 export default class UPFCControl
-  extends CircuitElementComponent
-  implements HasKeys<UPFCControlInterface>
+  extends CircuitElement
+  implements UPFCControlInterface
 {
   _type = "UPFCControl";
 
-  parameters: Array<keyof this> = ["UPFCList", "basefreq", "enabled", "like"];
+  parameters: Array<keyof this> = ["UPFCList", "baseFreq", "enabled", "like"];
 
   /** The list of all the UPFC devices to be controlled by this controller, If left empty, this control will apply for all UPFCs in the model. */
   UPFCList?: string[];
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

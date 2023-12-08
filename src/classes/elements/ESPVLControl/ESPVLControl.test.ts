@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line, PVSystem, Storage } from ".";
-import Circuit from "./Circuit";
+import { Circuit , Line, PVSystem, Storage } from "@elements";
 
 describe("Testing ESPVLControl Model", () => {
   const study = new GeneralStudy();

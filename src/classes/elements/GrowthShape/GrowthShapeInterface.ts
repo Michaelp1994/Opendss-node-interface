@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface GrowthShapeInterface extends BaseInterface {
+export default interface GrowthShapeInterface extends BaseElementInterface {
   /**
    *@inheritdoc Models.GrowthShape#npts
    */

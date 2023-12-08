@@ -1,7 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
-import Transformer from "./Transformer";
-import XfmrCode from "./XfmrCode";
+import { Circuit, Transformer, XfmrCode } from "@elements";
 
 describe("Testing XfmrCode Model", () => {
   const study = new GeneralStudy();

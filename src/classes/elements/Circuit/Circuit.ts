@@ -1,6 +1,5 @@
-import { VsourceInterface } from "./VsourceInterface";
-
-import Vsource from "./Vsource";
+import { Vsource } from "@elements/Vsource";
+import VsourceInterface from "@elements/Vsource/VsourceInterface";
 
 /**   Circuit Element, PC Element  */
 export default class Circuit extends Vsource {

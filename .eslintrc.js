@@ -4,7 +4,6 @@ const { defineConfig } = require("eslint-define-config");
 module.exports = defineConfig({
   root: true,
   ignorePatterns: ["dist", "docs", "node_modules"],
-
   overrides: [
     {
       files: ["src/**/*.ts"],

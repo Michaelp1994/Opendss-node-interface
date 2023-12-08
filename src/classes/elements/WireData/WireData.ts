@@ -1,73 +1,56 @@
 import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
-import { WireDataInterface } from "./WireDataInterface";
-import ConductorDataElement from "./ConductorDataElement";
+import { ConductorDataElement } from "@elements";
+import WireDataInterface from "./WireDataInterface";
 
 /**   Conductor Data  */
 export default class WireData
   extends ConductorDataElement
-  implements HasKeys<WireDataInterface>
+  implements WireDataInterface
 {
   _type = "WireData";
 
   parameters: Array<keyof this> = [
-    "Rdc",
-    "Rac",
-    "Runits",
-    "GMRac",
-    "GMRunits",
+    "rdc",
+    "rac",
+    "rUnits",
+    "gmrac",
+    "gmrUnits",
     "radius",
-    "radunits",
-    "normamps",
-    "emergamps",
+    "radUnits",
+    "normAmps",
+    "emergAmps",
     "diam",
     "seasons",
-    "Ratings",
-    "Capradius",
+    "ratings",
+    "capRadius",
     "like",
   ];
 
-  /** dc Resistance, ohms per unit length (see Runits). Defaults to Rac/1.02 if not specified. */
-  Rdc?: number;
+  rdc?: number;
 
-  /** Resistance at 60 Hz per unit length. Defaults to 1.02*Rdc if not specified. */
-  Rac?: number;
+  rac?: number;
 
-  /** Length units for resistance: ohms per {mi|kft|km|m|Ft|in|cm|mm} Default=none. */
-  Runits?: UnitsEnum;
+  rUnits?: UnitsEnum;
 
-  /** GMR at 60 Hz. Defaults to .7788*radius if not specified. */
-  GMRac?: number;
+  gmrac?: number;
 
-  /** Units for GMR: {mi|kft|km|m|Ft|in|cm|mm} Default=none. */
-  GMRunits?: GMRunitsEnum;
+  gmrUnits?: GMRunitsEnum;
 
-  /** Outside radius of conductor. Defaults to GMR/0.7788 if not specified. */
   radius?: number;
 
-  /** Units for outside radius: {mi|kft|km|m|Ft|in|cm|mm} Default=none. */
-  radunits?: RadunitsEnum;
+  radUnits?: RadunitsEnum;
 
-  /** Normal ampacity, amperes. Defaults to Emergency amps/1.5 if not specified. */
-  normamps?: number;
+  normAmps?: number;
 
-  /** Emergency ampacity, amperes. Defaults to 1.5 * Normal Amps if not specified. */
-  emergamps?: number;
+  emergAmps?: number;
 
-  /** Diameter; Alternative method for entering radius.
-   *
-   * Redundant with radius */
   diam?: number;
 
-  /** Defines the number of ratings to be defined for the wire, to be used only when defining seasonal ratings using the "Ratings" property. */
   seasons?: number;
 
-  /** An array of ratings to be used when the seasonal ratings flag is True. It can be used to insert
-   *
-   * multiple ratings to change during a QSTS simulation to evaluate different ratings in lines. */
-  Ratings?: number[];
+  ratings?: number[];
 
-  /** Equivalent conductor radius for capacitance calcs. Specify this for bundled conductors. Defaults to same value as radius. Define Diam or Radius property first. */
-  Capradius?: number;
+  capRadius?: number;
 
   constructor(options: WireDataInterface);
   constructor(name: string, options?: OmitName<WireDataInterface>);

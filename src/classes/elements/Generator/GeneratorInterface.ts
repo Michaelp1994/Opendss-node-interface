@@ -1,8 +1,8 @@
 import { ConnEnum, DispmodeEnum, FuelkWhEnum, StatusEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface GeneratorInterface extends BaseInterface {
+export default interface GeneratorInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -122,13 +122,13 @@ export interface GeneratorInterface extends BaseInterface {
    */
   D?: number;
   /**
-   *@inheritdoc Models.Generator#UserModel
+   *@inheritdoc Models.Generator#userModel
    */
-  UserModel?: string;
+  userModel?: string;
   /**
-   *@inheritdoc Models.Generator#UserData
+   *@inheritdoc Models.Generator#userData
    */
-  UserData?: string;
+  userData?: string;
   /**
    *@inheritdoc Models.Generator#ShaftModel
    */
@@ -186,9 +186,9 @@ export interface GeneratorInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.Generator#basefreq
+   *@inheritdoc Models.Generator#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Generator#enabled
    */

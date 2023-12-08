@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface TCCCurveInterface extends BaseInterface {
+export default interface TCCCurveInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

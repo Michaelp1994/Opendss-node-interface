@@ -1,8 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line } from ".";
-import Circuit from "./Circuit";
-import LineSpacing from "./LineSpacing";
-import WireData from "./WireData";
+import { Circuit, Line, LineSpacing, WireData } from "@elements";
 
 describe("Testing WireData Model", () => {
   const study = new GeneralStudy();
@@ -20,9 +17,9 @@ describe("Testing WireData Model", () => {
   });
 
   const lineSpacing = new LineSpacing("spacing1", {
-    nconds: 3,
-    nphases: 3,
-    x: [-1.5, 0, 1.5],
+    nConds: 3,
+    nPhases: 3,
+    x: [-3, 0, 3],
     h: [15, 15, 15],
   });
 

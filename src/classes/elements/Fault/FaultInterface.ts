@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PD Element  */
-export interface FaultInterface extends BaseInterface {
+export default interface FaultInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -41,17 +41,17 @@ export interface FaultInterface extends BaseInterface {
    */
   MinAmps?: number;
   /**
-   *@inheritdoc Models.Fault#normamps
+   *@inheritdoc Models.Fault#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.Fault#emergamps
+   *@inheritdoc Models.Fault#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.Fault#faultrate
+   *@inheritdoc Models.Fault#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.Fault#pctperm
    */
@@ -61,9 +61,9 @@ export interface FaultInterface extends BaseInterface {
    */
   repair?: number;
   /**
-   *@inheritdoc Models.Fault#basefreq
+   *@inheritdoc Models.Fault#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Fault#enabled
    */

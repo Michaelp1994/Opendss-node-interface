@@ -1,5 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
+import { Circuit } from "@elements";
 import GICTransformer from "./GICTransformer";
 
 describe("Testing GICTransformer Model", () => {

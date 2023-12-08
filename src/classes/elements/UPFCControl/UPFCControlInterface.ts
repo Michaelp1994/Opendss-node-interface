@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface UPFCControlInterface extends BaseInterface {
+export default interface UPFCControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -9,9 +9,9 @@ export interface UPFCControlInterface extends BaseInterface {
    */
   UPFCList?: string[];
   /**
-   *@inheritdoc Models.UPFCControl#basefreq
+   *@inheritdoc Models.UPFCControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.UPFCControl#enabled
    */

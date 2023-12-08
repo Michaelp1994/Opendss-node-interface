@@ -1,12 +1,9 @@
 import { NormalEnum, StateEnum } from "@enums/enums";
-import { FuseInterface } from "./FuseInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import FuseInterface from "./FuseInterface";
 
 /**   Circuit Element, Control Element  */
-export default class Fuse
-  extends CircuitElementComponent
-  implements HasKeys<FuseInterface>
-{
+export default class Fuse extends CircuitElement implements FuseInterface {
   _type = "Fuse";
 
   parameters: Array<keyof this> = [
@@ -16,11 +13,11 @@ export default class Fuse
     "SwitchedTerm",
     "fuseCurve",
     "RatedCurrent",
-    "Delay",
+    "delay",
     "Action",
     "Normal",
     "State",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -44,7 +41,7 @@ export default class Fuse
   RatedCurrent?: number;
 
   /** Fixed delay time (sec) added to Fuse blowing time determined from the TCC curve. Default is 0.0. Used to represent fuse clearing time or any other delay. */
-  Delay?: number;
+  delay?: number;
 
   /** DEPRECATED. See "State" property. */
   Action?: string;
@@ -56,7 +53,7 @@ export default class Fuse
   State?: StateEnum;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

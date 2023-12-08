@@ -1,8 +1,8 @@
 import { EnergyMeterActionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Meter Element  */
-export interface EnergyMeterInterface extends BaseInterface {
+export default interface EnergyMeterInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -102,9 +102,9 @@ export interface EnergyMeterInterface extends BaseInterface {
    */
   CustInterrupts?: number;
   /**
-   *@inheritdoc Models.EnergyMeter#basefreq
+   *@inheritdoc Models.EnergyMeter#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.EnergyMeter#enabled
    */

@@ -1,8 +1,8 @@
 import { EarthModelEnum, UnitsEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PD Element  */
-export interface LineInterface extends BaseInterface {
+export default interface LineInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -58,9 +58,9 @@ export interface LineInterface extends BaseInterface {
    */
   xmatrix?: number[];
   /**
-   *@inheritdoc Models.Line#cmatrix
+   *@inheritdoc Models.Line#cMatrix
    */
-  cmatrix?: number[];
+  cMatrix?: number[];
   /**
    *@inheritdoc Models.Line#Switch
    */
@@ -126,17 +126,17 @@ export interface LineInterface extends BaseInterface {
    */
   LineType?: string;
   /**
-   *@inheritdoc Models.Line#normamps
+   *@inheritdoc Models.Line#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.Line#emergamps
+   *@inheritdoc Models.Line#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.Line#faultrate
+   *@inheritdoc Models.Line#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.Line#pctperm
    */
@@ -146,9 +146,9 @@ export interface LineInterface extends BaseInterface {
    */
   repair?: number;
   /**
-   *@inheritdoc Models.Line#basefreq
+   *@inheritdoc Models.Line#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Line#enabled
    */

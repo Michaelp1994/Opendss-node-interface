@@ -1,11 +1,11 @@
 import { ModelEnum, ScanTypeEnum, SequenceEnum } from "@enums/enums";
-import { VsourceInterface } from "./VsourceInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import VsourceInterface from "./VsourceInterface";
 
 /**   Circuit Element, PC Element  */
 export default class Vsource
-  extends CircuitElementComponent
-  implements HasKeys<VsourceInterface>
+  extends CircuitElement
+  implements VsourceInterface
 {
   _type = "Vsource";
 
@@ -42,7 +42,7 @@ export default class Vsource
     "model",
     "puZideal",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -208,7 +208,7 @@ export default class Vsource
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

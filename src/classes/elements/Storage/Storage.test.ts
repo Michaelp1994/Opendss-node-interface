@@ -1,5 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
+import { Circuit } from "@elements";
 import Storage from "./Storage";
 
 describe("Testing Storage Model", () => {

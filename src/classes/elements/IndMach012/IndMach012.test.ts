@@ -1,13 +1,26 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
+import { Circuit, Line } from "@elements";
 import IndMach012 from "./IndMach012";
 
 describe("Testing IndMach012 Model", () => {
   const study = new GeneralStudy();
-  const circuit = new Circuit("TestCircuit");
-  study.add(circuit);
+  const circuit = new Circuit("TestCircuit", {
+    bus1: "bus1",
+    basekv: 12.47,
+    pu: 1.0,
+  });
 
-  const component = new IndMach012("example_component");
+  study.add(circuit);
+  const line = new Line("line", {
+    bus1: "bus1",
+  });
+  study.add(line);
+  const component = new IndMach012("example_component", {
+    bus1: "bus1",
+    phases: 3,
+    kv: 12.47,
+  });
+
   study.add(component);
   study.build();
   study.solve();

@@ -1,11 +1,11 @@
 import { GMRunitsEnum, RadunitsEnum, UnitsEnum } from "@enums/enums";
-import { TSDataInterface } from "./TSDataInterface";
-import ConductorDataElement from "./ConductorDataElement";
+import { ConductorDataElement } from "@elements";
+import TSDataInterface from "./TSDataInterface";
 
 /**   Conductor Data, Cable Data  */
 export default class TSData
   extends ConductorDataElement
-  implements HasKeys<TSDataInterface>
+  implements TSDataInterface
 {
   _type = "TSData";
 
@@ -24,8 +24,8 @@ export default class TSData
     "GMRunits",
     "radius",
     "radunits",
-    "normamps",
-    "emergamps",
+    "normAmps",
+    "emergAmps",
     "diam",
     "Seasons",
     "Ratings",
@@ -76,10 +76,10 @@ export default class TSData
   radunits?: RadunitsEnum;
 
   /** Normal ampacity, amperes. Defaults to Emergency amps/1.5 if not specified. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Emergency ampacity, amperes. Defaults to 1.5 * Normal Amps if not specified. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Diameter; Alternative method for entering radius.
    *

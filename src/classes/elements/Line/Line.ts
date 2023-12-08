@@ -1,12 +1,9 @@
 import { EarthModelEnum, UnitsEnum } from "@enums/enums";
-import { LineInterface } from "./LineInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import LineInterface from "./LineInterface";
 
 /**   Circuit Element, PD Element  */
-export default class Line
-  extends CircuitElementComponent
-  implements HasKeys<LineInterface>
-{
+export default class Line extends CircuitElement implements LineInterface {
   _type = "Line";
 
   parameters: Array<keyof this> = [
@@ -23,7 +20,7 @@ export default class Line
     "C0",
     "rmatrix",
     "xmatrix",
-    "cmatrix",
+    "cMatrix",
     "Switch",
     "Rg",
     "Xg",
@@ -40,12 +37,12 @@ export default class Line
     "Seasons",
     "Ratings",
     "LineType",
-    "normamps",
-    "emergamps",
-    "faultrate",
+    "normAmps",
+    "emergAmps",
+    "faultRate",
     "pctperm",
     "repair",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -98,7 +95,7 @@ export default class Line
   xmatrix?: number[];
 
   /** Nodal Capacitance matrix, lower triangle, nf per unit length.Order of the matrix is the number of phases. May be used to specify the shunt capacitance of any line configuration. Using any of Rmatrix, Xmatrix, Cmatrix forces program to use the matrix values for line impedance definition.  For balanced line models, you may use the standard symmetrical component data definition instead. */
-  cmatrix?: number[];
+  cMatrix?: number[];
 
   /** {y/n | T/F}  Default= no/false.  Designates this line as a switch for graphics and algorithmic purposes.
    *
@@ -187,13 +184,13 @@ export default class Line
   LineType?: string;
 
   /** Normal rated current. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Maximum or emerg current. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Failure rate PER UNIT LENGTH per year. Length must be same units as LENGTH property. Default is 0.1 fault per unit length per year. */
-  faultrate?: number;
+  faultRate?: number;
 
   /** Percent of failures that become permanent. Default is 20. */
   pctperm?: number;
@@ -202,7 +199,7 @@ export default class Line
   repair?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

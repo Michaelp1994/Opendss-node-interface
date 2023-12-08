@@ -1,11 +1,11 @@
 import { ActionEnum } from "@enums/enums";
-import { SwtControlInterface } from "./SwtControlInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import SwtControlInterface from "./SwtControlInterface";
 
 /**   Circuit Element, Control Element  */
 export default class SwtControl
-  extends CircuitElementComponent
-  implements HasKeys<SwtControlInterface>
+  extends CircuitElement
+  implements SwtControlInterface
 {
   _type = "SwtControl";
 
@@ -14,11 +14,11 @@ export default class SwtControl
     "SwitchedTerm",
     "Action",
     "Lock",
-    "Delay",
+    "delay",
     "Normal",
     "State",
-    "Reset",
-    "basefreq",
+    "reset",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -38,7 +38,7 @@ export default class SwtControl
   Lock?: boolean;
 
   /** Operating time delay (sec) of the switch. Defaults to 120. */
-  Delay?: number;
+  delay?: number;
 
   /** {Open | Closed] Normal state of the switch. If not Locked, the switch reverts to this state for reset, change of mode, etc. Defaults to first Action or State specified if not specifically declared. */
   Normal?: string;
@@ -47,10 +47,10 @@ export default class SwtControl
   State?: string;
 
   /** {Yes | No} If Yes, forces Reset of switch to Normal state and removes Lock independently of any internal reset command for mode change, etc. */
-  Reset?: boolean;
+  reset?: boolean;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

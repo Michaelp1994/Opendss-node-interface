@@ -1,11 +1,11 @@
-import { ActionEnum } from "@enums/enums";
-import { EnergyMeterInterface } from "./EnergyMeterInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import { EnergyMeterActionEnum } from "@enums/enums";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import EnergyMeterInterface from "./EnergyMeterInterface";
 
 /**   Circuit Element, Meter Element  */
 export default class EnergyMeter
-  extends CircuitElementComponent
-  implements HasKeys<EnergyMeterInterface>
+  extends CircuitElement
+  implements EnergyMeterInterface
 {
   _type = "EnergyMeter";
 
@@ -34,7 +34,7 @@ export default class EnergyMeter
     "SAIDI",
     "CAIDI",
     "CustInterrupts",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -62,7 +62,7 @@ export default class EnergyMeter
    * (Z)onedump = Dump names of elements in meter zone to a file
    *
    * File name is "Zone_metername.CSV". */
-  action?: ActionEnum;
+  action?: EnergyMeterActionEnum;
 
   /** Enter a string ARRAY of any combination of the following. Options processed left-to-right:
    *
@@ -146,7 +146,7 @@ export default class EnergyMeter
   CustInterrupts?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

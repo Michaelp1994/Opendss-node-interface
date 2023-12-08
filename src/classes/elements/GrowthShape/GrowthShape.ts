@@ -1,10 +1,10 @@
-import { GrowthShapeInterface } from "./GrowthShapeInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import GrowthShapeInterface from "./GrowthShapeInterface";
 
 /**   General  */
 export default class GrowthShape
   extends GeneralElement
-  implements HasKeys<GrowthShapeInterface>
+  implements GrowthShapeInterface
 {
   _type = "GrowthShape";
 

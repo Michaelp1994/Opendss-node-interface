@@ -1,17 +1,17 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface GICLineInterface extends BaseInterface {
+export default interface GICLineInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
    *@inheritdoc Models.GICLine#bus1
    */
-  bus1?: string;
+  bus1: string;
   /**
    *@inheritdoc Models.GICLine#bus2
    */
-  bus2?: string;
+  bus2: string;
   /**
    *@inheritdoc Models.GICLine#Volts
    */
@@ -69,9 +69,9 @@ export interface GICLineInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.GICLine#basefreq
+   *@inheritdoc Models.GICLine#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.GICLine#enabled
    */

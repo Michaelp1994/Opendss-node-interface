@@ -1,8 +1,8 @@
 import { UnitsEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface LineGeometryInterface extends BaseInterface {
+export default interface LineGeometryInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -34,13 +34,13 @@ export interface LineGeometryInterface extends BaseInterface {
    */
   units?: UnitsEnum;
   /**
-   *@inheritdoc Models.LineGeometry#normamps
+   *@inheritdoc Models.LineGeometry#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.LineGeometry#emergamps
+   *@inheritdoc Models.LineGeometry#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
    *@inheritdoc Models.LineGeometry#reduce
    */

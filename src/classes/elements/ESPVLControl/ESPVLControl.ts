@@ -1,5 +1,5 @@
-import { ESPVLControlInterface } from "./ESPVLControlInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import ESPVLControlInterface from "./ESPVLControlInterface";
 
 /**   Circuit Element, Control Element
  *
@@ -11,8 +11,8 @@ import CircuitElementComponent from "./CircuitElementComponent";
  * A Local Controller controls one or more PVSystem elements and one or more Storage elements.
  */
 export default class ESPVLControl
-  extends CircuitElementComponent
-  implements HasKeys<ESPVLControlInterface>
+  extends CircuitElement
+  implements ESPVLControlInterface
 {
   _type = "ESPVLControl";
 
@@ -28,7 +28,7 @@ export default class ESPVLControl
     "PVSystemWeights",
     "StorageList",
     "StorageWeights",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -67,7 +67,7 @@ export default class ESPVLControl
   StorageWeights?: number[];
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

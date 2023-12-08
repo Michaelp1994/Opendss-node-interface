@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface ESPVLControlInterface extends BaseInterface {
+export default interface ESPVLControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -49,9 +49,9 @@ export interface ESPVLControlInterface extends BaseInterface {
    */
   StorageWeights?: number[];
   /**
-   *@inheritdoc Models.ESPVLControl#basefreq
+   *@inheritdoc Models.ESPVLControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.ESPVLControl#enabled
    */

@@ -1,7 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
-import Fuse from "./Fuse";
-import Line from "./Line";
+import { Circuit, Fuse, Line } from "@elements";
 
 describe("Testing Fuse Model", () => {
   const study = new GeneralStudy();

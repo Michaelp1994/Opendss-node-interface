@@ -1,6 +1,6 @@
 export {
   AutoTrans,
-  BaseComponent,
+  BaseElement,
   CNData,
   CapControl,
   Capacitor,
@@ -38,7 +38,7 @@ export {
   Storage,
   StorageController,
   SwtControl,
-  TCC_Curve,
+  TCCCurve,
   TSData,
   TShape,
   Transformer,
@@ -50,5 +50,5 @@ export {
   WireData,
   XYcurve,
   XfmrCode,
-} from "./classes/components";
+} from "@elements";
 export { default as GeneralStudy } from "@classes/GeneralStudy";

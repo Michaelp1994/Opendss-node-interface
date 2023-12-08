@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Reactor } from ".";
-import Circuit from "./Circuit";
+import { Circuit, Reactor } from "@elements";
 import XYcurve from "./XYcurve";
 
 describe("Testing XYcurve Model", () => {

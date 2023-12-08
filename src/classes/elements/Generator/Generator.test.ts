@@ -1,5 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
+import { Circuit } from "@elements";
 import Generator from "./Generator";
 
 describe("Testing Generator Model", () => {

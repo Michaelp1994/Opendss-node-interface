@@ -1,11 +1,11 @@
 import { ConnEnum } from "@enums/enums";
-import { ReactorInterface } from "./ReactorInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import ReactorInterface from "./ReactorInterface";
 
 /**   Circuit Element, PD Element  */
 export default class Reactor
-  extends CircuitElementComponent
-  implements HasKeys<ReactorInterface>
+  extends CircuitElement
+  implements ReactorInterface
 {
   _type = "Reactor";
 
@@ -29,12 +29,12 @@ export default class Reactor
     "RCurve",
     "LCurve",
     "LmH",
-    "normamps",
-    "emergamps",
-    "faultrate",
+    "normAmps",
+    "emergAmps",
+    "faultRate",
     "pctperm",
     "repair",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -131,13 +131,13 @@ export default class Reactor
   LmH?: number;
 
   /** Normal rated current. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Maximum or emerg current. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Failure rate per year. */
-  faultrate?: number;
+  faultRate?: number;
 
   /** Percent of failures that become permanent. */
   pctperm?: number;
@@ -146,7 +146,7 @@ export default class Reactor
   repair?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

@@ -1,8 +1,8 @@
 import { ScanTypeEnum, SequenceEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface IsourceInterface extends BaseInterface {
+export default interface IsourceInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -54,9 +54,9 @@ export interface IsourceInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.Isource#basefreq
+   *@inheritdoc Models.Isource#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Isource#enabled
    */

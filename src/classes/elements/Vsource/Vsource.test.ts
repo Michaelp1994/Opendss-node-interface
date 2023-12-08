@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line } from ".";
-import Circuit from "./Circuit";
+import { Circuit , Line } from "@elements";
 import Vsource from "./Vsource";
 
 describe("Testing Vsource Model", () => {

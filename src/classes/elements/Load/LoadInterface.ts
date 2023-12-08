@@ -1,8 +1,8 @@
 import { ConnEnum, LoadStatusEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface LoadInterface extends BaseInterface {
+export default interface LoadInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -162,9 +162,9 @@ export interface LoadInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.Load#basefreq
+   *@inheritdoc Models.Load#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Load#enabled
    */

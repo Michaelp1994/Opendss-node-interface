@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Load } from ".";
-import Circuit from "./Circuit";
+import { Circuit , Load } from "@elements";
 import GrowthShape from "./GrowthShape";
 
 describe("Testing GrowthShape Model", () => {

@@ -1,7 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Capacitor, Line } from ".";
-import CapControl from "./CapControl";
-import Circuit from "./Circuit";
+import { Capacitor, Line, Circuit, CapControl } from "@elements";
 
 describe("Testing CapControl Model", () => {
   const study = new GeneralStudy();

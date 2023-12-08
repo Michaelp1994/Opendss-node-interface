@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Transformer } from ".";
-import Circuit from "./Circuit";
+import { Circuit , Transformer } from "@elements";
 import RegControl from "./RegControl";
 
 describe("Testing RegControl Model", () => {

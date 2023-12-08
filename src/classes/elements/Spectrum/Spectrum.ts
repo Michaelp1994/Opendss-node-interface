@@ -1,10 +1,10 @@
-import { SpectrumInterface } from "./SpectrumInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import SpectrumInterface from "./SpectrumInterface";
 
 /**   General  */
 export default class Spectrum
   extends GeneralElement
-  implements HasKeys<SpectrumInterface>
+  implements SpectrumInterface
 {
   _type = "Spectrum";
 

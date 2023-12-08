@@ -1,8 +1,8 @@
 import { NormalEnum, StateEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface RelayInterface extends BaseInterface {
+export default interface RelayInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -60,7 +60,7 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#Reset
    */
-  Reset?: number;
+  reset?: number;
   /**
    *@inheritdoc Models.Relay#Shots
    */
@@ -72,7 +72,7 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#Delay
    */
-  Delay?: number;
+  delay?: number;
   /**
    *@inheritdoc Models.Relay#Overvoltcurve
    */
@@ -148,7 +148,7 @@ export interface RelayInterface extends BaseInterface {
   /**
    *@inheritdoc Models.Relay#EventLog
    */
-  EventLog?: boolean;
+  eventLog?: boolean;
   /**
    *@inheritdoc Models.Relay#DebugTrace
    */
@@ -206,9 +206,9 @@ export interface RelayInterface extends BaseInterface {
    */
   DOC_P1Blocking?: boolean;
   /**
-   *@inheritdoc Models.Relay#basefreq
+   *@inheritdoc Models.Relay#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Relay#enabled
    */

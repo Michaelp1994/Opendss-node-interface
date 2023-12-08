@@ -1,5 +1,5 @@
-import OpenDSSOptionsInterface from "./OpenDSSOptionsInterface";
 import winax from "winax";
+import OpenDSSOptionsInterface from "./OpenDSSOptionsInterface";
 
 export default class OpenDssDriver {
   private dss: OpenDSSengine.DSS;

@@ -1,11 +1,8 @@
-import { FaultInterface } from "./FaultInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import FaultInterface from "./FaultInterface";
 
 /**   Circuit Element, PD Element  */
-export default class Fault
-  extends CircuitElementComponent
-  implements HasKeys<FaultInterface>
-{
+export default class Fault extends CircuitElement implements FaultInterface {
   _type = "Fault";
 
   parameters: Array<keyof this> = [
@@ -18,12 +15,12 @@ export default class Fault
     "ONtime",
     "temporary",
     "MinAmps",
-    "normamps",
-    "emergamps",
-    "faultrate",
+    "normAmps",
+    "emergAmps",
+    "faultRate",
     "pctperm",
     "repair",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -64,13 +61,13 @@ export default class Fault
   MinAmps?: number;
 
   /** Normal rated current. */
-  normamps?: number;
+  normAmps?: number;
 
   /** Maximum or emergency current. */
-  emergamps?: number;
+  emergAmps?: number;
 
   /** Failure rate per year. */
-  faultrate?: number;
+  faultRate?: number;
 
   /** Percent of failures that become permanent. */
   pctperm?: number;
@@ -79,7 +76,7 @@ export default class Fault
   repair?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

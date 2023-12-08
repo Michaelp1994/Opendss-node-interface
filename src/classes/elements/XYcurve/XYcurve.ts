@@ -1,10 +1,10 @@
-import { XYcurveInterface } from "./XYcurveInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import XYcurveInterface from "./XYcurveInterface";
 
 /**   General  */
 export default class XYcurve
   extends GeneralElement
-  implements HasKeys<XYcurveInterface>
+  implements XYcurveInterface
 {
   _type = "XYcurve";
 

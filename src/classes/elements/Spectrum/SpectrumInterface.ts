@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface SpectrumInterface extends BaseInterface {
+export default interface SpectrumInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

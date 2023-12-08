@@ -1,28 +1,20 @@
 import { UnitsEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface LineSpacingInterface extends BaseInterface {
-  /** Name of the component */
-  name: string;
-  /**
-   *@inheritdoc Models.LineSpacing#nconds
-   */
-  nconds?: number;
-  /**
-   *@inheritdoc Models.LineSpacing#nphases
-   */
-  nphases?: number;
-  /**
-   *@inheritdoc Models.LineSpacing#x
-   */
+export default interface LineSpacingInterface extends BaseElementInterface {
+  /** Number of wires in this geometry. Default is 3. Triggers memory allocations. Define first! */
+  nConds?: number;
+
+  /** Number of retained phase conductors. If less than the number of wires, list the retained phase coordinates first. */
+  nPhases?: number;
+
+  /** Array of wire X coordinates. */
   x?: number[];
-  /**
-   *@inheritdoc Models.LineSpacing#h
-   */
+
+  /** Array of wire Heights. */
   h?: number[];
-  /**
-   *@inheritdoc Models.LineSpacing#units
-   */
+
+  /** Units for x and h: {mi|kft|km|m|Ft|in|cm } Initial default is "ft", but defaults to last unit defined */
   units?: UnitsEnum;
 }

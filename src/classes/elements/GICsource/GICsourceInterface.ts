@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface GICsourceInterface extends BaseInterface {
+export default interface GICsourceInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -49,9 +49,9 @@ export interface GICsourceInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.GICsource#basefreq
+   *@inheritdoc Models.GICsource#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.GICsource#enabled
    */

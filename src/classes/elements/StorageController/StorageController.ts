@@ -1,11 +1,11 @@
 import { ModeChargeEnum, ModeDischargeEnum, MonPhaseEnum } from "@enums/enums";
-import { StorageControllerInterface } from "./StorageControllerInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import StorageControllerInterface from "./StorageControllerInterface";
 
 /**   Circuit Element, Control Element  */
 export default class StorageController
-  extends CircuitElementComponent
-  implements HasKeys<StorageControllerInterface>
+  extends CircuitElement
+  implements StorageControllerInterface
 {
   _type = "StorageController";
 
@@ -36,7 +36,7 @@ export default class StorageController
     "Yearly",
     "Daily",
     "Duty",
-    "EventLog",
+    "eventLog",
     "InhibitTime",
     "Tup",
     "TFlat",
@@ -47,7 +47,7 @@ export default class StorageController
     "Seasons",
     "SeasonTargets",
     "SeasonTargetsLow",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -153,7 +153,7 @@ export default class StorageController
   Duty?: string;
 
   /** {Yes/True | No/False} Default is No. Log control actions to Eventlog. */
-  EventLog?: boolean;
+  eventLog?: boolean;
 
   /** Hours (integer) to inhibit Discharging after going into Charge mode. Default is 5. */
   InhibitTime?: number;
@@ -188,7 +188,7 @@ export default class StorageController
   SeasonTargetsLow?: number[];
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

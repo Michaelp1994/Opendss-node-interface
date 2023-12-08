@@ -1,8 +1,9 @@
 import { ModeChargeEnum, ModeDischargeEnum, MonPhaseEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface StorageControllerInterface extends BaseInterface {
+export default interface StorageControllerInterface
+  extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -112,7 +113,7 @@ export interface StorageControllerInterface extends BaseInterface {
   /**
    *@inheritdoc Models.StorageController#EventLog
    */
-  EventLog?: boolean;
+  eventLog?: boolean;
   /**
    *@inheritdoc Models.StorageController#InhibitTime
    */
@@ -154,9 +155,9 @@ export interface StorageControllerInterface extends BaseInterface {
    */
   SeasonTargetsLow?: number[];
   /**
-   *@inheritdoc Models.StorageController#basefreq
+   *@inheritdoc Models.StorageController#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.StorageController#enabled
    */

@@ -1,8 +1,8 @@
 import { ConnEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PD Element  */
-export interface ReactorInterface extends BaseInterface {
+export default interface ReactorInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -82,17 +82,17 @@ export interface ReactorInterface extends BaseInterface {
    */
   LmH?: number;
   /**
-   *@inheritdoc Models.Reactor#normamps
+   *@inheritdoc Models.Reactor#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.Reactor#emergamps
+   *@inheritdoc Models.Reactor#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.Reactor#faultrate
+   *@inheritdoc Models.Reactor#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.Reactor#pctperm
    */
@@ -102,9 +102,9 @@ export interface ReactorInterface extends BaseInterface {
    */
   repair?: number;
   /**
-   *@inheritdoc Models.Reactor#basefreq
+   *@inheritdoc Models.Reactor#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Reactor#enabled
    */

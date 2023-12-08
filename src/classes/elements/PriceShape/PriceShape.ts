@@ -1,11 +1,11 @@
 import { ActionEnum } from "@enums/enums";
-import { PriceShapeInterface } from "./PriceShapeInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import PriceShapeInterface from "./PriceShapeInterface";
 
 /**   General  */
 export default class PriceShape
   extends GeneralElement
-  implements HasKeys<PriceShapeInterface>
+  implements PriceShapeInterface
 {
   _type = "PriceShape";
 

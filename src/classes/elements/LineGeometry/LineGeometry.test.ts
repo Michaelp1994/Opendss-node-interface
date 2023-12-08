@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line, LineSpacing, WireData } from ".";
-import Circuit from "./Circuit";
+import { Circuit , Line, LineSpacing, WireData } from "@elements";
 import LineGeometry from "./LineGeometry";
 
 describe("Testing LineGeometry Model", () => {

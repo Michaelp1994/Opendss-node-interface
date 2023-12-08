@@ -1,13 +1,26 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
+import { Circuit, Transformer } from "@elements";
 import UPFC from "./UPFC";
 
 describe("Testing UPFC Model", () => {
   const study = new GeneralStudy();
-  const circuit = new Circuit("TestCircuit");
+  const circuit = new Circuit("TestCircuit", {
+    bus1: "sourceBus",
+  });
   study.add(circuit);
-
-  const component = new UPFC("example_component");
+  const transformer = new Transformer("t1", {
+    buses: ["sourceBus.1.0", "UPFC_Input.1"],
+  });
+  study.add(transformer);
+  const component = new UPFC("upfc", {
+    Phases: 1,
+    bus1: "UPFC_Input.1",
+    bus2: "UPFC_Output.1",
+    refkV: 0.242,
+    Mode: 1,
+    Tol1: 0.005,
+    Xs: 0.02,
+  });
   study.add(component);
   study.build();
   study.solve();

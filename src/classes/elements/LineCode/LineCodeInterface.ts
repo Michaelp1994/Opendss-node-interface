@@ -1,8 +1,8 @@
 import { UnitsEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface LineCodeInterface extends BaseInterface {
+export default interface LineCodeInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -46,25 +46,25 @@ export interface LineCodeInterface extends BaseInterface {
    */
   xmatrix?: number[];
   /**
-   *@inheritdoc Models.LineCode#cmatrix
+   *@inheritdoc Models.LineCode#cMatrix
    */
-  cmatrix?: number[];
+  cMatrix?: number[];
   /**
    *@inheritdoc Models.LineCode#baseFreq
    */
   baseFreq?: number;
   /**
-   *@inheritdoc Models.LineCode#normamps
+   *@inheritdoc Models.LineCode#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.LineCode#emergamps
+   *@inheritdoc Models.LineCode#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.LineCode#faultrate
+   *@inheritdoc Models.LineCode#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.LineCode#pctperm
    */

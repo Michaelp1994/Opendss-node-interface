@@ -1,8 +1,8 @@
 import { ModelEnum, ScanTypeEnum, SequenceEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface VsourceInterface extends BaseInterface {
+export default interface VsourceInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -134,9 +134,9 @@ export interface VsourceInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.Vsource#basefreq
+   *@inheritdoc Models.Vsource#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Vsource#enabled
    */

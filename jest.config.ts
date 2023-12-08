@@ -9,9 +9,10 @@ const config: Config = {
   moduleNameMapper: {
     "@enums/(.*)": ["<rootDir>/src/enums/$1"],
     "@classes/(.*)": ["<rootDir>/src/classes/$1"],
-    "@components/(.*)": ["<rootDir>/src/classes/components/$1"],
+    "@elements/(.*)": ["<rootDir>/src/classes/elements/$1"],
     "@interfaces/(.*)": ["<rootDir>/src/interfaces/$1"],
     "@helpers/(.*)": ["<rootDir>/src/helpers/$1"],
+    "@elements": ["<rootDir>/src/classes/elements"],
   },
   // moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   modulePaths: ["<rootDir>"],

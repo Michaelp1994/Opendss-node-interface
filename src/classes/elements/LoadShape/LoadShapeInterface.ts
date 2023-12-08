@@ -1,8 +1,8 @@
 import { LoadShapeActionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface LoadShapeInterface extends BaseInterface {
+export default interface LoadShapeInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

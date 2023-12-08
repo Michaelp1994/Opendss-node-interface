@@ -1,11 +1,11 @@
 import { PTphaseEnum } from "@enums/enums";
-import { RegControlInterface } from "./RegControlInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import RegControlInterface from "./RegControlInterface";
 
 /**   Circuit Element, Control Element  */
 export default class RegControl
-  extends CircuitElementComponent
-  implements HasKeys<RegControlInterface>
+  extends CircuitElement
+  implements RegControlInterface
 {
   _type = "RegControl";
 
@@ -35,14 +35,14 @@ export default class RegControl
     "revThreshold",
     "revDelay",
     "revNeutral",
-    "EventLog",
+    "eventLog",
     "RemotePTRatio",
     "TapNum",
-    "Reset",
+    "reset",
     "LDC_Z",
     "rev_Z",
     "Cogen",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -129,16 +129,16 @@ export default class RegControl
   revNeutral?: boolean;
 
   /** {Yes/True* | No/False} Default is YES for regulator control. Log control actions to Eventlog. */
-  EventLog?: boolean;
+  eventLog?: boolean;
 
-  /** When regulating a bus (the Bus= property is set), the PT ratio required to convert actual voltage at the remote bus to control voltage. Is initialized to PTratio property. Set this property after setting PTratio. */
+  /** When regulating a bus (the Bus= property is set), the PT ratio required to convert actual voltage at the remote bus to control voltage. Is initialized to ptRatio property. Set this property after setting ptRatio. */
   RemotePTRatio?: number;
 
   /** An integer number indicating the tap position that the controlled transformer winding tap position is currently at, or is being set to.  If being set, and the value is outside the range of the transformer min or max tap, then set to the min or max tap position as appropriate. Default is 0 */
   TapNum?: number;
 
   /** {Yes | No} If Yes, forces Reset of this RegControl. */
-  Reset?: boolean;
+  reset?: boolean;
 
   /** Z value for Beckwith LDC_Z control option. Volts adjustment at rated control current. */
   LDC_Z?: number;
@@ -150,7 +150,7 @@ export default class RegControl
   Cogen?: boolean;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

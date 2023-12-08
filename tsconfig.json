@@ -13,6 +13,7 @@
     "paths": {
       "@enums/*": ["./src/enums/*"],
       "@classes/*": ["./src/classes/*"],
+      "@elements": ["./src/classes/elements"],
       "@elements/*": ["./src/classes/elements/*"],
       "@helpers/*": ["./src/helpers/*"]
     },
@@ -23,6 +24,6 @@
     "resolvePackageJsonImports": true
   },
 
-  "include": ["src", "*.ts", ".eslintrc.js"],
+  "include": ["src", "*.ts"],
   "exclude": ["node_modules", "dist", "docs"]
 }

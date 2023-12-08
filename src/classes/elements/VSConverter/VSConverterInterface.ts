@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface VSConverterInterface extends BaseInterface {
+export default interface VSConverterInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -85,9 +85,9 @@ export interface VSConverterInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.VSConverter#basefreq
+   *@inheritdoc Models.VSConverter#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.VSConverter#enabled
    */

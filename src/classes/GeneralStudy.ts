@@ -1,13 +1,12 @@
-import type OpenDSSOptionsInterface from "@interfaces/OpenDSSOptionsInterface";
+import type OpenDSSOptionsInterface from "@classes/OpenDSSOptionsInterface";
 import { open } from "node:fs/promises";
 import { EOL } from "node:os";
 
-import CircuitElementComponent from "./components/CircuitElementComponent";
+import { CircuitElement, BaseElement } from "@elements";
 import OpenDssDriver from "./OpenDssDriver";
-import BaseComponent from "./components/BaseComponent";
 
 export default class GeneralStudy {
-  private components: Array<BaseComponent>;
+  private components: Array<BaseElement>;
 
   private circuitSolved: boolean;
 
@@ -22,13 +21,13 @@ export default class GeneralStudy {
   }
 
   /** Add Component to the circuit  */
-  add(component: BaseComponent) {
+  add(component: BaseElement) {
     this.components.push(component);
     this.circuitSolved = false;
   }
 
   /** remove component from a circuit */
-  remove(component: BaseComponent) {
+  remove(component: BaseElement) {
     const index = this.components.findIndex((c) => c.name === component.name);
     if (index === -1) throw Error("cannot find component in circuit");
     const removed = this.components.splice(index, 1);
@@ -68,22 +67,18 @@ export default class GeneralStudy {
     return this.driver.getOption(option);
   }
 
-  setActiveElement(component: CircuitElementComponent) {
+  setActiveElement(component: CircuitElement) {
     this.driver.setActiveElement(`${component._type}.${component.name}`);
   }
 
-  getParameter(component: CircuitElementComponent, property: string) {
+  getParameter(component: CircuitElement, property: string) {
     return this.driver.getParameter(
       `${component._type}.${component.name}`,
       property,
     );
   }
 
-  changeParameter(
-    component: CircuitElementComponent,
-    property: string,
-    value: string,
-  ) {
+  changeParameter(component: CircuitElement, property: string, value: string) {
     this.driver.changeParameter(
       `${component._type}.${component.name}`,
       property,
@@ -91,7 +86,7 @@ export default class GeneralStudy {
     );
   }
 
-  readCurrent(component: CircuitElementComponent, index: number) {
+  readCurrent(component: CircuitElement, index: number) {
     return this.driver.readCurrent(
       `${component._type}.${component.name}`,
       index,

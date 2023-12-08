@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line, LineSpacing } from ".";
-import Circuit from "./Circuit";
+import { Circuit, Line, LineSpacing } from "@elements";
 import TSData from "./TSData";
 
 describe("Testing TSData Model", () => {
@@ -9,7 +8,7 @@ describe("Testing TSData Model", () => {
   study.add(circuit);
 
   const tsData = new TSData("cable1", {
-    normamps: 165,
+    normAmps: 165,
     diam: 0.368,
     GMRac: 0.1332,
     Rac: 0.97,
@@ -26,8 +25,8 @@ describe("Testing TSData Model", () => {
   });
 
   const lineSpacing = new LineSpacing("spacing1", {
-    nconds: 3,
-    nphases: 3,
+    nConds: 3,
+    nPhases: 3,
     x: [-1.5, 0, 1.5],
     h: [15, 15, 15],
   });

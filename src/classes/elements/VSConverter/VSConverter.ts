@@ -1,10 +1,10 @@
-import { VSConverterInterface } from "./VSConverterInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import VSConverterInterface from "./VSConverterInterface";
 
 /**   Circuit Element, PC Element  */
 export default class VSConverter
-  extends CircuitElementComponent
-  implements HasKeys<VSConverterInterface>
+  extends CircuitElement
+  implements VSConverterInterface
 {
   _type = "VSConverter";
 
@@ -29,7 +29,7 @@ export default class VSConverter
     "Vdcref",
     "VscMode",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -107,7 +107,7 @@ export default class VSConverter
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

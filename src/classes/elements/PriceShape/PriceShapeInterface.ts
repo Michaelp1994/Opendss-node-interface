@@ -1,8 +1,8 @@
 import { ActionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   General  */
-export interface PriceShapeInterface extends BaseInterface {
+export default interface PriceShapeInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**

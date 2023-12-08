@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface UPFCInterface extends BaseInterface {
+export default interface UPFCInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -77,9 +77,9 @@ export interface UPFCInterface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.UPFC#basefreq
+   *@inheritdoc Models.UPFC#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.UPFC#enabled
    */

@@ -1,10 +1,8 @@
 import { ConnEnum, SlipOptionEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PC Element  */
-export interface IndMach012Interface extends BaseInterface {
-  /** Name of the component */
-  name: string;
+export default interface IndMach012Interface extends BaseElementInterface {
   /**
    *@inheritdoc Models.IndMach012#phases
    */
@@ -94,9 +92,9 @@ export interface IndMach012Interface extends BaseInterface {
    */
   spectrum?: string;
   /**
-   *@inheritdoc Models.IndMach012#basefreq
+   *@inheritdoc Models.IndMach012#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.IndMach012#enabled
    */

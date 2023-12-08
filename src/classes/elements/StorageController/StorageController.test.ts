@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import { Line, Storage } from ".";
-import Circuit from "./Circuit";
+import { Circuit , Line, Storage } from "@elements";
 import StorageController from "./StorageController";
 
 describe("Testing StorageController Model", () => {

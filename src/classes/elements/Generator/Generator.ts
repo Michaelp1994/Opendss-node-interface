@@ -1,11 +1,11 @@
 import { ConnEnum, DispmodeEnum, FuelkWhEnum, StatusEnum } from "@enums/enums";
-import { GeneratorInterface } from "./GeneratorInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import GeneratorInterface from "./GeneratorInterface";
 
 /**   Circuit Element, PC Element  */
 export default class Generator
-  extends CircuitElementComponent
-  implements HasKeys<GeneratorInterface>
+  extends CircuitElement
+  implements GeneratorInterface
 {
   _type = "Generator";
 
@@ -39,8 +39,8 @@ export default class Generator
     "Xdpp",
     "H",
     "D",
-    "UserModel",
-    "UserData",
+    "userModel",
+    "userData",
     "ShaftModel",
     "ShaftData",
     "DutyStart",
@@ -55,7 +55,7 @@ export default class Generator
     "DynamicEq",
     "DynOut",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -176,10 +176,10 @@ export default class Generator
   D?: number;
 
   /** Name of DLL containing user-written model, which computes the terminal currents for Dynamics studies, overriding the default model.  Set to "none" to negate previous setting. */
-  UserModel?: string;
+  userModel?: string;
 
   /** String (in quotes or parentheses) that gets passed to user-written model for defining the data required for that model. */
-  UserData?: string;
+  userData?: string;
 
   /** Name of user-written DLL containing a Shaft model, which models the prime mover and determines the power on the shaft for Dynamics studies. Models additional mass elements other than the single-mass model in the DSS default model. Set to "none" to negate previous setting. */
   ShaftModel?: string;
@@ -230,7 +230,7 @@ export default class Generator
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

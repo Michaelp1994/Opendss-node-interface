@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import AutoTrans from "./AutoTrans";
-import Circuit from "@elements/Circuit";
+import { Circuit, AutoTrans } from "@elements";
 
 describe("Testing AutoTrans Model", () => {
   const study = new GeneralStudy();

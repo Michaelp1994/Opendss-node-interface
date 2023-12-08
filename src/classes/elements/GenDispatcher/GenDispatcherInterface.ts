@@ -1,7 +1,7 @@
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface GenDispatcherInterface extends BaseInterface {
+export default interface GenDispatcherInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -33,9 +33,9 @@ export interface GenDispatcherInterface extends BaseInterface {
    */
   // weights?: number[];
   /**
-   *@inheritdoc Models.GenDispatcher#basefreq
+   *@inheritdoc Models.GenDispatcher#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.GenDispatcher#enabled
    */

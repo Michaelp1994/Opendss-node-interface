@@ -1,10 +1,11 @@
-import { XfmrCodeInterface } from "./XfmrCodeInterface";
-import GeneralElement from "@components/GeneralElement";
+import { GeneralElement } from "@elements";
+import { ConnEnum } from "@enums/enums";
+import XfmrCodeInterface from "./XfmrCodeInterface";
 
 /**   General  */
 export default class XfmrCode
   extends GeneralElement
-  implements HasKeys<XfmrCodeInterface>
+  implements XfmrCodeInterface
 {
   _type = "XfmrCode";
 
@@ -61,7 +62,7 @@ export default class XfmrCode
   wdg?: number;
 
   /** Connection of this winding. Default is "wye" with the neutral solidly grounded. */
-  conn?: string;
+  conn?: ConnEnum;
 
   /** For 2-or 3-phase, enter phase-phase kV rating.  Otherwise, kV rating of the actual winding */
   kV?: number;

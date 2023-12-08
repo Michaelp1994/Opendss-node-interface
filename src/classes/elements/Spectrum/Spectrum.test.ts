@@ -1,6 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
-import Sensor from "./Sensor";
+import { Circuit, Sensor } from "@elements";
 
 describe("Testing Sensor Model", () => {
   const study = new GeneralStudy();

@@ -1,7 +1,5 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
-import Line from "./Line";
-import LineCode from "./LineCode";
+import { Circuit, Line, LineCode } from "@elements";
 
 describe("Testing LineCode Model", () => {
   const study = new GeneralStudy();

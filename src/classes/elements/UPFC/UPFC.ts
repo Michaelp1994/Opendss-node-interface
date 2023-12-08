@@ -1,11 +1,8 @@
-import { UPFCInterface } from "./UPFCInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import UPFCInterface from "./UPFCInterface";
 
 /**   Circuit Element, PC Element  */
-export default class UPFC
-  extends CircuitElementComponent
-  implements HasKeys<UPFCInterface>
-{
+export default class UPFC extends CircuitElement implements UPFCInterface {
   _type = "UPFC";
 
   parameters: Array<keyof this> = [
@@ -27,7 +24,7 @@ export default class UPFC
     "kvarLimit",
     "Element",
     "spectrum",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -109,7 +106,7 @@ export default class UPFC
   spectrum?: string;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;

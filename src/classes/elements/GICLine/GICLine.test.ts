@@ -1,13 +1,18 @@
 import GeneralStudy from "@classes/GeneralStudy";
-import Circuit from "./Circuit";
+import { Circuit } from "@elements";
 import GICLine from "./GICLine";
 
 describe("Testing GICLine Model", () => {
   const study = new GeneralStudy();
-  const circuit = new Circuit("TestCircuit");
+  const circuit = new Circuit("TestCircuit", {
+    bus1: "sourceBus",
+  });
   study.add(circuit);
 
-  const component = new GICLine("example_component");
+  const component = new GICLine("example_component", {
+    bus1: "sourceBus",
+    bus2: "loadBus",
+  });
   study.add(component);
   study.build();
   study.solve();

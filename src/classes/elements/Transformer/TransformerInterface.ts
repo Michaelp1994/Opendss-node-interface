@@ -1,8 +1,8 @@
 import { ConnEnum, CoreEnum, LeadLagEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, PD Element  */
-export interface TransformerInterface extends BaseInterface {
+export default interface TransformerInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -202,17 +202,17 @@ export interface TransformerInterface extends BaseInterface {
    */
   Ratings?: number[];
   /**
-   *@inheritdoc Models.Transformer#normamps
+   *@inheritdoc Models.Transformer#normAmps
    */
-  normamps?: number;
+  normAmps?: number;
   /**
-   *@inheritdoc Models.Transformer#emergamps
+   *@inheritdoc Models.Transformer#emergAmps
    */
-  emergamps?: number;
+  emergAmps?: number;
   /**
-   *@inheritdoc Models.Transformer#faultrate
+   *@inheritdoc Models.Transformer#faultRate
    */
-  faultrate?: number;
+  faultRate?: number;
   /**
    *@inheritdoc Models.Transformer#pctperm
    */
@@ -222,9 +222,9 @@ export interface TransformerInterface extends BaseInterface {
    */
   repair?: number;
   /**
-   *@inheritdoc Models.Transformer#basefreq
+   *@inheritdoc Models.Transformer#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.Transformer#enabled
    */

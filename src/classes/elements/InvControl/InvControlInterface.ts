@@ -6,10 +6,10 @@ import {
   VoltageCurvexRefEnum,
   VoltwattYAxisEnum,
 } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface InvControlInterface extends BaseInterface {
+export default interface InvControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -99,7 +99,7 @@ export interface InvControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.InvControl#EventLog
    */
-  EventLog?: boolean;
+  eventLog?: boolean;
   /**
    *@inheritdoc Models.InvControl#RefReactivePower
    */
@@ -149,9 +149,9 @@ export interface InvControlInterface extends BaseInterface {
    */
   controlModel?: number;
   /**
-   *@inheritdoc Models.InvControl#basefreq
+   *@inheritdoc Models.InvControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.InvControl#enabled
    */

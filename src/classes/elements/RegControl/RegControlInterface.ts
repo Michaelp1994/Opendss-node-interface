@@ -1,8 +1,8 @@
 import { PTphaseEnum } from "@enums/enums";
-import BaseInterface from "@components/BaseInterface";
+import { BaseElementInterface } from "@elements/BaseElements";
 
 /**   Circuit Element, Control Element  */
-export interface RegControlInterface extends BaseInterface {
+export default interface RegControlInterface extends BaseElementInterface {
   /** Name of the component */
   name: string;
   /**
@@ -108,7 +108,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#EventLog
    */
-  EventLog?: boolean;
+  eventLog?: boolean;
   /**
    *@inheritdoc Models.RegControl#RemotePTRatio
    */
@@ -120,7 +120,7 @@ export interface RegControlInterface extends BaseInterface {
   /**
    *@inheritdoc Models.RegControl#Reset
    */
-  Reset?: boolean;
+  reset?: boolean;
   /**
    *@inheritdoc Models.RegControl#LDC_Z
    */
@@ -134,9 +134,9 @@ export interface RegControlInterface extends BaseInterface {
    */
   Cogen?: boolean;
   /**
-   *@inheritdoc Models.RegControl#basefreq
+   *@inheritdoc Models.RegControl#baseFreq
    */
-  basefreq?: number;
+  baseFreq?: number;
   /**
    *@inheritdoc Models.RegControl#enabled
    */

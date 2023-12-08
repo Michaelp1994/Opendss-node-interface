@@ -6,13 +6,13 @@ import {
   VoltageCurvexRefEnum,
   VoltwattYAxisEnum,
 } from "@enums/enums";
-import { InvControlInterface } from "./InvControlInterface";
-import CircuitElementComponent from "./CircuitElementComponent";
+import CircuitElement from "@elements/BaseElements/CircuitElement";
+import InvControlInterface from "./InvControlInterface";
 
 /**   Circuit Element, Control Element  */
 export default class InvControl
-  extends CircuitElementComponent
-  implements HasKeys<InvControlInterface>
+  extends CircuitElement
+  implements InvControlInterface
 {
   _type = "InvControl";
 
@@ -38,7 +38,7 @@ export default class InvControl
     "LPFTau",
     "RiseFallLimit",
     "deltaP_Factor",
-    "EventLog",
+    "eventLog",
     "RefReactivePower",
     "ActivePChangeTolerance",
     "monVoltageCalc",
@@ -51,7 +51,7 @@ export default class InvControl
     "PVSystemList",
     "Vsetpoint",
     "ControlModel",
-    "basefreq",
+    "baseFreq",
     "enabled",
     "like",
   ];
@@ -264,7 +264,7 @@ export default class InvControl
   deltaP_Factor?: number;
 
   /** {Yes/True | No/False*} Default is NO for InvControl. Log control actions to Eventlog. */
-  EventLog?: boolean;
+  eventLog?: boolean;
 
   /** Required for any mode that has VOLTVAR, DYNAMICREACCURR and WATTVAR. Defaults to VARAVAL.
    *
@@ -357,7 +357,7 @@ export default class InvControl
   ControlModel?: number;
 
   /** Base Frequency for ratings. */
-  basefreq?: number;
+  baseFreq?: number;
 
   /** {Yes|No or True|False} Indicates whether this element is enabled. */
   enabled?: boolean;
