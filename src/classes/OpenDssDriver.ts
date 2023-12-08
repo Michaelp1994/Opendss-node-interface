@@ -1,4 +1,4 @@
-import OpenDSSOptionsInterface from "@interfaces/OpenDSSOptionsInterface";
+import OpenDSSOptionsInterface from "./OpenDSSOptionsInterface";
 import winax from "winax";
 
 export default class OpenDssDriver {

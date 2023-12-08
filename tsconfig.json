@@ -13,8 +13,7 @@
     "paths": {
       "@enums/*": ["./src/enums/*"],
       "@classes/*": ["./src/classes/*"],
-      "@components/*": ["./src/classes/components/*"],
-      "@interfaces/*": ["./src/interfaces/*"],
+      "@elements/*": ["./src/classes/elements/*"],
       "@helpers/*": ["./src/helpers/*"]
     },
     "outDir": "dist",

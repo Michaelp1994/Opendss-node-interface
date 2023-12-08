@@ -1,31 +1,35 @@
 const fs = require("fs");
 const path = require("path");
 
-const interfacesDir = path.join(__dirname, "src/interfaces");
-const componentsDir = path.join(__dirname, "src/classes/components");
+const elementsDir = "./src/classes/elements";
 
-fs.readdir(interfacesDir, (err, files) => {
+fs.readdir(elementsDir, (err, directories) => {
   if (err) {
     console.error(`Error reading directory: ${err}`);
     return;
   }
 
-  files.forEach((file) => {
-    if (path.extname(file) === ".ts") {
-      const baseName = path.basename(file, "Interface.ts");
-      const newDir = path.join(componentsDir, baseName);
+  directories.forEach((directory) => {
+    const dirPath = path.join(elementsDir, directory);
+    fs.readdir(dirPath, (err, files) => {
+      if (err) {
+        console.error(`Error reading directory: ${err}`);
+        return;
+      }
 
-      // Move interface file
-      fs.rename(
-        path.join(interfacesDir, file),
-        path.join(newDir, file),
-        (err) => {
-          if (err) {
-            console.error(`Error moving file: ${err}`);
-            return;
-          }
-        },
-      );
-    }
+      const classes = files
+        .filter((file) => file.endsWith(".ts") && !file.endsWith(".test.ts"))
+        .map((file) => file.replace(".ts", ""));
+
+      const exportStatements = classes
+        .map((className) => `export { ${className} } from './${className}';`)
+        .join("\n");
+
+      fs.writeFile(path.join(dirPath, "index.ts"), exportStatements, (err) => {
+        if (err) {
+          console.error(`Error writing file: ${err}`);
+        }
+      });
+    });
   });
 });
