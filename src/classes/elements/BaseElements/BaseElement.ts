@@ -35,9 +35,9 @@ export default abstract class BaseElement {
         const value = this[key];
         if (Array.isArray(value)) {
           const values = value.join(" ");
-          script.push(`${String(key)}=[${values}]`);
+          script.push(`${String(key).toLowerCase()}=[${values}]`);
         } else {
-          script.push(`${String(key)}=${value}`);
+          script.push(`${String(key).toLowerCase()}=${value}`);
         }
       }
     });

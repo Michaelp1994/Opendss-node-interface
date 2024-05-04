@@ -18,7 +18,6 @@ module.exports = defineConfig({
         "no-underscore-dangle": "off",
       },
       env: {
-        browser: true,
         es2023: true,
       },
       extends: [
